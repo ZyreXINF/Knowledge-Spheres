@@ -1,0 +1,80 @@
+body {
+  width: auto;
+  height: auto;
+}
+
+h1 {
+  font-size: 4rem;
+  text-align: center;
+  font-family: 'Poppins SemiBold';
+  margin-top: 3rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  text-align: center;
+  font-family: 'Poppins SemiBold';
+  color: #454545;
+}
+
+.blue {
+  color: #0621f8;
+}
+
+.text_block {
+  text-align: center;
+  display: inline-block;
+  width: 60rem;
+}
+
+nav {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+nav a {
+  font-family: 'Poppins SemiBold';
+  font-weight: 100;
+  text-decoration: none;
+  margin: 0 30px;
+  padding: 10px 5px 15px 5px;
+  color: #313131;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  color: #0621f8;
+  border-bottom: 2px solid #0621f8;
+}
+
+.button {
+  font-family: 'Poppins SemiBold';
+  background-color: #0621f8;
+  text-decoration: none;
+  border: none;
+  color: white;
+  padding: 17px;
+  font-size: 18px;
+  margin: 4px 2px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+.container {
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
+.zoom {
+  display: block;
+  transition: transform .2s;
+  width: 100px;
+  margin: auto;
+}
+
+.zoom:hover {
+  transform: scale(1.05);
+}

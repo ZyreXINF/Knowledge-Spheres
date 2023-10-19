@@ -1,0 +1,39 @@
+.container {
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
+.blue {
+  color: #0621f8;
+}
+
+h1 {
+  font-size: 64px;
+  text-align: center;
+  font-family: 'Poppins SemiBold';
+}
+
+a {
+  font-family: 'Poppins SemiBold';
+}
+
+button {
+  font-family: 'Poppins SemiBold';
+  box-shadow: #dedede 0px 3px 20px 0px;
+  background: white;
+  text-decoration: none;
+  border: none;
+  color: black;
+  padding: 17px;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 20px;
+}
+
+img {
+  margin-top: 40px;
+}
