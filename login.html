@@ -10,6 +10,94 @@
 </head>
 
 <body>
+  <style>
+    body {
+  width: auto;
+  height: auto;
+}
+
+h1 {
+  font-size: 4rem;
+  text-align: center;
+  font-family: 'Poppins SemiBold';
+  margin-top: 3rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+  text-align: center;
+  font-family: 'Poppins SemiBold';
+  margin-top: -2.25rem;
+  color: #454545;
+}
+
+label {
+  font-size: 1rem;
+  font-family: 'Poppins SemiBold';
+}
+
+input {
+  border-radius: 1.5rem;
+  margin-top: 1rem;
+  padding: 0.375rem 0.625rem;
+}
+
+.input {
+  height: 1.5rem;
+}
+
+nav {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+nav a {
+  font-family: 'Poppins SemiBold';
+  font-weight: 100;
+  text-decoration: none;
+  margin: 0 30px;
+  padding: 10px 5px 15px 5px;
+  color: #313131;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  color: #0621f8;
+  border-bottom: 2px solid #0621f8;
+}
+
+.button {
+  font-family: 'Poppins SemiBold';
+  background-color: #0621f8;
+  text-decoration: none;
+  border: none;
+  color: white;
+  padding: 17px;
+  font-size: 18px;
+  margin: 4px 2px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+.container {
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
+.zoom {
+  display: block;
+  transition: transform .2s;
+  width: 100px;
+  margin: auto;
+}
+
+.zoom:hover {
+  transform: scale(1.05);
+}
+  </style>
   <div class="container">
     <nav id="nav-bar">
       <a class="nav-link" href="index.html">Home</a>
@@ -20,9 +108,9 @@
       <a class="nav-link" href="contact.html">Contact</a>
     </nav>
     <h1>Login</h1>
-    <form action="process-form.php" method="post">
-      <label for="username">Username</label><br>
-      <input type="text" id="username" class="input"><br><br><br>
+    <form action="login-form.php" method="post">
+      <label for="email">Email</label><br>
+      <input type="text" id="email" class="input"><br><br><br>
 
       <label for="password">Password</label><br>
       <input type="text" id="password" class="input"><br><br><br>
