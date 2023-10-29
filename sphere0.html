@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>My Sphere</title>
+  <link href="spherestyle.css" rel="stylesheet" type="text/css" />
+  <link href="https://db.onlinewebfonts.com/c/028b4cfdfab5d1049178e9b1eb42f49e?family=Poppins+SemiBold" rel="stylesheet">
+</head>
+
+<body>    
+  <div class="container">
+    <nav id="nav-bar">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="profile.html">Profile</a>
+      <a class="nav-link" href="myspheres.html">My Spheres</a>
+      <a class="nav-link" href="about.html">About Us</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </nav>
+  </div>
+  <h1>SPHERE NAME</h1>
+  <div class="container">
+    <h1 id="incrementable"><span class="blue">0</span>L</h1>
+    <button onclick="add_bottle(0.1)">
+      <a>+0.05L 💧</a>
+    </button>
+    <button onclick="add_bottle(1)">
+      <a>+0.5L 🫙</a>
+    </button>
+    <button onclick="add_bottle(2)">
+      <a>+1L 🫙🫙</a>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
