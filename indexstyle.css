@@ -93,3 +93,7 @@ footer {
   text-align: center;
   font-family: 'Poppins SemiBold';
 }
+
+footer a {
+  margin: 0.5rem;
+}
