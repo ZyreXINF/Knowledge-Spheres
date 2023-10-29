@@ -10,12 +10,32 @@ h1 {
   margin-top: 11.5rem;
 }
 
+.h1 {
+  margin-top: 7rem;
+}
+
+.h1_2 {
+  margin-top: 2rem;
+}
+
 h3 {
   font-size: 1.75rem;
   text-align: center;
   font-family: 'Poppins SemiBold';
   margin-top: -2.25rem;
   color: #454545;
+}
+
+h4 {
+  font-size: 1.65rem;
+  font-family: 'Poppins SemiBold';
+  text-align: center;
+}
+
+.h4-div {
+  text-align: center;
+  display: inline-block;
+  width: 60rem;
 }
 
 nav {
@@ -67,4 +87,9 @@ nav a:hover {
 
 .zoom:hover {
   transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  font-family: 'Poppins SemiBold';
 }
