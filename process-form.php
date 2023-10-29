@@ -3,11 +3,6 @@
 $name = $_POST["name"];
 $email = $_POST["email"];
 $userPassword = $_POST["userPassword"];
-$terms = filter_input(INPUT_POST, "terms", FILTER_VALIDATE_BOOL);
-
-if ( ! $terms) {
-    die("Terms must be accepted");
-}   
 
 $host = "localhost";
 $dbname = "kb_info_db";
