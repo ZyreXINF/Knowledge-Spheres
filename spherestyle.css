@@ -32,8 +32,99 @@ button {
   border-radius: 8px;
   cursor: pointer;
   margin: 20px;
+  margin-bottom: 3rem;
 }
 
 img {
   margin-top: 40px;
+}
+
+nav {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+nav a {
+  font-family: 'Poppins SemiBold';
+  font-weight: 100;
+  text-decoration: none;
+  margin: 0 30px;
+  padding: 10px 5px 15px 5px;
+  color: #313131;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  color: #0621f8;
+  border-bottom: 2px solid #0621f8;
+}
+
+.button {
+  font-family: 'Poppins SemiBold';
+  background-color: #0621f8;
+  text-decoration: none;
+  border: none;
+  color: white;
+  padding: 17px;
+  font-size: 18px;
+  margin: 4px 2px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+.container {
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
+.zoom {
+  display: block;
+  transition: transform .2s;
+  width: 100px;
+  margin: auto;
+}
+
+.zoom:hover {
+  transform: scale(1.05);
+}
+
+.modal {
+  background-color: rgba(0,0,0,.5);
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.open {
+  opacity: 1;
+  z-index: 999;
+}
+
+.modal-inner {
+  background-color: white;
+  border-radius: 0.313rem;
+  box-shadow: 0 0.063rem 0.25rem black;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  width: 23.75rem;
+}
+
+.modal-inner h2 {
+  margin: 0;
+}
+
+.modal-inner p {
+  line-height: 1.5rem;
+  margin: 0;
 }
