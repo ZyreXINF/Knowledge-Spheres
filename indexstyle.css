@@ -12,10 +12,15 @@ h1 {
 
 .h1 {
   margin-top: 7rem;
+  text-align: center;
 }
 
 .h1_2 {
   margin-top: 2rem;
+}
+
+.h1-master {
+  font-size: 4rem;
 }
 
 h3 {
@@ -35,7 +40,7 @@ h4 {
 .h4-div {
   text-align: center;
   display: inline-block;
-  width: 60rem;
+  width: 60vw;
 }
 
 nav {
@@ -96,4 +101,45 @@ footer {
 
 footer a {
   margin: 0.5rem;
+}
+
+.underlined {
+  text-decoration: underline #0621f8;
+}
+
+/* !!! */
+
+@media screen and (max-width: 414px) {
+  .h1 {
+    font-size: 3rem;
+  }
+  .h1_2 {
+    font-size: 3rem;
+  }
+  .h1-master {
+    font-size: 3.6rem;
+  }
+  h3 {
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
+  }
+  .h4-div {
+    width: 88vw;
+  }
+  h4 {
+    font-size: 6vw;
+  }
+  nav a{
+    margin: 0 2vw;
+    font-size: 5vw;
+  }
+  nav {
+    margin-bottom: -6rem;
+  }
+  footer {
+    font-size: 3vw;
+  }
+  .underlined {
+    text-decoration: underline;
+  }
 }
