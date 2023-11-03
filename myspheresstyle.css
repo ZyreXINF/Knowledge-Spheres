@@ -195,4 +195,7 @@ ul li a {
   .underlined {
     text-decoration: underline;
   }
+  ul {
+    width: 80vw;
+  }
 }
