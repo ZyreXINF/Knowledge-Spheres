@@ -73,6 +73,12 @@ a {
   color: white;
 }
 
+p {
+  font-size: 20px;
+  font-family: 'Poppins SemiBold';
+  color: #0621f8;
+}
+
 .wrapper li {
   padding: 0 26px;
 }
