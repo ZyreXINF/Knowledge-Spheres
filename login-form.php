@@ -17,7 +17,9 @@ $email = mysqli_real_escape_string($conn, $_GET['email']);
 $userPassword = $_GET["userPassword"];
 
 $sql = " SELECT * FROM registration WHERE email = '$email' AND userPassword = '$userPassword' ";
-    $result = mysqli_query($conn, $sql);
+
+$result = mysqli_query($conn, $sql);
+
 if (mysqli_connect_errno()) {
     die("Connection error: " . mysqli_connect_error());
 }
@@ -36,10 +38,10 @@ $row = mysqli_fetch_array($result);
     //     echo "Cookie '" . $cookie_name . "' is set!<br>";
     //     echo "Value is: " . $_COOKIE[$cookie_name];
     //   }
-    header('location:profile.html');
+    header('location:profile2.html');
 
  }else{
-    echo $error[] = 'incorrect email or password!';
+    header('location:alert_login.html');
  }
 
 $stmt = mysqli_stmt_init($conn);
@@ -50,8 +52,6 @@ if ( ! mysqli_stmt_prepare($stmt, $sql)) {
 }
 
 
-
 mysqli_stmt_execute($stmt);
 
-echo  "" ;
 ?>
