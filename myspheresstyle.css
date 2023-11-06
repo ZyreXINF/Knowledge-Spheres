@@ -163,6 +163,23 @@ ul li a {
   cursor: pointer;
 }
 
+footer {
+  text-align: center;
+  font-family: 'Poppins SemiBold';
+}
+
+footer a {
+  margin: 0.5rem;
+  color: black;
+}
+
+footer p {
+  font-size: 1rem;
+  font-family: 'Poppins SemiBold';
+  text-align: center;
+  color: black;
+}
+
 /* !!! */
 
 @media screen and (max-width: 414px) {
