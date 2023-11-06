@@ -83,6 +83,23 @@ nav a:hover {
   transform: scale(1.05);
 }
 
+footer {
+  text-align: center;
+  font-family: 'Poppins SemiBold';
+}
+
+footer a {
+  margin: 0.5rem;
+  color: black;
+}
+
+footer p {
+  font-size: 1rem;
+  font-family: 'Poppins SemiBold';
+  text-align: center;
+  color: black;
+}
+
 @media screen and (max-width: 414px) {
   .h1 {
     font-size: 3rem;
