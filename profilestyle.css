@@ -5,6 +5,8 @@ body {
   align-items: center;
   width: auto;
   height: auto;
+  background-image: url("profilebg.png");
+  background-size: cover;
 }
 
 nav {
@@ -135,7 +137,8 @@ p {
   margin-left: auto;
   width: 1000px;
   height: auto;
-  box-shadow: #dedede 0px 3px 20px 0px;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 10px 32px 0px;
   border-radius: 1.5rem;
   padding: 0.375rem 0.625rem;
   text-align: center;
