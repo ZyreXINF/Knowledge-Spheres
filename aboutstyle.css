@@ -1,6 +1,8 @@
 body {
   width: auto;
   height: auto;
+  background-image: url("aboutbg.jpg");
+  background-size: cover;
 }
 
 h1 {
@@ -98,6 +100,16 @@ footer p {
   font-family: 'Poppins SemiBold';
   text-align: center;
   color: black;
+}
+
+.block {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: rgba(1, 1, 1, 0.2) 0px 10px 32px 0px;
+  border-radius: 25px;
+  width: 80vw;
+  height: 26vw;
+  display: inline-block;
+  margin-top: 4rem;
 }
 
 @media screen and (max-width: 414px) {
