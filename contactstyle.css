@@ -1,6 +1,8 @@
 body {
   width: auto;
   height: auto;
+  background-image: url("contactbg.jpg");
+  background-size: cover;
 }
 
 h1 {
@@ -19,18 +21,21 @@ h3 {
 }
 
 label {
-  font-size: 1rem;
+  font-size: 2rem;
   font-family: 'Poppins SemiBold';
 }
 
-input {
-  border-radius: 1.5rem;
+form input {
+  text-align: center;
   margin-top: 1rem;
-  padding: 0.375rem 0.625rem;
-}
-
-.input {
-  height: 1.5rem;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: rgba(1, 1, 1, 0.1) 0px 10px 32px 0px;
+  font-size: 1rem;
+  width: 15.625rem;
+  height: 2.5rem;
+  border: none;
+  outline: none;
+  border-radius: 18px;
 }
 
 nav {
