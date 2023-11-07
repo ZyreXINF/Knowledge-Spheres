@@ -30,6 +30,6 @@ if(!isset($_COOKIE[$cookie_name])) {
   $test = implode($row);
   $_SESSION['test'] = $test;
 
-  header("location:profile2.php?test=" . urlencode($test));
+  header("location:profile.php?test=" . urlencode($test));
 }
 ?>      
