@@ -32,13 +32,7 @@ $row = mysqli_fetch_array($result);
 
     $_SESSION['email'] = $row['email'];
     setcookie($cookie_name, $email, time() + (86400 * 30), "/");
-    // if(!isset($_COOKIE[$cookie_name])) {
-    //     echo "Cookie named '" . $cookie_name . "' is not set!";
-    //   } else {
-    //     echo "Cookie '" . $cookie_name . "' is set!<br>";
-    //     echo "Value is: " . $_COOKIE[$cookie_name];
-    //   }
-    header('location:profile2.html');
+    header('location:profile2.php');
 
  }else{
     header('location:alert_login.html');
