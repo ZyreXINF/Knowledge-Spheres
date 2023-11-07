@@ -132,7 +132,7 @@ footer p {
 }
 
 .block {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.3);
   box-shadow: rgba(255, 255, 255, 0.2) 0px 10px 32px 0px;
   border-radius: 25px;
   width: 80vw;
@@ -141,7 +141,7 @@ footer p {
 }
 
 .block:hover {
-  box-shadow: rgba(255, 255, 255, 0.4) 0px 15px 37px 0px;
+  box-shadow: rgba(255, 255, 255, 0.3) 0px 15px 37px 0px;
 }
 
 /* !!! */
