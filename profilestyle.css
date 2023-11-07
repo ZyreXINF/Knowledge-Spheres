@@ -138,7 +138,7 @@ p {
   width: 1000px;
   height: 500px;
   background: rgba(255, 255, 255, 0.3);
-  box-shadow: rgba(255, 255, 255, 0.2) 0px 10px 32px 0px;
+  box-shadow: rgba(1, 1, 1, 0.1) 0px 10px 32px 0px;
   border-radius: 1.5rem;
   padding: 0.375rem 0.625rem;
   text-align: center;
