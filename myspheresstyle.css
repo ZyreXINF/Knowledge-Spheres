@@ -5,6 +5,8 @@ body {
   align-items: center;
   width: auto;
   height: auto;
+  background-image: url("myspheresbg.png");
+  background-size: cover;
 }
 
 nav {
@@ -29,7 +31,8 @@ nav a:hover {
 }
 
 form {
-  box-shadow: #dedede 0px 3px 20px 0px;
+  box-shadow: #dedede 0px 6px 40px 0px;
+  background: white;
   border-radius: 1.5rem;
   margin-top: 1rem;
   padding: 0.375rem 0.625rem;
@@ -81,6 +84,7 @@ ul {
 
 ul li {
   box-shadow: #dedede 0px 3px 20px 0px;
+  background: white;
   font-size: 20px;
   font-family: 'Poppins SemiBold';
   height: 80px;
