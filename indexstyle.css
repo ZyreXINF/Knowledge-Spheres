@@ -61,7 +61,7 @@ h4 {
 
 nav {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 2.4rem;
 }
 
 nav a {
@@ -94,9 +94,8 @@ nav a:hover {
 }
 
 .container {
-  margin: auto;
-  display: block;
   text-align: center;
+  display: inline-block;
 }
 
 .zoom {
@@ -185,9 +184,24 @@ footer p {
     height: 110vw;
     width: 90vw;
   }
+  .logo {
+    opacity: 0;
+    z-index: -1;
+  }
 }
 
-img {
-  margin-top: 8rem;
-  margin-bottom: 8rem;
+.img {
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+}
+
+.logo {
+  width: 120px;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+
+.logo:hover {
+  cursor: pointer;
 }
