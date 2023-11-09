@@ -207,4 +207,19 @@ footer p {
   .profile {
     width: 90vw;
   }
+  .logo {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+.logo {
+  width: 120px;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+
+.logo:hover {
+  cursor: pointer;
 }
