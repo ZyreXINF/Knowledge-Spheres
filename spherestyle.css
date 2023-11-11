@@ -1,5 +1,4 @@
 .container {
-  margin: auto;
   display: block;
   text-align: center;
 }
@@ -10,12 +9,17 @@
 
 h1 {
   font-size: 64px;
-  text-align: center;
   font-family: 'Poppins SemiBold';
+  left: 0;
+  position: absolute;
+  text-align:center;
+  top: 17vw;
+  width: 100%;
 }
 
 a {
   font-family: 'Poppins SemiBold';
+  margin: 20px;
 }
 
 button {
@@ -35,13 +39,17 @@ button {
   margin-bottom: 3rem;
 }
 
-img {
-  margin-top: 40px;
-}
-
 nav {
   text-align: center;
   margin-top: 2rem;
+}
+
+img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
 }
 
 nav a {
