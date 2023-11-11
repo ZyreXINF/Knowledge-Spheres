@@ -56,7 +56,7 @@ body{
 .wrapper form .row2{
   height: 45px;
   position: relative;
-  color: #b22311;
+  color: #a14040;
   font-size: 14px;
 }
 .wrapper form .row input{
@@ -124,6 +124,11 @@ form .button input:hover{
 form .signup-link a:hover{
   text-decoration: underline;
 }
+.pass span {
+  color: #a14040;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
     </style>
     <div class="container">
       <div class="wrapper">
@@ -137,8 +142,10 @@ form .signup-link a:hover{
             <i class="fas fa-lock"></i>
             <input name ="userPassword" type="password" placeholder="Password" required>
           </div>
-          <div class="pass"><a href="#">Forgot password?</a></div>
-          <div class="row2">Incorrect password or email</div>
+          <div class="pass">
+            <span>Incorrect email or password!</span><br>
+            <a href="#">Forgot password?</a>
+          </div>
           <div class="row button">
             <input type="submit" value="Login">
           </div>
