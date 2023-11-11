@@ -32,7 +32,7 @@ $row = mysqli_fetch_array($result);
 
     $_SESSION['email'] = $row['email'];
     setcookie($cookie_name, $email, time() + (86400 * 30), "/");
-    header('location:profile.php');
+    header('location:profile2.php');
 
  }else{
     header('location:alert_login.html');
