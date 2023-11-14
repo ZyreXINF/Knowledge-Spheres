@@ -1,6 +1,6 @@
 <?php session_start();
-$test = $_SESSION['test'];
-$test2 = $_SESSION['test2'];
+$user_name = $_SESSION['user_name'];
+$user_email = $_SESSION['user_email'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,11 +26,11 @@ $test2 = $_SESSION['test2'];
     <h1>Profile</h1>
     <div class="profile">
       <a>Name</a>
-      <p id="username"><?php echo $test; ?></p>
+      <p id="username"><?php echo $user_name; ?></p>
       <a>Badges</a>
       <p>None</p>
       <a>Email</a>
-      <p id="email" ><?php echo $test2; ?></p>
+      <p id="email" ><?php echo $user_email; ?></p>
     </div>
   </div>
 </body>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>My Spheres</title>
+  <link href="myspheresstyle.css" rel="stylesheet" type="text/css" />
+  <link href="https://db.onlinewebfonts.com/c/028b4cfdfab5d1049178e9b1eb42f49e?family=Poppins+SemiBold" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div class='container'>
+    <a href="index.html">
+      <img class="logo" src="logo_transparent.png">
+    </a>
+    <nav id="nav-bar">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="profile.html">Profile</a>
+      <a class="nav-link" href="myspheres.html">My Spheres</a>
+      <a class="nav-link" href="about.html">About Us</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </nav>
+    <h1>My Spheres</h1>
+  </div>
+    <form>
+      <input type="name" name="name" id="txt" required maxlength=20 placeholder="Enter a name here :)">
+      <button type="submit" class="btn-list" id="submitBtn"> 
+        <a>+</a>
+      </button>
+    </form>
+    <div class="list">
+      <div class="wrapper">
+        <ul>
+        </ul>
+      </div>
+    </div>
+
+  <script>
+    var page_limit = 10
+    var index = 0
+    let page_amount = 0
+
+    const input_text = document.querySelector("#txt");
+    const button = document.querySelector(".btn-list");
+    const list = document.querySelector(".list ul");
+
+          $(function () {
+      $("#submitBtn").on("click", function () {
+
+      if (input_text.value.replace(/(<([^>]+)>)/ig, '').replace(/ /g,'') != "") {
+        if (page_amount < page_limit) {
+          e.preventDefault();
+          page_amount++;
+    
+          const new_li = document.createElement("li");
+          input_text.value = input_text.value.replace(/(<([^>]+)>)/ig, "");
+
+          // GENERATE A LINK BASED ON THE INDEX
+
+          link = 
+          'sphere' + index.toString() + '.html';
+
+          index++;
+
+          new_li.innerHTML = '<a href="' + link + '" target="_blank">' + input_text.value + '</a><input type="color" value="#ff0000">';
+
+          list.appendChild(new_li);
+
+          const new_span = document.createElement("span");
+          new_span.innerHTML = "X";
+          new_span.addEventListener("click", ()=> {
+            page_amount--;
+            new_span.parentElement.style.opacity = 0;
+            setTimeout(()=> {
+              new_span.parentElement.remove();
+            }, 500)
+          })
+          new_li.appendChild(new_span);
+        }
+        else {
+          alert("Max amount of environments is " + page_limit + "!");
+        }
+      }
+      input_text.value = "";
+        
+        // Get input value
+        var inputData = $("#name").val();
+
+        // Send data to PHP using AJAX
+        $.ajax({
+          type: "POST",
+          url: "mySpheres-form.php",
+          data: { dataToSave: inputData },
+          success: function (response) {
+            console.log("Data saved successfully:", response);
+          },
+          error: function (error) {
+            console.error("Error saving data:", error);
+          }
+        });
+      });
+    });
+
+    button.addEventListener("click", (e)=> {
+
+    });
+    </script>
+      <script src="script.js"></script>
+</body>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<footer>
+  <p>Copyright © 2023 Knowledge Spheres</p>
+  <a class="fa fa-twitter"></a><a href="https://twitter.com/K_Spheres" target="_blank">Twitter</a>
+  <a class="fa fa-youtube"></a><a href="https://www.youtube.com/channel/UC_5ziKNCC2xGHFLhRVIjxtg" target="_blank">Youtube</a>
+  <a>☕</a><a href="https://www.buymeacoffee.com/knowledgespheres" target="_blank">Buy us a coffee</a>
+</footer>
+</html>

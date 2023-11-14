@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 $cookie_name = "user";
 
@@ -25,8 +23,9 @@ $url = $name . '/' . md5($name);
 
 $query_user_id = " SELECT id FROM registration WHERE email = '$_COOKIE[$cookie_name]' ";
 $result = mysqli_query($conn, $query_user_id);
-$row = mysqli_fetch_array($result);
-$user_id = $row[1];
+$row = mysqli_fetch_row($result);
+$user_id = $row[0];
+
 
 $query_save = "INSERT INTO spheres ( name, color, volume, url, user_id)
         VALUES (?, ?, ?, ?, ?)";
@@ -45,4 +44,5 @@ mysqli_stmt_bind_param($stmt, "ssisi",
                        $user_id);
 
 mysqli_stmt_execute($stmt);
+
 ?>
