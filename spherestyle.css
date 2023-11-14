@@ -1,5 +1,10 @@
+body {
+  text-align: center;
+  background: url("indexbg.jpg");
+  background-size: cover;
+}
+
 .container {
-  margin: auto;
   display: block;
   text-align: center;
 }
@@ -9,39 +14,46 @@
 }
 
 h1 {
-  font-size: 64px;
-  text-align: center;
+  font-size: 10rem;
   font-family: 'Poppins SemiBold';
+  position: absolute;
+  top: 17.5vw;
+  left: 83.5%;
+  transform: translate(-50%, -50%);
+  background: rgba(255,255,255,.5);
+  padding: 0 30px;
+  border-radius: 20px;
+}
+
+h2 {
+  font-family: 'Poppins SemiBold';
+  display: inline;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
 }
 
 a {
   font-family: 'Poppins SemiBold';
-}
-
-button {
-  font-family: 'Poppins SemiBold';
-  box-shadow: #dedede 0px 3px 20px 0px;
-  background: white;
-  text-decoration: none;
-  border: none;
-  color: black;
-  padding: 17px;
-  font-size: 24px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 8px;
-  cursor: pointer;
   margin: 20px;
-  margin-bottom: 3rem;
-}
-
-img {
-  margin-top: 40px;
+  font-size: 1.3rem;
 }
 
 nav {
   text-align: center;
   margin-top: 2rem;
+}
+
+img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+.behind {
+  z-index: -5;
 }
 
 nav a {
@@ -164,5 +176,99 @@ nav a:hover {
   button {
     margin: 2vw;
     font-size: 4vw;
+  }
+}
+
+.back-button {
+  width: 80px;
+  left: 0;
+  top: 0;
+  margin-top: 3rem;
+  margin-left: 3rem;
+  position: absolute;
+}
+
+.back-button:hover {
+  cursor: pointer;
+}
+
+.button-block {
+  margin-top: 7rem;
+  z-index: 1;
+}
+
+.button-block-button {
+  width: 6rem;
+  height: 6rem;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: rgba(1, 1, 1, 0.1) 0px 10px 32px 0px;
+  border-radius: 25px;
+  display: block;
+  margin: 1rem;
+  font-size: 3rem;
+  z-index: 1;
+  text-decoration: none;
+  border: none;
+  font-family: "Poppins SemiBold";
+}
+
+.button-block-button:hover {
+  cursor: pointer;
+}
+
+.tier {
+  margin-top: 3.8rem;
+  font-size: 0.8rem;
+}
+
+.circle{
+  z-index: -1;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:500px;
+  height:500px;
+  background: rgba(255, 255, 255, 0.3);
+  border:5px solid #000000;
+  box-shadow: rgba(1, 1, 1, 0.4) 0px 10px 32px 0px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: width 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.wave{
+  position:relative;
+  width:100%;
+  height:100%;
+  background: #0621f8;
+  border-radius:50%;
+  box-shadow:inset 0 0 50px rgba(0,0,0,.5);
+}
+.wave:before,.wave:after{
+  content:'';
+  position:absolute;
+  width:200%;
+  height:200%;
+  top:0;
+  left:50%;
+  transform:translate(-50%,-75%);
+  background:#000;
+}
+.wave:before{
+  border-radius:45%;
+  background: white;
+  animation:animate 5s linear infinite;
+}
+.wave:after{
+  border-radius: 35%;
+  background: rgba(255,255,255,.5);
+  animation: animate 10s linear infinite;
+}
+@keyframes animate{
+  0%{
+     transform:translate(-50%,-75%) rotate(0deg);
+  }
+  100%{
+     transform:translate(-50%,-75%) rotate(360deg);
   }
 }
