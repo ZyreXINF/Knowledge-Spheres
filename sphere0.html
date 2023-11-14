@@ -9,31 +9,48 @@
   <link href="https://db.onlinewebfonts.com/c/028b4cfdfab5d1049178e9b1eb42f49e?family=Poppins+SemiBold" rel="stylesheet">
 </head>
 
-<body>    
+<body>
+  <a href="myspheres.html">
+    <img class="back-button" src="double-arrow-left.png">
+  </a>
   <div class="container">
-    <nav id="nav-bar">
-      <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link" href="profile.html">Profile</a>
-      <a class="nav-link" href="myspheres.html">My Spheres</a>
-      <a class="nav-link" href="about.html">About Us</a>
-      <a class="nav-link" href="contact.html">Contact</a>
-    </nav>
+    <a>NAME: <span>name</span></a>
+    <a>COLOR: <span>color</span></a>
   </div>
-  <h1>SPHERE NAME</h1>
   <div class="container">
-    <h1 id="incrementable"><span class="blue">0</span>L</h1>
-    <button onclick="add_bottle(0.1)">
-      <a>+0.05L 💧</a>
-    </button>
-    <button onclick="add_bottle(1)">
-      <a>+0.5L 🫙</a>
-    </button>
-    <button onclick="add_bottle(2)">
-      <a>+1L 🫙🫙</a>
-    </button>
-  </div>
+    <h1 id="incrementable">32L</h1>
+    <div class="circle" id="sphere">
+      <div class="wave"></div>
+    </div>
 
+    <div class="button-block">
+      <button class="button-block-button" onclick="animateObject()">A</button>
+      <button class="button-block-button" onclick="animateObject()">B</button>
+      <button class="button-block-button" onclick="animateObject()">C</button>
+      <button class="button-block-button" onclick="animateObject()">D</button>
+    </div>
+  </div>
+  <div class="tier">
+    <h2>Tier: tier</h2>
+    <h2>Until next tier: N</h2>
+  </div>
+  </div>
   <script src="script.js"></script>
 </body>
 
+<script>
+  function animateObject() {
+    var element = document.getElementById('sphere');
+    var initialWidth = 500; // Get the initial width
+    var targetWidth = initialWidth * 1.1;
+
+    // Gradually widen the object
+    element.style.width = targetWidth + 'px';
+
+    // After a delay, reset the width with a bounce effect
+    setTimeout(function() {
+      element.style.width = initialWidth + 'px';
+    }, 1000); // 1000 milliseconds (1 second) delay
+  }
+</script>
 </html>
