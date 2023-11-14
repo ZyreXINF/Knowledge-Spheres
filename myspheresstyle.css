@@ -236,3 +236,9 @@ footer p {
 .logo:hover {
   cursor: pointer;
 }
+
+input[type='color'] {
+  margin-left: 1rem;
+  width: 28px;
+  height: 28px;
+}
