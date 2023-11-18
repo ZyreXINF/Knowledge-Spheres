@@ -4,11 +4,11 @@ session_start();
 $cookie_name = "user";
 
 if(!isset($_COOKIE[$cookie_name])) {
-  echo "Cookie named '" . $cookie_name . "' is not set!";
+  // echo "Cookie named '" . $cookie_name . "' is not set!";
   header('location:register.html');
 } else {
-  echo "Cookie '" . $cookie_name . "' is set!<br>";
-  echo "Value is: " . $_COOKIE[$cookie_name];
+  // echo "Cookie '" . $cookie_name . "' is set!<br>";
+  // echo "Value is: " . $_COOKIE[$cookie_name];
 
   $host = "localhost";
   $dbname = "kb_info_db";
@@ -28,12 +28,12 @@ if(!isset($_COOKIE[$cookie_name])) {
   
   $result=mysqli_query($conn, $query_name); 
   $row = mysqli_fetch_array($result);
-  $test = $row[1];
-  $test2 = $row[2];
-  $_SESSION['test'] = $test;
-  $_SESSION['test2'] = $test2;
+  $user_name = $row[1];
+  $user_email = $row[2];
+  $_SESSION['user_name'] = $user_name;
+  $_SESSION['user_email'] = $user_email;
   
   
-  header("location:profile2.php?test=" . urlencode($test));
+  header("location:profile2.php?user_name=" . urlencode($user_name). " " . "user_email=" . urlencode($user_email));
 }
 ?>      
