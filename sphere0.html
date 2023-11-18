@@ -7,8 +7,9 @@
   <title>My Sphere</title>
   <link href="spherestyle.css" rel="stylesheet" type="text/css" />
   <link href="https://db.onlinewebfonts.com/c/028b4cfdfab5d1049178e9b1eb42f49e?family=Poppins+SemiBold" rel="stylesheet">
+  <script src="sphere.js"></script>
 </head>
-
+  
 <body>
   <a href="myspheres.html">
     <img class="back-button" src="double-arrow-left.png">
@@ -18,16 +19,16 @@
     <a>COLOR: <span>color</span></a>
   </div>
   <div class="container">
-    <h1 id="incrementable">32L</h1>
+    <h1 id="incrementable">0L</h1>
     <div class="circle" id="sphere">
       <div class="wave"></div>
     </div>
 
     <div class="button-block">
-      <button class="button-block-button" onclick="animateObject()">A</button>
-      <button class="button-block-button" onclick="animateObject()">B</button>
-      <button class="button-block-button" onclick="animateObject()">C</button>
-      <button class="button-block-button" onclick="animateObject()">D</button>
+      <button class="button-block-button" onclick="animateObject(); droplet()">A</button>
+      <button class="button-block-button" onclick="animateObject(); pour()">B</button>
+      <button class="button-block-button" onclick="animateObject(); pour_wide()">C</button>
+      <button class="button-block-button" onclick="animateObject(); rain()">D</button>
     </div>
   </div>
   <div class="tier">
@@ -35,22 +36,5 @@
     <h2>Until next tier: N</h2>
   </div>
   </div>
-  <script src="script.js"></script>
 </body>
-
-<script>
-  function animateObject() {
-    var element = document.getElementById('sphere');
-    var initialWidth = 500; // Get the initial width
-    var targetWidth = initialWidth * 1.1;
-
-    // Gradually widen the object
-    element.style.width = targetWidth + 'px';
-
-    // After a delay, reset the width with a bounce effect
-    setTimeout(function() {
-      element.style.width = initialWidth + 'px';
-    }, 1000); // 1000 milliseconds (1 second) delay
-  }
-</script>
 </html>
