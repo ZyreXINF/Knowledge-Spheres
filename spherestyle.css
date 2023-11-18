@@ -197,11 +197,11 @@ nav a:hover {
   z-index: 1;
 }
 
-.button-block-button {
+.button-block-button-0 {
   width: 6rem;
   height: 6rem;
   background: rgba(255, 255, 255, 0.4);
-  box-shadow: rgba(1, 1, 1, 0.1) 0px 10px 32px 0px;
+  box-shadow: rgba(1, 1, 1, 0.4) 0px 10px 32px 0px;
   border-radius: 25px;
   display: block;
   margin: 1rem;
@@ -210,9 +210,74 @@ nav a:hover {
   text-decoration: none;
   border: none;
   font-family: "Poppins SemiBold";
+  background: url("droplet.png");
+  background-size: cover;
 }
 
-.button-block-button:hover {
+.button-block-button-1 {
+  width: 6rem;
+  height: 6rem;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: rgba(1, 1, 1, 0.4) 0px 10px 32px 0px;
+  border-radius: 25px;
+  display: block;
+  margin: 1rem;
+  font-size: 3rem;
+  z-index: 1;
+  text-decoration: none;
+  border: none;
+  font-family: "Poppins SemiBold";
+  background: url("pour.png");
+  background-size: cover;
+}
+
+.button-block-button-2 {
+  width: 6rem;
+  height: 6rem;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: rgba(1, 1, 1, 0.4) 0px 10px 32px 0px;
+  border-radius: 25px;
+  display: block;
+  margin: 1rem;
+  font-size: 3rem;
+  z-index: 1;
+  text-decoration: none;
+  border: none;
+  font-family: "Poppins SemiBold";
+  background: url("pour_wide.png");
+  background-size: cover;
+}
+
+.button-block-button-3 {
+  width: 6rem;
+  height: 6rem;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: rgba(1, 1, 1, 0.4) 0px 10px 32px 0px;
+  border-radius: 25px;
+  display: block;
+  margin: 1rem;
+  font-size: 3rem;
+  z-index: 1;
+  text-decoration: none;
+  border: none;
+  font-family: "Poppins SemiBold";
+  background: url("rain.png");
+  background-size: cover;
+}
+
+.button-block-button-0:hover {
+  cursor: pointer;
+}
+
+.button-block-button-1:hover {
+  cursor: pointer;
+}
+
+.button-block-button-2:hover {
+  cursor: pointer;
+}
+
+.button-block-button-3:hover {
   cursor: pointer;
 }
 
