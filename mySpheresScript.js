@@ -27,7 +27,7 @@ function phpInvoke() {
 
 function addElement() {
   var page_limit = 10
-  var index = 0
+  // var index = 0
   let page_amount = 0
 
   const input_text = document.querySelector("#txt");
@@ -43,13 +43,12 @@ function addElement() {
 
       // GENERATE A LINK BASED ON THE INDEX
 
-      var link = 
-      'sphere' + index.toString() + '.html';
+      // var link = 
+      // 'sphere' + index.toString() + '.html';
 
-      index++;
+      // index++;
 
-      new_li.innerHTML = '<a href="' + link + '" target="_blank">' + input_text.value + '</a><input type="color" value="#ff0000">';
-
+      new_li.innerHTML = '<a href="sphere_change.php?spherename=' + encodeURIComponent(input_text.value) + '" target="_blank">' + input_text.value + '</a><input type="color" value="#ff0000">';
       list.appendChild(new_li);
 
       const new_span = document.createElement("span");

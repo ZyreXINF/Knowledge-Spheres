@@ -14,22 +14,29 @@ var tiers = {
   60: 'Amazing',
   100: 'Incredible',
   150: 'Sublime',
-  200: 'Otherworldly'
+  200: 'Otherworldly',
+  500: 'Unfathomable',
+  1000: 'Abyssal'
 };
-
-var tier = 'Common';
 
 let extra_amount = 0;
 
 // -----------------------------------------------------------------------------
 
-function tier_updater(volume) {
+function update_tier() {
+  let volume_element = document.getElementById("incrementable").innerText;
+  let volume = parseInt(volume_element.slice(0, -1));
+
+  let tier_element = document.getElementById("tier");
+
   for (var threshold in tiers) {
     if (volume < parseInt(threshold)) {
-      tier = tiers[threshold];
       break;
     }
+    previous_tier = tiers[threshold];
+    tier_element.innerHTML = "Tier: " + previous_tier;
   }
+  return;
 }
 
 function droplet() {
@@ -90,8 +97,9 @@ function rain() {
 // -----------------------------------------------------------------------------
 
 function update_volume(amount) {
-  let element = document.getElementById("incrementable");
+  document.getElementById("incrementable");
 
+  let element = document.getElementById("incrementable");
   let value = Number(element.innerHTML.replace(/[^0-9\.]+/g, ""));
 
   value += amount;
@@ -107,10 +115,8 @@ function update_volume(amount) {
       amount = Math.trunc(extra_amount);
       extra_amount -= amount;
     }
-    else {
-      return;
-    }
   }
+  return update_tier();
 }
 
 function animateObject() {

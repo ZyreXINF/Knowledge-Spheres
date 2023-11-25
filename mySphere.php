@@ -39,7 +39,7 @@ $sphere_tier = $_SESSION['sphere_tier'];
     </div>
   </div>
   <div class="tier">
-    <h2>Tier: <?php echo $sphere_tier?></h2>
+    <h2 id="tier">Tier: <?php echo $sphere_tier?></h2>
     <h2>Until next tier: N</h2>
   </div>
   </div>
