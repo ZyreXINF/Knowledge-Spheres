@@ -7,9 +7,30 @@ var facts = {
   302: 'A standard bathtub will hold around 302 liters of water.'
 };
 
+var tiers = {
+  10: 'Mediocre',
+  20: 'Decent',
+  40: 'Great',
+  60: 'Amazing',
+  100: 'Incredible',
+  150: 'Sublime',
+  200: 'Otherworldly'
+};
+
+var tier = 'Common';
+
 let extra_amount = 0;
 
 // -----------------------------------------------------------------------------
+
+function tier_updater(volume) {
+  for (var threshold in tiers) {
+    if (volume < parseInt(threshold)) {
+      tier = tiers[threshold];
+      break;
+    }
+  }
+}
 
 function droplet() {
   var droplet = document.createElement('div');
