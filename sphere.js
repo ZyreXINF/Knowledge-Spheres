@@ -19,23 +19,89 @@ var tiers = {
   1000: 'Abyssal'
 };
 
+var till_next_tier = Object.keys(tiers)[0];
+
 let extra_amount = 0;
 
 // -----------------------------------------------------------------------------
 
+var script = document.createElement('script');
+script.src = 'https://code.jquery.com/jquery-3.6.3.min.js';
+document.getElementsByTagName('head')[0].appendChild(script);
+
+$(document).ready(function () {
+  $("#sbmtBtn1").on("click", function () {
+    phpInvoke(0.1);
+    return false;
+  });
+  $("#sbmtBtn2").on("click", function () {
+    phpInvoke(1);
+    return false;
+  });
+  $("#sbmtBtn3").on("click", function () {
+    phpInvoke(3);
+    return false;
+  });
+  $("#sbmtBtn4").on("click", function () {
+    phpInvoke(5);
+    return false;
+  });
+});
+
+function phpInvoke(volumeToAdd) {
+  const volume = $("#incrementable").val();
+  $.ajax({
+    type: "POST",
+    url: "update-form.php",
+    data: { volumeToAdd: volumeToAdd },
+    success: function () {
+      if(volumeToAdd = 0.1){
+        droplet()
+      }else if(volumeToAdd = 1){
+        pour();
+      }else if(volumeToAdd = 3){
+        pour_wide();
+      }else if(volumeToAdd = 5){
+        rain();
+      }
+      console.log("successful action");
+    },
+    error: function (error) {
+      console.error("Error occured:", error);
+    }
+  });
+}
+
 function update_tier() {
   let volume_element = document.getElementById("incrementable").innerText;
-  let volume = parseInt(volume_element.slice(0, -1));
+  let volume = parseFloat(volume_element.slice(0, -1));
 
   let tier_element = document.getElementById("tier");
+  let till_next_tier_element = document.getElementById("till_next_tier");
+
+  let next_tier_key = null;
+  let next_tier_exists = false;
 
   for (var threshold in tiers) {
-    if (volume < parseInt(threshold)) {
+    if (volume < parseFloat(threshold)) {
+      next_tier_key = parseFloat(threshold);
+      next_tier_exists = true;
       break;
     }
+    till_next_tier = parseFloat(threshold);
     previous_tier = tiers[threshold];
     tier_element.innerHTML = "Tier: " + previous_tier;
   }
+
+  if (next_tier_exists) {
+    let difference = next_tier_key - volume;
+    till_next_tier = difference > 0 ? (difference % 1 === 0 ? difference.toFixed(0) : difference.toFixed(1)) : Infinity.toFixed(1);
+  } else {
+    till_next_tier = Infinity.toFixed(1);
+  }
+
+  till_next_tier_element.innerHTML = "Until next tier: " + till_next_tier + "L";
+
   return;
 }
 

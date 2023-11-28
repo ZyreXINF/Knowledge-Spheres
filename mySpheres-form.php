@@ -37,7 +37,7 @@ if ( ! mysqli_stmt_prepare($stmt, $query_save)) {
     die(mysqli_error($conn));
 }
 
-mysqli_stmt_bind_param($stmt, "ssissi",
+mysqli_stmt_bind_param($stmt, "ssdssi",
                        $name,
                        $color,
                        $volume,

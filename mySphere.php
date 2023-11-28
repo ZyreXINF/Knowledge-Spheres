@@ -14,7 +14,8 @@ $sphere_tier = $_SESSION['sphere_tier'];
   <title>My Sphere</title>
   <link href="spherestyle.css" rel="stylesheet" type="text/css" />
   <link href="https://db.onlinewebfonts.com/c/028b4cfdfab5d1049178e9b1eb42f49e?family=Poppins+SemiBold" rel="stylesheet">
-  <script src="sphere.js"></script>
+  <script type="module" src="sphere.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -32,15 +33,15 @@ $sphere_tier = $_SESSION['sphere_tier'];
     </div>
 
     <div class="button-block">
-      <button class="button-block-button-0" onclick="animateObject(); droplet()"></button>
-      <button class="button-block-button-1" onclick="animateObject(); pour()"></button>
-      <button class="button-block-button-2" onclick="animateObject(); pour_wide()"></button>
-      <button class="button-block-button-3" onclick="animateObject(); rain()"></button>
+      <button class="button-block-button-0" onclick="animateObject();" id="sbmtBtn1"></button>
+      <button class="button-block-button-1" onclick="animateObject();" id="sbmtBtn2"></button>
+      <button class="button-block-button-2" onclick="animateObject();" id="sbmtBtn3"></button>
+      <button class="button-block-button-3" onclick="animateObject();" id="sbmtBtn4"></button>
     </div>
   </div>
   <div class="tier">
     <h2 id="tier">Tier: <?php echo $sphere_tier?></h2>
-    <h2>Until next tier: N</h2>
+    <h2>Until next tier: 10L</h2>
   </div>
   </div>
 </body>
