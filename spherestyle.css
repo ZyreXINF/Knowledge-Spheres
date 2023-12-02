@@ -15,7 +15,7 @@ body {
 
 h1 {
   font-size: 7rem;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   position: absolute;
   top: 17.5vw;
   left: 83.5%;
@@ -26,7 +26,7 @@ h1 {
 }
 
 h2 {
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   display: inline;
   margin-left: 10px;
   margin-right: 10px;
@@ -34,7 +34,7 @@ h2 {
 }
 
 a {
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   margin: 20px;
   font-size: 1.3rem;
 }
@@ -57,7 +57,7 @@ img {
 }
 
 nav a {
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   font-weight: 100;
   text-decoration: none;
   margin: 0 30px;
@@ -73,7 +73,7 @@ nav a:hover {
 }
 
 .button {
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   background-color: #0621f8;
   text-decoration: none;
   border: none;

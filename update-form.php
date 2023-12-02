@@ -2,6 +2,8 @@
 session_start();
 $cookie_name = "user";
 
+$volumeToAdd = $_POST['volumeToAdd'];
+
 $host = "localhost";
 $dbname = "kb_info_db";
 $username = "root";
@@ -21,7 +23,7 @@ $result = mysqli_query($conn, $query_user_id);
 $row = mysqli_fetch_row($result);
 $user_id = $row[0];
 
-$sql = "UPDATE spheres SET volume=volume+'0.1' WHERE user_id='$user_id'";
+$sql = "UPDATE spheres SET volume=volume+'$volumeToAdd' WHERE user_id='$user_id'";
 
 $stmt = mysqli_stmt_init($conn);
 

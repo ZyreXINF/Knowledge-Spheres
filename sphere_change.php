@@ -26,7 +26,6 @@ if (mysqli_connect_errno()) {
     die("Connection error: " . mysqli_connect_error());
 }
 
-
 $sql = "SELECT * FROM spheres WHERE name='$sphere_name' ";
 
 $result=mysqli_query($conn, $sql); 
@@ -42,4 +41,4 @@ $_SESSION["sphere_color"] = $sphere_color;
 $_SESSION["sphere_volume"] = $sphere_volume;
 $_SESSION["sphere_tier"] = $sphere_tier;
 
-header("location:mySphere.php?sphere_name=" . urlencode($sphere_name));
+header("location:mySphere2.php?sphere_name=" . urlencode($sphere_name));

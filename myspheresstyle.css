@@ -7,6 +7,7 @@ body {
   height: auto;
   background-image: url("myspheresbg.jpg");
   background-size: cover;
+  font-family: 'Poppins', sans-serif;
 }
 
 nav {
@@ -15,7 +16,7 @@ nav {
 }
 
 nav a {
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   font-weight: 100;
   text-decoration: none;
   margin: 0 30px;
@@ -59,14 +60,14 @@ form button {
 h1 {
   font-size: 64px;
   text-align: center;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   margin-top: 60px;
 }
 
 h3 {
   font-size: 28px;
   text-align: center;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   margin-top: -36px;
   color: #454545;
 }
@@ -87,7 +88,7 @@ ul li {
   box-shadow: rgba(1, 1, 1, 0.1) 0px 10px 32px 0px;
   background: rgba(255, 255, 255, 0.6);
   font-size: 20px;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   height: 80px;
   line-height: 80px;
   padding: 0 5px;
@@ -113,7 +114,7 @@ ul li span {
 ul li a {
   color: black;
   font-size: 20px;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   text-decoration: none;
 }
 
@@ -155,7 +156,7 @@ ul li a {
 }
 
 .button {
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   background-color: #0621f8;
   text-decoration: none;
   border: none;
@@ -170,7 +171,7 @@ ul li a {
 
 footer {
   text-align: center;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
 }
 
 footer a {
@@ -180,7 +181,7 @@ footer a {
 
 footer p {
   font-size: 1rem;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   text-align: center;
   color: black;
 }

@@ -13,13 +13,18 @@ $sphere_tier = $_SESSION['sphere_tier'];
   <meta name="viewport" content="width=device-width">
   <title>My Sphere</title>
   <link href="spherestyle.css" rel="stylesheet" type="text/css" />
-  <link href="https://db.onlinewebfonts.com/c/028b4cfdfab5d1049178e9b1eb42f49e?family=Poppins+SemiBold" rel="stylesheet">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
   <script type="module" src="sphere.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
-  <a href="myspheres.html">
+  <a href="myspheres1.html">
     <img class="back-button" src="double-arrow-left.png">
   </a>
   <div class="container">
@@ -33,15 +38,15 @@ $sphere_tier = $_SESSION['sphere_tier'];
     </div>
 
     <div class="button-block">
-      <button class="button-block-button-0" onclick="animateObject();" id="sbmtBtn1"></button>
-      <button class="button-block-button-1" onclick="animateObject();" id="sbmtBtn2"></button>
-      <button class="button-block-button-2" onclick="animateObject();" id="sbmtBtn3"></button>
-      <button class="button-block-button-3" onclick="animateObject();" id="sbmtBtn4"></button>
+      <button class="button-block-button-0" id="sbmtBtn1"></button>
+      <button class="button-block-button-1" id="sbmtBtn2"></button>
+      <button class="button-block-button-2" id="sbmtBtn3"></button>
+      <button class="button-block-button-3" id="sbmtBtn4"></button>
     </div>
   </div>
   <div class="tier">
     <h2 id="tier">Tier: <?php echo $sphere_tier?></h2>
-    <h2>Until next tier: 10L</h2>
+    <h2 id="till_next_tier">Until next tier: 10L</h2>
   </div>
   </div>
 </body>

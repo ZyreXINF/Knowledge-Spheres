@@ -17,9 +17,9 @@ if (mysqli_connect_errno()) {
 }
 
 $name = $_POST["name"];
-$color = "#ff0000"; 
+$color = "#0621f8"; 
 $volume = 0;
-$tier = "common";
+$tier = "Common";
 $url = $name . '/' . md5($name);
 
 $query_user_id = " SELECT id FROM registration WHERE email = '$_COOKIE[$cookie_name]' ";

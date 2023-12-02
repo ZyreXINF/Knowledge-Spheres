@@ -8,6 +8,7 @@ var facts = {
 };
 
 var tiers = {
+  0: 'Common',
   10: 'Mediocre',
   20: 'Decent',
   40: 'Great',
@@ -55,16 +56,19 @@ function phpInvoke(volumeToAdd) {
     url: "update-form.php",
     data: { volumeToAdd: volumeToAdd },
     success: function () {
-      if(volumeToAdd = 0.1){
-        droplet()
-      }else if(volumeToAdd = 1){
+      if(volumeToAdd == 0.1){
+        droplet();
+      }else if(volumeToAdd == 1){
         pour();
-      }else if(volumeToAdd = 3){
+      }else if(volumeToAdd == 3){
         pour_wide();
-      }else if(volumeToAdd = 5){
-        rain();
+      }else if(volumeToAdd == 5){
+        rain(); 
       }
+      animateObject();
       console.log("successful action");
+      console.log(volumeToAdd);
+      
     },
     error: function (error) {
       console.error("Error occured:", error);
@@ -81,6 +85,7 @@ function update_tier() {
 
   let next_tier_key = null;
   let next_tier_exists = false;
+  let previous_tier = "";  // Initialize previous_tier with an empty string
 
   for (var threshold in tiers) {
     if (volume < parseFloat(threshold)) {
@@ -89,8 +94,7 @@ function update_tier() {
       break;
     }
     till_next_tier = parseFloat(threshold);
-    previous_tier = tiers[threshold];
-    tier_element.innerHTML = "Tier: " + previous_tier;
+    previous_tier = tiers[threshold];  // Update the value of previous_tier inside the loop
   }
 
   if (next_tier_exists) {
@@ -100,6 +104,7 @@ function update_tier() {
     till_next_tier = Infinity.toFixed(1);
   }
 
+  tier_element.innerHTML = "Tier: " + previous_tier;  // Use previous_tier outside the loop
   till_next_tier_element.innerHTML = "Until next tier: " + till_next_tier + "L";
 
   return;

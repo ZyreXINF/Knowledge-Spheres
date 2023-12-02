@@ -9,7 +9,7 @@ body {
 h1 {
   font-size: 4rem;
   text-align: center;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   margin-top: 11.5rem;
 }
 
@@ -42,14 +42,14 @@ h3 {
   border-radius: 25px;
   font-size: 1.75rem;
   text-align: center;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   margin-top: -2.25rem;
   color: #454545;
 }
 
 h4 {
   font-size: 1.65rem;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   text-align: center;
 }
 
@@ -65,7 +65,7 @@ nav {
 }
 
 nav a {
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   font-weight: 100;
   text-decoration: none;
   margin: 0 30px;
@@ -81,7 +81,7 @@ nav a:hover {
 }
 
 .button {
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   background-color: #0621f8;
   text-decoration: none;
   border: none;
@@ -111,7 +111,7 @@ nav a:hover {
 
 footer {
   text-align: center;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
 }
 
 footer a {
@@ -121,7 +121,7 @@ footer a {
 
 footer p {
   font-size: 1rem;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   text-align: center;
   color: black;
 }

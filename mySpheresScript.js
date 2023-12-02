@@ -10,8 +10,7 @@ $(document).ready(function () {
 });
 
 function phpInvoke() {
-  const name = $("#txt").val();
-  $.ajax({
+  const name = $("#txt").val();  $.ajax({
     type: "POST",
     url: "mySpheres-form.php",
     data: { name: name },
