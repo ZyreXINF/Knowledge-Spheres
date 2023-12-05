@@ -1,8 +1,10 @@
 <?php session_start();
+
 $sphere_name = $_SESSION['sphere_name'];
 $sphere_color = $_SESSION['sphere_color'];
 $sphere_volume = $_SESSION['sphere_volume'];
 $sphere_tier = $_SESSION['sphere_tier'];
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +21,7 @@ $sphere_tier = $_SESSION['sphere_tier'];
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 
-  <script type="module" src="sphere.js"></script>
+  <script type="module" src="sphere2.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
@@ -28,10 +30,10 @@ $sphere_tier = $_SESSION['sphere_tier'];
     <img class="back-button" src="double-arrow-left.png">
   </a>
   <div class="container">
-    <a>NAME: <span><?php echo $sphere_name?></span></a>
+    <a>NAME: <span id="name"><?php echo $sphere_name?></span></a>
     <a>COLOR: <span><?php echo $sphere_color?><span></a>
   </div>
-  <div class="container">
+  <div class="container">                                                                                                                       
     <h1 id="incrementable"><?php echo $sphere_volume?>L</h1>
     <div class="circle" id="sphere">
       <div class="wave"></div>

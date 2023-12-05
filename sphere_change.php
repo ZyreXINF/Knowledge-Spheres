@@ -1,16 +1,17 @@
 <?php
 session_start();
 
-if(isset($_GET['spherename'])){
+if (isset($_GET['spherename'])) {
     $sphere_name = $_GET['spherename'];
-}else{
-    echo 'Error: IT AINT FUCKING WORKING';
+} else {
+    echo 'Error: IT AINT WORKING';
 }
+
+echo "Sphere Name: $sphere_name<br>";  // Debugging statement
 
 $sphere_color = $_GET["color"];
 $sphere_volume = $_GET["volume"];
 $sphere_tier = $_GET["tier"];
-
 
 $host = "localhost";
 $dbname = "kb_info_db";
@@ -28,7 +29,7 @@ if (mysqli_connect_errno()) {
 
 $sql = "SELECT * FROM spheres WHERE name='$sphere_name' ";
 
-$result=mysqli_query($conn, $sql); 
+$result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
 
 $sphere_name = $row[1];

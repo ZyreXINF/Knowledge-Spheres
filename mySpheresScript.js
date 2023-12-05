@@ -49,7 +49,7 @@ function addElement() {
 
       new_li.innerHTML = '<a href="sphere_change.php?spherename=' + encodeURIComponent(input_text.value) + '" target="_blank">' + input_text.value + '</a><input type="color" value="#0621f8">';
       list.appendChild(new_li);
-
+                                                                                                                                                                                                                                                                                                                                                
       const new_span = document.createElement("span");
       new_span.innerHTML = "X";
       new_span.addEventListener("click", ()=> {
