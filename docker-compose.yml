@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: "db"
+      DB_PORT: 3306
+      DB_DATABASE: "kb_info_db"
+      DB_USERNAME: "root"
+      DB_PASSWORD: ""
+
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "kb_info_db"
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
