@@ -25,10 +25,14 @@ var till_next_tier = Object.keys(tiers)[0];
 let extra_amount = 0;
 
 // -----------------------------------------------------------------------------
-
 var script = document.createElement('script');
 script.src = 'https://code.jquery.com/jquery-3.6.3.min.js';
 document.getElementsByTagName('head')[0].appendChild(script);
+
+$(window).on('load', function() {
+  console.log('Page has completely loaded');
+  update_tier();
+});
 
 $(document).ready(function () {
   $("#sbmtBtn1").on("click", function () {
@@ -54,7 +58,7 @@ function phpInvoke(volumeToAdd) {
   console.log("innerHTML of the element: ", nameContent);
   $.ajax({
     type: "POST",
-    url: "update-form.php",
+    url: "update-volume-form.php",
     data: { volumeToAdd: volumeToAdd, sphereName : nameContent},
     success: function () {
       if(volumeToAdd == 0.1){
@@ -67,8 +71,7 @@ function phpInvoke(volumeToAdd) {
         rain(); 
       }
       animateObject();
-      console.log("successful action");
-      console.log(volumeToAdd);
+      console.log("successful action: volume update");
     },
     error: function (error) {
       console.error("Error occured:", error);
@@ -106,6 +109,22 @@ function update_tier() {
 
   tier_element.innerHTML = "Tier: " + previous_tier;  // Use previous_tier outside the loop
   till_next_tier_element.innerHTML = "Until next tier: " + till_next_tier + "L";
+
+  var updatedTier = tier_element.innerHTML;
+  updatedTier = updatedTier.replace('Tier: ', '');
+
+  var nameContent = document.getElementById("name").innerHTML;
+  $.ajax({
+    type: "POST",
+    url: "update-tier-form.php",
+    data: { updatedTier : updatedTier, sphereName : nameContent},
+    success: function () {
+      console.log("successful action: tier update");
+    },
+    error: function (error) {
+      console.error("Error occured:", error);
+    }
+  });
 
   return;
 }

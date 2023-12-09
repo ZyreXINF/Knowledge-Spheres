@@ -1,9 +1,30 @@
-<?php session_start();
+<?php
 
-$sphere_name = $_SESSION['sphere_name'];
-$sphere_color = $_SESSION['sphere_color'];
-$sphere_volume = $_SESSION['sphere_volume'];
-$sphere_tier = $_SESSION['sphere_tier'];
+$host = "localhost";
+$dbname = "kb_info_db";
+$username = "root";
+$password = "";
+
+$conn = mysqli_connect(hostname: $host,
+                       username: $username,
+                       password: $password,
+                       database: $dbname);
+
+if (mysqli_connect_errno()) {
+    die("Connection error: " . mysqli_connect_error());
+}
+
+$sphere_name = $_GET['sphere_name'];
+
+$sql = "SELECT * FROM spheres WHERE name='$sphere_name' ";
+
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($result);
+
+$sphere_name = $row[1];
+$sphere_color = $row[2];
+$sphere_volume = $row[3];
+$sphere_tier = $row[4];
 
 ?>
 
@@ -21,7 +42,7 @@ $sphere_tier = $_SESSION['sphere_tier'];
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 
-  <script type="module" src="sphere2.js"></script>
+  <script type="module" src="sphere3.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
@@ -49,7 +70,6 @@ $sphere_tier = $_SESSION['sphere_tier'];
   <div class="tier">
     <h2 id="tier">Tier: <?php echo $sphere_tier?></h2>
     <h2 id="till_next_tier">Until next tier: 10L</h2>
-  </div>
   </div>
 </body>
 </html>
