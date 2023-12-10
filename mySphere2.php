@@ -35,7 +35,7 @@ $sphere_tier = $row[4];
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>My Sphere</title>
-  <link href="spherestyle.css" rel="stylesheet" type="text/css" />
+  <link href="spherestyle1.css" rel="stylesheet" type="text/css" />
 
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
