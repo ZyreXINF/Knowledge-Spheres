@@ -9,18 +9,20 @@ $user_email = $_SESSION['user_email'];
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Profile</title>
-  <link href="profilestyle.css" rel="stylesheet" type="text/css" />
+  <link href="profilestyle1.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="module" src="profile.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
   <div class='container'>
     <nav id="nav-bar">
       <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link" href="profile.php">Profile</a>
+      <a class="nav-link" href="cookie-form.php">Profile</a>
       <a class="nav-link" href="myspheres1.html">My Spheres</a>
       <a class="nav-link" href="about1.html">About Us</a>
       <a class="nav-link" href="contact.html">Contact</a>
@@ -33,9 +35,10 @@ $user_email = $_SESSION['user_email'];
       <p>None</p>
       <a>Email</a>
       <p id="email" ><?php echo $user_email; ?></p>
-    </div>
+      <a id="logoutButton" class="red"><span>log out</span></a> 
+    </div>  
   </div>
-</body>
+</body>               
 
 <br><br><br><br>
 

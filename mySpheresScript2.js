@@ -62,7 +62,7 @@ function deleteFromDB(sphereName){
       console.log("successful action: delete");
     },
     error: function (error) {
-      console.error("Error saving data:", error);
+      console.error("Error deleting data:", error);
     }
   });
 } 
@@ -125,11 +125,17 @@ function addElement() {
         const new_span = document.createElement("span");
         new_span.innerHTML = "X";
         new_span.addEventListener("click", ()=> {
-          page_amount--;
-          new_span.parentElement.style.opacity = 0;
-          setTimeout(()=> {
-            new_span.parentElement.remove();
-          }, 500)
+          var confirmDelete = confirm("Are you sure you want to delete this sphere? 💔😔");
+          if(confirmDelete){
+            var htmlStringContent = new_span.parentElement.textContent;
+            var resultName = htmlStringContent.substr(0, htmlStringContent.length-1);
+            deleteFromDB(resultName);
+            page_amount--;  
+            new_span.parentElement.style.opacity = 0;
+            setTimeout(()=> {
+              new_span.parentElement.remove();
+            }, 500)
+          }
         })
         new_li.appendChild(new_span);
       }
