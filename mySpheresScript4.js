@@ -17,7 +17,22 @@ $(window).on('load', function() {
           page_amount++;
           const new_li = document.createElement("li");
           const list = document.querySelector(".list ul");
-          new_li.innerHTML = '<a class="sphereName" href="sphere_change.php?spherename=' + data[i].name + '">' + data[i].name + '</a><input type="color" value=' + data[i].color + '>'; //wtf
+          new_li.innerHTML = '<a class="sphereName" href="sphere_change.php?spherename=' + 
+          data[i].name + '">' + data[i].name + 
+          '</a><input type="color" value="' + data[i].color + '"id="colorPicker">';
+          
+          const new_button = document.createElement("button")
+          new_button.innerHTML = "save";
+          new_button.setAttribute("class", "save");
+          
+          new_button.addEventListener("click", ()=> {
+            var htmlStringContent = new_span.parentElement.textContent;
+            var resultName = htmlStringContent.substr(0, htmlStringContent.length-5);
+            var colorPicker = document.getElementById("colorPicker").value;
+            saveChanges(colorPicker, resultName);
+          });
+          new_li.appendChild(new_button);
+          
           list.appendChild(new_li);
           const new_span = document.createElement("span");
           new_span.innerHTML = "X"; 
@@ -26,7 +41,7 @@ $(window).on('load', function() {
             var confirmDelete = confirm("Are you sure you want to delete this sphere? 💔😔");
             if(confirmDelete){
               var htmlStringContent = new_span.parentElement.textContent;
-              var resultName = htmlStringContent.substr(0, htmlStringContent.length-1);
+              var resultName = htmlStringContent.substr(0, htmlStringContent.length-5);
               deleteFromDB(resultName);
               page_amount--;  
               new_span.parentElement.style.opacity = 0;
@@ -84,15 +99,15 @@ function phpInvoke() {
   });
 }
 
-function saveChanges(color) 
+function saveChanges(color, sphereName) 
 {
+  console.log(sphereName);
   $.ajax({
       type: "POST",
       url: "update-color-form.php",
-      data: {color : color},
+      data: {color : color, sphereName : sphereName},
       success: function (){
         console.log("success action: color change");
-        console.log(color);
       },
       error: function (error) {
         console.error("Error saving data:", error);
@@ -127,14 +142,20 @@ function addElement() {
         const new_li = document.createElement("li");
         input_text.value = input_text.value.replace(/(<([^>]+)>)/ig, "");
   
-        new_li.innerHTML = '<a class="sphereName" href="sphere_change.php?spherename=' + encodeURIComponent(input_text.value) + '">' + input_text.value + '</a><input type="color" value="#0621f8" id="colorChanger">';
+        new_li.innerHTML = '<a class="sphereName" href="sphere_change.php?spherename=' +
+        encodeURIComponent(input_text.value) + '">' + input_text.value +
+        '</a><input type="color" value="#0621f8" id="colorPicker">';
+      
         list.appendChild(new_li);
 
         const new_button = document.createElement("button")
         new_button.innerHTML = "save";
         new_button.setAttribute("class", "save");
         new_button.addEventListener("click", ()=> {
-          saveChanges(new_button.value);
+          var htmlStringContent = new_span.parentElement.textContent;
+          var resultName = htmlStringContent.substr(0, htmlStringContent.length-5);
+          var colorPicker = document.getElementById("colorPicker").value;
+          saveChanges(colorPicker, resultName);
         });
 
         new_li.appendChild(new_button);
@@ -145,7 +166,7 @@ function addElement() {
           var confirmDelete = confirm("Are you sure you want to delete this sphere? 💔😔");
           if(confirmDelete){
             var htmlStringContent = new_span.parentElement.textContent;
-            var resultName = htmlStringContent.substr(0, htmlStringContent.length-1);
+            var resultName = htmlStringContent.substr(0, htmlStringContent.length-5);
             deleteFromDB(resultName);
             page_amount--;  
             new_span.parentElement.style.opacity = 0;
