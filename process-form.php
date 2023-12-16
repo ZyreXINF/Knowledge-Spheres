@@ -46,4 +46,3 @@ if(!$_SESSION['email'] = $row['email']){
 }
 
 mysqli_stmt_execute($stmt);
-

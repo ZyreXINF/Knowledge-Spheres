@@ -8,21 +8,21 @@ body {
 h1 {
   font-size: 4rem;
   text-align: center;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   margin-top: 3rem;
 }
 
 h3 {
   font-size: 1.75rem;
   text-align: center;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   margin-top: -2.25rem;
   color: #454545;
 }
 
 label {
   font-size: 2rem;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
 }
 
 form input {
@@ -44,7 +44,7 @@ nav {
 }
 
 nav a {
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   font-weight: 100;
   text-decoration: none;
   margin: 0 30px;
@@ -60,7 +60,7 @@ nav a:hover {
 }
 
 .button {
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   background-color: #0621f8;
   text-decoration: none;
   border: none;
@@ -92,7 +92,7 @@ nav a:hover {
 
 footer {
   text-align: center;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   bottom: 0;
 }
 
@@ -103,7 +103,7 @@ footer a {
 
 footer p {
   font-size: 1rem;
-  font-family: 'Poppins SemiBold';
+  font-family: 'Poppins', sans-serif;
   text-align: center;
   color: black;
 }
