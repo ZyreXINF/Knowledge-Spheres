@@ -23,8 +23,8 @@ $user_email = $_SESSION['user_email'];
     <nav id="nav-bar">
       <a class="nav-link" href="index.html">Home</a>
       <a class="nav-link" href="cookie-form.php">Profile</a>
-      <a class="nav-link" href="myspheres1.html">My Spheres</a>
-      <a class="nav-link" href="about1.html">About Us</a>
+      <a class="nav-link" href="cookie-mySpheres.php">My Spheres</a>
+      <a class="nav-link" href="about2.html">About Us</a>
       <a class="nav-link" href="contact.html">Contact</a>
     </nav>
     <h1>Profile</h1>

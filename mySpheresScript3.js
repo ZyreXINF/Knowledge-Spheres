@@ -17,10 +17,11 @@ $(window).on('load', function() {
           page_amount++;
           const new_li = document.createElement("li");
           const list = document.querySelector(".list ul");
-          new_li.innerHTML = '<a class="sphereName" href="sphere_change.php?spherename=' + data[i].name + '">' + data[i].name + '</a><input type="color" value=' + data[i].color + '>';
+          new_li.innerHTML = '<a class="sphereName" href="sphere_change.php?spherename=' + data[i].name + '">' + data[i].name + '</a><input type="color" value=' + data[i].color + '>'; //wtf
           list.appendChild(new_li);
           const new_span = document.createElement("span");
           new_span.innerHTML = "X"; 
+
           new_span.addEventListener("click", ()=> {
             var confirmDelete = confirm("Are you sure you want to delete this sphere? 💔😔");
             if(confirmDelete){
@@ -83,9 +84,23 @@ function phpInvoke() {
   });
 }
 
+function saveChanges(color) 
+{
+  $.ajax({
+      type: "POST",
+      url: "update-color-form.php",
+      data: {color : color},
+      success: function (){
+        console.log("success action: color change");
+        console.log(color);
+      },
+      error: function (error) {
+        console.error("Error saving data:", error);
+      }
+  });
+}
+
 function addElement() {
-  // var index = 0
-  
   const input_text = document.querySelector("#txt");
 
   var existingElements = document.getElementsByClassName('sphereName');
@@ -112,15 +127,17 @@ function addElement() {
         const new_li = document.createElement("li");
         input_text.value = input_text.value.replace(/(<([^>]+)>)/ig, "");
   
-        // GENERATE A LINK BASED ON THE INDEX
-  
-        // var link = 
-        // 'sphere' + index.toString() + '.html';
-  
-        // index++;
-  
-        new_li.innerHTML = '<a class="sphereName" href="sphere_change.php?spherename=' + encodeURIComponent(input_text.value) + '">' + input_text.value + '</a><input type="color" value="#0621f8">';
+        new_li.innerHTML = '<a class="sphereName" href="sphere_change.php?spherename=' + encodeURIComponent(input_text.value) + '">' + input_text.value + '</a><input type="color" value="#0621f8" id="colorChanger">';
         list.appendChild(new_li);
+
+        const new_button = document.createElement("button")
+        new_button.innerHTML = "save";
+        new_button.setAttribute("class", "save");
+        new_button.addEventListener("click", ()=> {
+          saveChanges(new_button.value);
+        });
+
+        new_li.appendChild(new_button);
                                                                                                                                                                                                                                                                                                                                                   
         const new_span = document.createElement("span");
         new_span.innerHTML = "X";

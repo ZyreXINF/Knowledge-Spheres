@@ -4,18 +4,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>My Spheres</title>
-  <link href="myspheresstyle1.css" rel="stylesheet" type="text/css" />
+  <title>Contact</title>
+  <link href="contactstyle.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script type="module" src="mySpheresScript3.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
-  <div class='container'>
+  <div class="container">
     <a href="index.html">
       <img class="logo" src="logo_transparent.png">
     </a>
@@ -26,23 +24,25 @@
       <a class="nav-link" href="about2.html">About Us</a>
       <a class="nav-link" href="contact.html">Contact</a>
     </nav>
-    <h1>My Spheres</h1>
-  </div>
-    <form>
-      <input type="name" name="name" id="txt" required maxlength=20 placeholder="Enter a name here :)">
-      <button type="submit" class="btn-list" id="submitBtn"> 
-        <a>+</a>
-      </button>
+    <h1>Talk to <span class="blue">us</span></h1>
+    <form action="https://formsubmit.co/knowledgespheres@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Email!">
+      <label for="email">Email</label><br>
+      <input type="email" name="email" id="email" class="input" placeholder="example@gmail.com" required><br><br>
+      <input type="hidden" name="_autoresponse" value="Your message has been successfully delivered. We will reach out to you if necessary. Thank you! ⸜(｡˃ ᵕ ˂ )⸝♡"><br>
+      <input type="hidden" name="_next" value="https://kb.timsmyrnov.repl.co/thankyou.html"><br>
+      <label for="message">Message</label><br>
+      <input type="text" name="message" id="message" class="input" placeholder="Message" maxlength=300 required>
+      <br>
+      <button class="button" type="submit">Send</button>
     </form>
-    <div class="list">
-      <div class="wrapper">
-        <ul>
-        </ul>
-      </div>
     </div>
+  </div>
 
+  <script src="script.js"></script>
 </body>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<br><br><br><br><br><br>
 
 <footer>
   <p>Copyright © 2023 Knowledge Spheres</p>
@@ -50,4 +50,5 @@
   <a class="fa fa-youtube"></a><a href="https://www.youtube.com/channel/UC_5ziKNCC2xGHFLhRVIjxtg" target="_blank">Youtube</a>
   <a>☕</a><a href="https://www.buymeacoffee.com/knowledgespheres" target="_blank">Buy us a coffee</a>
 </footer>
+
 </html>

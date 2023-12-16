@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_GET['spherename'])) {
-    $sphere_name = $_GET['spherename'];
+    $sphere_name = $_GET['spherename']; 
 } else {
     echo 'Error: IT AINT WORKING';
 }

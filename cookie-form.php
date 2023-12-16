@@ -36,4 +36,4 @@ if(!isset($_COOKIE[$cookie_name])) {
   
   header("location:profile2.php?user_name=" . urlencode($user_name). " " . "user_email=" . urlencode($user_email));
 }
-?>      
+?>
