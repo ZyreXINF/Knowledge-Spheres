@@ -301,7 +301,7 @@ nav a:hover {
   position:relative;
   width:100%;
   height:100%;
-  background: #0621f8;
+  /*background: #0621f8;*/
   border-radius:50%;
   box-shadow:inset 0 0 50px rgba(0,0,0,.5);
 }
@@ -337,7 +337,7 @@ nav a:hover {
 .droplet {
   width: 40px;
   height: 40px;
-  background-color: #0621f8;
+  /*background-color: #0621f8;*/
   border-top-left-radius: 50%;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
@@ -362,7 +362,7 @@ nav a:hover {
   position: absolute;
   width: 1rem;
   top: 0;
-  background-color: #0621f8;
+  /*background-color: #0621f8;*/
   animation: pourAndHoldAndDisappear 1.5s linear;
   left: 49.6%;
 }
@@ -371,7 +371,7 @@ nav a:hover {
   position: absolute;
   width: 4rem;
   top: 0;
-  background-color: #0621f8;
+  /*background-color: #0621f8;*/
   animation: pourAndHoldAndDisappear 1.5s linear;
   left: 48.2%;
 }
@@ -393,7 +393,12 @@ nav a:hover {
 
 .raindrop {
   position: absolute;
-  background-color: rgba(6, 33, 248, 0.8);
+  /*background-color: rgba(6, 33, 248, 0.8);*/
   width: 4px;
   height: 14px;
+}
+
+input[type='color'] {
+  width: 28px;
+  height: 28px;
 }

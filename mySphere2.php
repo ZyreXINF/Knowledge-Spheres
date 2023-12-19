@@ -35,14 +35,13 @@ $sphere_tier = $row[4];
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>My Sphere</title>
-  <link href="spherestyle1.css" rel="stylesheet" type="text/css" />
-
+  <link href="spherestyle2.css" rel="stylesheet" type="text/css" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 
-  <script type="module" src="sphere3.js"></script>
+  <script type="module" src="sphere4.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
@@ -52,10 +51,10 @@ $sphere_tier = $row[4];
   </a>
   <div class="container">
     <a>NAME: <span id="name"><?php echo $sphere_name?></span></a>
-    <a>COLOR: <span><?php echo $sphere_color?><span></a>
+    <a>COLOR: <span><?php echo "<input type='color' id='color' value='$sphere_color'disabled>"?><span></a>
   </div>
   <div class="container">                                                                                                                       
-    <h1 id="incrementable"><?php echo $sphere_volume?>L</h1>
+    <h1 id="incrementable"><?php echo $sphere_volume ?>L</h1>
     <div class="circle" id="sphere">
       <div class="wave"></div>
     </div>

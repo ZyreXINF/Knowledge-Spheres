@@ -244,12 +244,32 @@ input[type='color'] {
   height: 28px;
 }
 
+.cursor 
+{
+  position: absolute;
+}
+
+@keyframes appearingBorder
+{
+  0%{border-color:none}
+  100%{border-color: black}
+}
 .save {
   text-decoration: none;
-  border-color: #e7e7e7;
-  color: black;
+  color: white;
+  border-color: none;
+  background: #0621f8;
   border-radius: 8px;
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   margin-left: 16px;
+  animation-name: appearingBorder;
+  animation-duration: 0.5s;
+  background: 0%;
 }
+
+/* no ruleset or trigger YET //
+ thhngamajig 
+  cursor:pointer;
+
+} */

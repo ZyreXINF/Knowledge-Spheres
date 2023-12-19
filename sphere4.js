@@ -29,6 +29,11 @@ var script = document.createElement('script');
 script.src = 'https://code.jquery.com/jquery-3.6.3.min.js';
 document.getElementsByTagName('head')[0].appendChild(script);
 
+var color = document.getElementById("color").value;
+var sphere = document.querySelector(".wave");
+sphere.style.backgroundColor = color;
+
+
 $(window).on('load', function() {
   console.log('Page has completely loaded');
   update_tier();
@@ -133,6 +138,7 @@ function droplet() {
   var droplet = document.createElement('div');
   droplet.className = 'droplet';
   document.body.appendChild(droplet);
+  droplet.style.backgroundColor = color;      
   return update_volume(0.1);
 }
 
@@ -140,6 +146,7 @@ function pour() {
   var water_pour = document.createElement('div');
   water_pour.className = 'water_pour';
   document.body.appendChild(water_pour);
+  water_pour.style.backgroundColor = color;  
   return update_volume(1);
 }
 
@@ -147,6 +154,7 @@ function pour_wide() {
   var water_pour_wide = document.createElement('div');
   water_pour_wide.className = 'water_pour_wide';
   document.body.appendChild(water_pour_wide);
+  water_pour_wide.style.backgroundColor = color;  
   return update_volume(3);
 }
 
@@ -156,6 +164,7 @@ function make_it_rain() {
   raindrop.style.left = `${Math.random() * window.innerWidth}px`;
   raindrop.style.top = '0'; // Set the initial top position to 0
   document.body.appendChild(raindrop);
+  raindrop.style.backgroundColor = color; 
 
   // Animate the raindrop with a faster duration
   const animation = raindrop.animate([

@@ -19,13 +19,17 @@ $user_email = $_SESSION['user_email'];
 </head>
 
 <body>
+  <a href="index.html">
+    <img class="logo" src="logo_transparent.png">
+  </a>
   <div class='container'>
     <nav id="nav-bar">
       <a class="nav-link" href="index.html">Home</a>
       <a class="nav-link" href="cookie-form.php">Profile</a>
       <a class="nav-link" href="cookie-mySpheres.php">My Spheres</a>
       <a class="nav-link" href="about2.html">About Us</a>
-      <a class="nav-link" href="contact.html">Contact</a>
+      <a class="nav-link" href="upgrade.html">Upgrade</a>
+      <a class="nav-link" href="contact1.html">Contact</a>
     </nav>
     <h1>Profile</h1>
     <div class="profile">
