@@ -1,16 +1,13 @@
 <?php
 session_start();
 
-$host = "localhost";
-$dbname = "kb_info_db";
-$username = "root";
-$password = "";
+$host = "localhost:3306";
+$dbname = "pjbelamy_ks_data";
+$username = "pjbelamy_ks_admin";
+$password = "-}3l3fg0t^ZCai!wT]";
 $cookie_name = "user";
 
-$conn = mysqli_connect(hostname: $host,
-username: $username,
-password: $password,
-database: $dbname);
+$conn = mysqli_connect($host, $username, $password, $dbname);
 
 
 $email = mysqli_real_escape_string($conn, $_GET['email']);
