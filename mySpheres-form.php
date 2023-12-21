@@ -2,15 +2,12 @@
 
 $cookie_name = "user";
 
-$host = "localhost";
-$dbname = "kb_info_db";
-$username = "root";
-$password = "";
+$host = "localhost:3306";
+$dbname = "pjbelamy_ks_data";
+$username = "pjbelamy_ks_admin";
+$password = "-}3l3fg0t^ZCai!wT]";
 
-$conn = mysqli_connect(hostname: $host,
-                       username: $username,
-                       password: $password,
-                       database: $dbname);
+$conn = mysqli_connect($host, $username, $password, $dbname);
 
 if (mysqli_connect_errno()) {
     die("Connection error: " . mysqli_connect_error());
