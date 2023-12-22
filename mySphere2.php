@@ -43,7 +43,7 @@ $sphere_tier = $row[4];
 </head>
 
 <body>
-  <a href="myspheres1.html">
+  <a href="mySpheres1.html">
     <img class="back-button" src="double-arrow-left.png">
   </a>
   <div class="container">
