@@ -234,3 +234,7 @@ a span {
 a span:hover {
   cursor: pointer;
 }
+
+.badges_list {
+  display: inline-flex;
+}

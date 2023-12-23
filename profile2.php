@@ -19,12 +19,12 @@ $user_email = $_SESSION['user_email'];
 </head>
 
 <body>
-  <a href="index.html">
+  <a href="home.html">
     <img class="logo" src="logo_transparent.png">
   </a>
   <div class='container'>
     <nav id="nav-bar">
-      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="home.html">Home</a>
       <a class="nav-link" href="cookie-form.php">Profile</a>
       <a class="nav-link" href="cookie-mySpheres.php">My Spheres</a>
       <a class="nav-link" href="about2.html">About Us</a>
@@ -36,7 +36,8 @@ $user_email = $_SESSION['user_email'];
       <a>Name</a>
       <p id="username"><?php echo $user_name; ?></p>
       <a>Badges</a>
-      <p>None</p>
+      <div class="badges_list" id="badges_list">
+      </div>
       <a>Email</a>
       <p id="email" ><?php echo $user_email; ?></p>
       <a id="logoutButton" class="red"><span>log out</span></a> 

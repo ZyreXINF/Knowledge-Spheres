@@ -3,7 +3,9 @@ script.src = 'https://code.jquery.com/jquery-3.6.3.min.js';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 var page_amount = 0;
-var page_limit = 10;
+var page_limit = 5;
+
+// LOADING THE SPHERES BACK TO THE PAGE ON_LOAD - - - - - - - - - -
 
 $(window).on('load', function() {
   console.log('Page has completely loaded');
@@ -21,7 +23,7 @@ $(window).on('load', function() {
           data[i].name + '">' + data[i].name + 
           '</a><input type="color" value="' + data[i].color + '"id="colorPicker">';
           
-          const new_button = document.createElement("button")
+          const new_button = document.createElement("button");
           new_button.innerHTML = "save";
           new_button.setAttribute("class", "save");
           
@@ -62,12 +64,18 @@ $(window).on('load', function() {
   });
 });
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// CALLING saveToDB() TO SAVE THE NEWLY CREATED SPHERE TO THE DATABASE
+
 $(document).ready(function () {
   $("#submitBtn").on("click", function () {
-    phpInvoke();
+    saveToDB();
     return false;
   });
 });
+
+// DELETING A SPHERE FROM THE DATABASE
 
 function deleteFromDB(sphereName){
   $.ajax({
@@ -81,9 +89,11 @@ function deleteFromDB(sphereName){
       console.error("Error deleting data:", error);
     }
   });
-} 
+}
 
-function phpInvoke() {
+// SAVING THE NEWLY CREATED SPHERE TO THE DATABASE
+
+function saveToDB() {
   const name = $("#txt").val();  
   $.ajax({
     type: "POST",
@@ -98,6 +108,8 @@ function phpInvoke() {
     }
   });
 }
+
+// SAVING THE SPHERE'S COLOR CHANGES TO THE DATABASE
 
 function saveChanges(color, sphereName) 
 {
@@ -114,6 +126,8 @@ function saveChanges(color, sphereName)
       }
   });
 }
+
+// CREATING A NEW SPHERE - - - - - - - - - - - - - - - - - - - - -
 
 function addElement() {
   const input_text = document.querySelector("#txt");
@@ -183,7 +197,6 @@ function addElement() {
     }
     input_text.value = "";
   }
-
-
-
 }
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -20,8 +20,10 @@ var tiers = {
   1000: 'Abyssal'
 };
 
+// liters remaining until the next tier is reached
 var till_next_tier = Object.keys(tiers)[0];
 
+// don't touch this magical variable
 let extra_amount = 0;
 
 // -----------------------------------------------------------------------------
@@ -84,6 +86,8 @@ function phpInvoke(volumeToAdd) {
   });
 }
 
+// UPDATING THE SPHERE'S TIER
+
 function update_tier() {
   let volume_element = document.getElementById("incrementable").innerText;
   let volume = parseFloat(volume_element.slice(0, -1));
@@ -93,7 +97,7 @@ function update_tier() {
 
   let next_tier_key = null;
   let next_tier_exists = false;
-  let previous_tier = "";  // Initialize previous_tier with an empty string
+  let previous_tier = ""; 
 
   for (var threshold in tiers) {
     if (volume < parseFloat(threshold)) {
@@ -102,7 +106,7 @@ function update_tier() {
       break;
     }
     till_next_tier = parseFloat(threshold);
-    previous_tier = tiers[threshold];  // Update the value of previous_tier inside the loop
+    previous_tier = tiers[threshold];
   }
 
   if (next_tier_exists) {
@@ -112,7 +116,7 @@ function update_tier() {
     till_next_tier = Infinity.toFixed(1);
   }
 
-  tier_element.innerHTML = "Tier: " + previous_tier;  // Use previous_tier outside the loop
+  tier_element.innerHTML = "Tier: " + previous_tier;
   till_next_tier_element.innerHTML = "Until next tier: " + till_next_tier + "L";
 
   var updatedTier = tier_element.innerHTML;
@@ -130,9 +134,10 @@ function update_tier() {
       console.error("Error occured:", error);
     }
   });
-
   return;
 }
+
+// LIQUID ANIMATIONS
 
 function droplet() {
   var droplet = document.createElement('div');
@@ -162,16 +167,15 @@ function make_it_rain() {
   const raindrop = document.createElement('div');
   raindrop.className = 'raindrop';
   raindrop.style.left = `${Math.random() * window.innerWidth}px`;
-  raindrop.style.top = '0'; // Set the initial top position to 0
+  raindrop.style.top = '0';
   document.body.appendChild(raindrop);
   raindrop.style.backgroundColor = color; 
 
-  // Animate the raindrop with a faster duration
   const animation = raindrop.animate([
     { transform: 'translateY(0)' },
     { transform: `translateY(${window.innerHeight}px)` }
   ], {
-    duration: Math.random() * 750 + 250, // random duration between 0.25 and 0.75 seconds
+    duration: Math.random() * 750 + 250,
     easing: 'linear',
     fill: 'forwards'
   });
@@ -182,10 +186,8 @@ function make_it_rain() {
 }
 
 function rain() {
-  // Generate raindrops at intervals
   const intervalId = setInterval(make_it_rain, 10);
 
-  // Stop raining after 2 seconds
   setTimeout(() => {
     clearInterval(intervalId);
   }, 1200);
@@ -193,7 +195,7 @@ function rain() {
   return update_volume(5);
 }
 
-// -----------------------------------------------------------------------------
+// UPDATING THE SPHERE'S VOLUME AFTER ADDING A CERTAIN AMOUNT OF LIQUID
 
 function update_volume(amount) {
   document.getElementById("incrementable");
@@ -218,16 +220,16 @@ function update_volume(amount) {
   return update_tier();
 }
 
+// SPHERE ANIMATION
+
 function animateObject() {
   var element = document.getElementById('sphere');
-  var initialWidth = 500; // Get the initial width
+  var initialWidth = 500;
   var targetWidth = initialWidth * 1.1;
 
-  // Gradually widen the object
   element.style.width = targetWidth + 'px';
 
-  // After a delay, reset the width with a bounce effect
   setTimeout(function() {
     element.style.width = initialWidth + 'px';
-  }, 1000); // 1000 milliseconds (1 second) delay
+  }, 1000);
 }

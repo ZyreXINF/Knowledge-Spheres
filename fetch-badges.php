@@ -2,14 +2,15 @@
 session_start();
 $cookie_name = "user";
 
-$sphereName = $_POST['sphereName'];
+$host = "localhost";
+$dbname = "kb_info_db";
+$username = "root";
+$password = "";
 
-$host = "localhost:3306";
-$dbname = "pjbelamy_ks_data";
-$username = "pjbelamy_ks_admin";
-$password = "-}3l3fg0t^ZCai!wT]";
-
-$conn = mysqli_connect($host, $username, $password, $dbname);
+$conn = mysqli_connect(hostname: $host,
+                       username: $username,
+                       password: $password,
+                       database: $dbname);
 
 if (mysqli_connect_errno()) {
     die("Connection error: " . mysqli_connect_error());
@@ -20,7 +21,13 @@ $result = mysqli_query($conn, $query_user_id);
 $row = mysqli_fetch_row($result);
 $user_id = $row[0];
 
-$sql = "DELETE FROM spheres WHERE name='$sphereName' AND user_id ='$user_id'"; 
+$sql = "SELECT name FROM badges WHERE user_id='$user_id' ";
+$result = mysqli_query($conn, $sql);
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $badges[] = $row;
+}
+echo json_encode($badges);
 
 $stmt = mysqli_stmt_init($conn);
 
