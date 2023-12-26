@@ -2,10 +2,10 @@
 
 $cookie_name = "user";
 
-$host = "localhost:3306";
-$dbname = "pjbelamy_ks_data";
-$username = "pjbelamy_ks_admin";
-$password = "-}3l3fg0t^ZCai!wT]";
+$host = "localhost";
+$dbname = "kb_info_db";
+$username = "root";
+$password = "";
 
 $conn = mysqli_connect($host, $username, $password, $dbname);
 

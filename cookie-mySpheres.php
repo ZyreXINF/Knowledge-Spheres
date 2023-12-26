@@ -10,10 +10,10 @@ if(!isset($_COOKIE[$cookie_name])) {
   // echo "Cookie '" . $cookie_name . "' is set!<br>";
   // echo "Value is: " . $_COOKIE[$cookie_name];
 
-  $host = "localhost:3306";
-  $dbname = "pjbelamy_ks_data";
-  $username = "pjbelamy_ks_admin";
-  $password = "-}3l3fg0t^ZCai!wT]";
+  $host = "localhost";
+  $dbname = "kb_info_db";
+  $username = "root";
+  $password = "";
   
   $conn = mysqli_connect($host, $username, $password, $dbname);
 
@@ -27,6 +27,7 @@ if(!isset($_COOKIE[$cookie_name])) {
   $row = mysqli_fetch_array($result);
   $user_name = $row[1];
   $user_email = $row[2];
+  
   $_SESSION['user_name'] = $user_name;
   $_SESSION['user_email'] = $user_email;
   
