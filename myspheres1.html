@@ -35,19 +35,65 @@
         <a>+</a>
       </button>
     </form>
+    <!-- === SPHERE LIST === -->
     <div class="list">
       <div class="wrapper">
         <ul>
         </ul>
       </div>
     </div>
-</body>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <!-- =================== -->
+    <!-- === MODAL === -->
+    <div class="modal">
+      <button data-open-modal>Open</button>
+      <dialog data-modal>
+        <div class="container1">
+          <button data-close-modal>X</button>
+          </button>
+          <div class="title">
+            <input type='text' value='Sphere Name' id='sphere_name' title>
+          </div>
+          <div class="color-picker">
+            <input type='color' value='#000000' id='colorPicker'>
+          </div>
+        </div>
+        <hr>
+        <div class="config">
+          <div class="row1">
+            <img src="droplet1.png"></img>
+            <p>=</p>
+            <input type='text' value='droplet'>
 
-<footer>
-  <p>Copyright © 2023 Knowledge Spheres</p>
-  <a class="fa fa-twitter"></a><a href="https://twitter.com/K_Spheres" target="_blank">Twitter</a>
-  <a class="fa fa-youtube"></a><a href="https://www.youtube.com/channel/UC_5ziKNCC2xGHFLhRVIjxtg" target="_blank">Youtube</a>
-  <a>☕</a><a href="https://www.buymeacoffee.com/knowledgespheres" target="_blank">Buy us a coffee</a>
-</footer>
+            <img class="margin-right" src="pour1.png"></img>
+            <p>=</p>
+            <input type='text' value='pour'>
+          </div>
+          <br><br>
+          <div class="row2">
+            <img src="pour_wide1.png"></img>
+            <p>=</p>
+            <input type='text' value='wide pour'>
+
+            <img class="margin-right" src="rain1.png"></img>
+            <p>=</p>
+            <input type='text' value='rain'>
+          </div>
+        </div>
+        <hr>
+        <div class="description">
+          <p>Description</p>
+          <textarea id="description" name="description" rows="4" cols="50"></textarea>
+        </div>
+        <button class="save-changes">Save</button>
+      </dialog>
+    </div>
+    <!-- ============= -->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer>
+      <p>Copyright © 2023 Knowledge Spheres</p>
+      <a class="fa fa-twitter"></a><a href="https://twitter.com/K_Spheres" target="_blank">Twitter</a>
+      <a class="fa fa-youtube"></a><a href="https://www.youtube.com/channel/UC_5ziKNCC2xGHFLhRVIjxtg" target="_blank">Youtube</a>
+      <a>☕</a><a href="https://www.buymeacoffee.com/knowledgespheres" target="_blank">Buy us a coffee</a>
+    </footer>
+</body>
 </html>
