@@ -8,6 +8,7 @@ body {
   background-image: url("myspheresbg.jpg");
   background-size: cover;
   font-family: 'Poppins', sans-serif;
+  text-align: center;
 }
 
 nav {
@@ -43,7 +44,7 @@ form input {
   background: rgba(255, 255, 255, 0);
   font-size: 1rem;
   width: 15.625rem;
-  height: 2.5rem;
+  height: 1rem;
   border: none;
   outline: none;
 }
@@ -268,8 +269,156 @@ input[type='color'] {
   background: 0%;
 }
 
-/* no ruleset or trigger YET //
- thhngamajig 
-  cursor:pointer;
+dialog {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  border: none;
+  width: 50vw;
+  height: 42vw;
+}
 
-} */
+dialog::backdrop {
+  backdrop-filter: blur(5px);
+  background-color: rgba(1, 1, 1, 0.6);
+}
+
+dialog div {
+  padding: 1rem;
+}
+
+dialog li {
+  background: none;
+  box-shadow: none;
+  width: auto;
+  height: auto;
+}
+
+dialog p {
+  font-size: 2rem;
+}
+
+.title input {
+  font-size: 2rem;
+  text-align: center;
+  background: none;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+.title input:focus {
+  outline: none;
+}
+
+.container1 {
+  border-radius: 5px;
+}
+
+.container1 button {
+  text-align: right;
+  margin-top: -0.5rem;
+  font-size: 2.8rem;
+  margin-bottom: -3.6rem;
+  background: none;
+  border: none;
+  float: right;
+}
+
+.container1 button:hover {
+  scale: 1.1;
+}
+
+.config input {
+  font-size: 1rem;
+  background: none;
+  font-family: 'Poppins', sans-serif;
+  width: 6rem;
+  height: 1.4rem;
+  border-radius: 6px;
+  text-align: center;
+  height: 2rem;
+  width: 10rem;
+}
+
+.config {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row1,
+.row2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row1,
+.row2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row1 p,
+.row1 img,
+.row1 input,
+.row2 p,
+.row2 img,
+.row2 input {
+  margin: 0.5rem;
+}
+
+.row1 input,
+.row2 input {
+  width: 6rem;
+  height: 1.4rem;
+}
+
+.row1 img,
+.row2 img {
+  height: 4rem;
+  width: 4rem;
+}
+
+.description textarea {
+  font-size: 1rem;
+  background: none;
+  font-family: 'Poppins', sans-serif;
+  height: auto;
+  width: auto;
+  border-radius: 6px;
+  resize: none;
+}
+
+.description {
+  margin-top: -2rem;
+}
+
+.container1 input[type='color'] {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 6px;
+  background: none;
+}
+
+.margin-right {
+  padding-left: 5vw;
+}
+
+.save-changes {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1.2rem;
+  background: rgba(0, 255, 102, 0.352);
+  border-radius: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.save-changes:hover {
+  background: rgba(6, 209, 87, 0.352);
+}
