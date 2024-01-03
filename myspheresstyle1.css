@@ -97,19 +97,7 @@ ul li {
   display: block;
   margin: 20px 0;
   transition: 0.5s linear;
-}
-
-ul li span {
-  font-size: 20px;
-  font-weight: 800;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50px;
-  text-align: center;
-  background: #0621f8;
-  color: white;
-  cursor: pointer;
+  border-radius: 18px;
 }
 
 ul li a {
@@ -421,4 +409,34 @@ dialog p {
 
 .save-changes:hover {
   background: rgba(6, 209, 87, 0.352);
+}
+
+.configuration {
+  border: none;
+  font-size: 20px;
+  font-weight: 800;
+  position: absolute;
+  top: 0;
+  right: 50px;
+  height: 5rem;
+  width: 50px;
+  text-align: center;
+  background: #277eff;
+  color: white;
+  cursor: pointer;
+}
+
+ul li span {
+  font-size: 20px;
+  font-weight: 800;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  text-align: center;
+  background: #0621f8;
+  color: white;
+  cursor: pointer;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
 }

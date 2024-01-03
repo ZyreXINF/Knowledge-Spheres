@@ -4,33 +4,36 @@ document.getElementsByTagName('head')[0].appendChild(script);
 
 $(document).ready(function () {
     $("#submitBtn").on("click", function () {
-        var emailElement = document.getElementById("userEmail");
-        var email = emailElement.value;
-        var nameElement = document.getElementById("userName");
-        var name = nameElement.value;
-        var userPasswordElement = document.getElementById("userPassword");
-        var userPassword = userPasswordElement.value;
+        // var emailElement = document.getElementById("userEmail");
+        // var email = emailElement.value;
+        // var nameElement = document.getElementById("userName");
+        // var name = nameElement.value;
+        // var userPasswordElement = document.getElementById("userPassword");
+        // var userPassword = userPasswordElement.value;
+        
+        var email = document.getElementById("userEmail").value;
+        var name = document.getElementById("userName").value;
+        var userPassword = document.getElementById("userPassword").value;
         saveData(email, name, userPassword);
         return false;
     });
 });
     
-function saveData(email, name, userPassword){
-    // console.log("email: "+ email + "\n" + 
-    //             "name: "+ name + "\n" +
-    //             "password: "+ userPassword
-    // );
+function saveData(email, name, password){
+    console.log("email: "+ email + "\n" + 
+                "name: "+ name + "\n" +
+                "password: "+ password
+    );
     $.ajax({
         type: "POST",
         url: "register-form.php",
         dataType: "json",
-        data: {userEmail: email, userName: name, userPassword: userPassword},
+        data: {userEmail: email, userName: name, userPassword: password},
         success: function (jsonData) {
-            var link = "http://localhost/phpcodes/Knowledge-Spheres__1";
             if(jsonData == "true"){
-                window.location.replace(link + "/login.html");
+                window.location.replace(window.location.href + "/login.html");
             }else if(jsonData == "false"){
-                window.location.replace(link + "/alert_register.html");
+                window.location.replace(window.location.href + "/alert_register.html");
             } 
         },
         error: function (error) {

@@ -43,24 +43,24 @@ $(window).on('load', function() {
 
 $(document).ready(function () {
   $("#sbmtBtn1").on("click", function () {
-    phpInvoke(0.1);
+    updateVolume(0.1);
     return false;
   });
   $("#sbmtBtn2").on("click", function () {
-    phpInvoke(1);
+    updateVolume(1);
     return false;
   });
   $("#sbmtBtn3").on("click", function () {
-    phpInvoke(3);
+    updateVolume(3);
     return false;
   });
   $("#sbmtBtn4").on("click", function () {
-    phpInvoke(5);
+    updateVolume(5);
     return false;
   });
 });
 
-function phpInvoke(volumeToAdd) {
+function updateVolume(volumeToAdd) {
   var nameContent = document.getElementById("name").innerHTML;
   console.log("innerHTML of the element: ", nameContent);
   $.ajax({

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $host = "localhost";
 $dbname = "kb_info_db";

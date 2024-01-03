@@ -14,49 +14,9 @@ $(window).on('load', function() {
     url: "fetch-spheres.php",
     dataType: "json",
     success: function(data) {
-      for(let i = 0; i < data.length; i++){
-        if (page_amount < page_limit) {
-          page_amount++;
-          const new_li = document.createElement("li");
-          const list = document.querySelector(".list ul");
-          new_li.innerHTML = '<a class="sphereName" href="sphere_change.php?spherename=' + 
-          data[i].name + '">' + data[i].name + 
-          '</a><input type="color" value="' + data[i].color + '"id="colorPicker">';
-          
-          const new_button = document.createElement("button");
-          new_button.innerHTML = "save";
-          new_button.setAttribute("class", "save");
-          
-          new_button.addEventListener("click", ()=> {
-            var htmlStringContent = new_span.parentElement.textContent;
-            var resultName = htmlStringContent.substr(0, htmlStringContent.length-5);
-            var colorPicker = document.getElementById("colorPicker").value;
-            saveChanges(colorPicker, resultName);
-          });
-          new_li.appendChild(new_button);
-          
-          list.appendChild(new_li);
-          const new_span = document.createElement("span");
-          new_span.innerHTML = "X"; 
-
-          new_span.addEventListener("click", ()=> {
-            var confirmDelete = confirm("Are you sure you want to delete this sphere? 💔😔");
-            if(confirmDelete){
-              var htmlStringContent = new_span.parentElement.textContent;
-              var resultName = htmlStringContent.substr(0, htmlStringContent.length-5);
-              deleteFromDB(resultName);
-              page_amount--;  
-              new_span.parentElement.style.opacity = 0;
-              setTimeout(()=> {
-                new_span.parentElement.remove();
-              }, 500)
-            }
-          })
-          new_li.appendChild(new_span);
-        }else {
-          alert("Max amount of environments is " + page_limit + "!");
-        }
-      }
+      for (let i = 0; i < data.length; i++) {
+        addElement(data[i].name);
+      } // close the for loop
     },  
     error: function(error) {
       console.error('Error:', error);
@@ -66,11 +26,13 @@ $(window).on('load', function() {
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// CALLING saveToDB() TO SAVE THE NEWLY CREATED SPHERE TO THE DATABASE
-
 $(document).ready(function () {
   $("#submitBtn").on("click", function () {
     saveToDB();
+    return false;
+  });
+  $("#save-button").on("click", function() {
+    saveChanges(); //not ready, php needed
     return false;
   });
 });
@@ -78,10 +40,10 @@ $(document).ready(function () {
 // DELETING A SPHERE FROM THE DATABASE
 
 function deleteFromDB(sphereName){
+  console.log(sphereName);
   $.ajax({
     type: "POST",
-    url: "delete-sphere.php",
-    data: {sphereName : sphereName},
+    url: 'delete-sphere.php?sphereName='+sphereName,
     success: function () {
       console.log("successful action: delete");
     },
@@ -94,13 +56,12 @@ function deleteFromDB(sphereName){
 // SAVING THE NEWLY CREATED SPHERE TO THE DATABASE
 
 function saveToDB() {
-  const name = $("#txt").val();  
+  const sphereName = document.querySelector("#txt").value; 
   $.ajax({
     type: "POST",
-    url: "mySpheres-form.php",
-    data: { name: name },
+    url: 'mySpheres-form.php?sphereName='+sphereName,
     success: function () {
-      addElement();
+      addElement(sphereName);
       console.log("data successfully saved");
     },
     error: function (error) {
@@ -109,17 +70,24 @@ function saveToDB() {
   });
 }
 
-// SAVING THE SPHERE'S COLOR CHANGES TO THE DATABASE
+// SAVING THE SPHERE'S CONFIGURATION CHANGES TO THE DATABASE
 
-function saveChanges(color, sphereName) 
+function saveChanges(color, sphereName, meanings, description) 
 {
-  console.log(sphereName);
   $.ajax({
       type: "POST",
-      url: "update-color-form.php",
-      data: {color : color, sphereName : sphereName},
+      url: "update-configuration-form.php",
+      data: {
+        color : color, 
+        sphereName : sphereName,
+        droplet: meanings[0],
+        pour : meanings[1],
+        pourWide : meanings[2],
+        rain : meanings[3],
+        description :  description
+        },
       success: function (){
-        console.log("success action: color change");
+        console.log("success action: sphere config updated");
       },
       error: function (error) {
         console.error("Error saving data:", error);
@@ -127,75 +95,109 @@ function saveChanges(color, sphereName)
   });
 }
 
-// CREATING A NEW SPHERE - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-function addElement() {
-  const input_text = document.querySelector("#txt");
+const dialog = document.querySelector("dialog");
 
+const close_button = document.querySelector("[data-close-modal");
+const modal = document.querySelector("[data-modal]");
+
+const title = document.querySelector("[title]");
+
+close_button.addEventListener("click", () => {
+  modal.close();
+})
+
+dialog.addEventListener("click", e => {
+  const dialogDimensions = dialog.getBoundingClientRect()
+  if (
+    e.clientX < dialogDimensions.left ||
+    e.clientX > dialogDimensions.right ||
+    e.clientY < dialogDimensions.top ||
+    e.clientY > dialogDimensions.bottom
+  ) {
+    dialog.close()
+  }
+})
+
+// CREATING A NEW SPHERE
+
+function addElement(sphereName){
   var existingElements = document.getElementsByClassName('sphereName');
   existingElements = Array.from(existingElements);
 
   var alreadyCreated = false;
-
-  for(let i = 0; i<existingElements.length; i++){
-    if(existingElements[i].textContent==input_text.value){
-      input_text.value = "";
-      alreadyCreated = true;
-      alert("Can't create spheres with repeating names 😭");
+  if(existingElements.length != null){
+    for(let i = 0; i<existingElements.length; i++){
+      if(existingElements[i].textContent==sphereName){
+        document.querySelector("#txt").value = "";
+        alreadyCreated = true;
+        alert("Can't create spheres with repeating names 😭");
+      }
     }
   }
-
-  if(!alreadyCreated || existingElements==null){
-    const button = document.querySelector(".btn-list");
-    const list = document.querySelector(".list ul");
   
-    if (input_text.value.replace(/(<([^>]+)>)/ig, '').replace(/ /g,'') != "") {
+  if(!alreadyCreated || existingElements==null){
+    const list = document.querySelector(".list ul");
+
+    if (sphereName.replace(/(<([^>]+)>)/ig, '').replace(/ /g,'') != "") {
       if (page_amount < page_limit) {
         page_amount++;
-  
+
         const new_li = document.createElement("li");
-        input_text.value = input_text.value.replace(/(<([^>]+)>)/ig, "");
-  
+        sphereName = sphereName.replace(/(<([^>]+)>)/ig, "");
+
         new_li.innerHTML = '<a class="sphereName" href="sphere_change.php?spherename=' +
-        encodeURIComponent(input_text.value) + '">' + input_text.value +
-        '</a><input type="color" value="#0621f8" id="colorPicker">';
-      
+          encodeURIComponent(sphereName) + '">' + sphereName + '</a>';
+
         list.appendChild(new_li);
 
-        const new_button = document.createElement("button")
-        new_button.innerHTML = "save";
-        new_button.setAttribute("class", "save");
-        new_button.addEventListener("click", ()=> {
-          var htmlStringContent = new_span.parentElement.textContent;
-          var resultName = htmlStringContent.substr(0, htmlStringContent.length-5);
-          var colorPicker = document.getElementById("colorPicker").value;
-          saveChanges(colorPicker, resultName);
+        // ADDING THE BUTTONS
+
+        var button_container = document.createElement('div');
+        button_container.className = 'button_container';
+
+        const config_button = document.createElement("button");
+        config_button.innerHTML = "⚙";
+        config_button.setAttribute("class", "configuration");
+        config_button.setAttribute("id", "configuration-button");
+        config_button.addEventListener("click", () => {
+          var htmlStringContent = config_button.parentElement.textContent;
+          var resultName = htmlStringContent.substr(0, htmlStringContent.length - 5);
+
+          // ADD CODE TO INVOKE FETCHING DATA FROM DB TO SEND IT TO THE MODAL
+          // ...
+
+          modal.showModal();
+          title.blur();
         });
 
-        new_li.appendChild(new_button);
-                                                                                                                                                                                                                                                                                                                                                  
-        const new_span = document.createElement("span");
-        new_span.innerHTML = "X";
-        new_span.addEventListener("click", ()=> {
+        const delete_button = document.createElement("span");
+        delete_button.innerHTML = "X";
+        delete_button.addEventListener("click", () => {
           var confirmDelete = confirm("Are you sure you want to delete this sphere? 💔😔");
-          if(confirmDelete){
-            var htmlStringContent = new_span.parentElement.textContent;
-            var resultName = htmlStringContent.substr(0, htmlStringContent.length-5);
+          if (confirmDelete) {
+            var htmlStringContent = delete_button.parentElement.parentElement.textContent;
+            var resultName = htmlStringContent.substr(0, htmlStringContent.length - 2);
             deleteFromDB(resultName);
-            page_amount--;  
-            new_span.parentElement.style.opacity = 0;
-            setTimeout(()=> {
-              new_span.parentElement.remove();
-            }, 500)
+            page_amount--;
+            delete_button.parentElement.parentElement.style.opacity = 0;
+            setTimeout(() => {
+              delete_button.parentElement.parentElement.remove();
+            }, 500);
           }
-        })
-        new_li.appendChild(new_span);
+        });
+
+        button_container.appendChild(config_button);
+        button_container.appendChild(delete_button);
+
+        new_li.appendChild(button_container);
       }
       else {
         alert("Max amount of environments is " + page_limit + "!");
       }
     }
-    input_text.value = "";
+    document.querySelector("#txt").value = "";
   }
 }
 

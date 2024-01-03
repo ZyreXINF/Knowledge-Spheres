@@ -2,7 +2,7 @@
 session_start();
 $cookie_name = "user";
 
-$sphereName = $_POST['sphereName'];
+$sphereName = $_REQUEST["sphereName"];
 
 $host = "localhost";
 $dbname = "kb_info_db";

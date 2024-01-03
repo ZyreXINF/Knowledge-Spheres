@@ -2,6 +2,7 @@ body {
   text-align: center;
   background: url("indexbg.jpg");
   background-size: cover;
+  overflow-x: hidden;
 }
 
 .container {
@@ -278,7 +279,12 @@ nav a:hover {
 }
 
 .tier {
-  margin-top: 3.8rem;
+  position: absolute;
+  bottom: 4rem; /* Adjust the value to set the margin */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px; /* Optional padding */
   font-size: 0.8rem;
 }
 
