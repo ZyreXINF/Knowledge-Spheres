@@ -30,7 +30,7 @@ function loadBadges(){
     success: function(data) {
       for(let i = 0; i < data.length; i++){
         const new_list_element = document.createElement("a");
-        new_list_element.innerHTML = '<img src="' + data[i].name + '.jpg" width="80" height="80">' + '</img>';
+        new_list_element.innerHTML = '<img src="' + data[i].name + '.png" width="80" height="80">' + '</img>';
         const element = document.getElementById("badges_list");
         element.appendChild(new_list_element);
       }

@@ -39,6 +39,7 @@ sphere.style.backgroundColor = color;
 $(window).on('load', function() {
   console.log('Page has completely loaded');
   update_tier();
+  //update_volume(0);
 });
 
 $(document).ready(function () {

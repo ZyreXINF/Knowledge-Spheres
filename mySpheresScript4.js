@@ -5,6 +5,8 @@ document.getElementsByTagName('head')[0].appendChild(script);
 var page_amount = 0;
 var page_limit = 5;
 
+var openedSphereName;
+
 // LOADING THE SPHERES BACK TO THE PAGE ON_LOAD - - - - - - - - - -
 
 $(window).on('load', function() {
@@ -31,7 +33,7 @@ $(document).ready(function () {
     saveToDB();
     return false;
   });
-  $("#save-button").on("click", function() {
+  $("#save-changes").on("click", function() {
     saveChanges(); //not ready, php needed
     return false;
   });
@@ -72,27 +74,30 @@ function saveToDB() {
 
 // SAVING THE SPHERE'S CONFIGURATION CHANGES TO THE DATABASE
 
-function saveChanges(color, sphereName, meanings, description) 
+function saveChanges() {
+  var color = document.getElementById("colorPicker").value;
+  var newName = document.getElementById("sphere_name").value;
+  var meanings = [];
+  meanings.push(document.getElementById("cfg_droplet").value);
+  meanings.push(document.getElementById("cfg_pour").value);
+  meanings.push(document.getElementById("cfg_waterfall").value);
+  meanings.push(document.getElementById("cfg_rain").value);
+  var description = document.getElementById("description").value;
 {
   $.ajax({
       type: "POST",
-      url: "update-configuration-form.php",
-      data: {
-        color : color, 
-        sphereName : sphereName,
-        droplet: meanings[0],
-        pour : meanings[1],
-        pourWide : meanings[2],
-        rain : meanings[3],
-        description :  description
-        },
-      success: function (){
-        console.log("success action: sphere config updated");
-      },
+      url: "update-configuration-form.php?color=" + encodeURIComponent(color) + "&new_sphere_name=" + encodeURIComponent(newName) +
+       "&old_sphere_name="+ encodeURIComponent(openedSphereName) +"&droplet=" + encodeURIComponent(meanings[0]) + "&pour=" + encodeURIComponent(meanings[1]) +
+        "&waterfall=" + encodeURIComponent(meanings[2]) +
+        "&rain=" + encodeURIComponent(meanings[3]) + "&description=" + encodeURIComponent(description),
+      success: function (response){
+        console.log("action result: " + response);
+      },  
       error: function (error) {
         console.error("Error saving data:", error);
       }
   });
+}
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -162,11 +167,13 @@ function addElement(sphereName){
         config_button.setAttribute("class", "configuration");
         config_button.setAttribute("id", "configuration-button");
         config_button.addEventListener("click", () => {
-          var htmlStringContent = config_button.parentElement.textContent;
-          var resultName = htmlStringContent.substr(0, htmlStringContent.length - 5);
+          var htmlStringContent = config_button.parentElement.parentElement.textContent;
+          var resultName = htmlStringContent.substr(0, htmlStringContent.length - 2);
 
           // ADD CODE TO INVOKE FETCHING DATA FROM DB TO SEND IT TO THE MODAL
           // ...
+          
+          openedSphereName = resultName;
 
           modal.showModal();
           title.blur();

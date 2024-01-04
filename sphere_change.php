@@ -8,4 +8,3 @@ if (isset($_GET['spherename'])) {
 }
 
 header("location:mySphere2.php?sphere_name=" . urlencode($sphere_name));
-

@@ -18,10 +18,9 @@ $sql = "SELECT * FROM spheres WHERE name='$sphere_name' ";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
 
-$sphere_name = $row[1];
 $sphere_color = $row[2];
-$sphere_volume = $row[3];
-$sphere_tier = $row[4];
+$sphere_volume = $row[8];
+$sphere_tier = $row[9];
 
 ?>
 
