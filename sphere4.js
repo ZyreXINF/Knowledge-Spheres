@@ -66,8 +66,7 @@ function updateVolume(volumeToAdd) {
   console.log("innerHTML of the element: ", nameContent);
   $.ajax({
     type: "POST",
-    url: "update-volume-form.php",
-    data: { volumeToAdd: volumeToAdd, sphereName : nameContent},
+    url: "update-volume-form.php?volumeToAdd="+encodeURIComponent(volumeToAdd)+"&sphereName="+encodeURIComponent(nameContent),
     success: function () {
       if(volumeToAdd == 0.1){
         droplet();
@@ -77,7 +76,7 @@ function updateVolume(volumeToAdd) {
         pour_wide();
       }else if(volumeToAdd == 5){
         rain(); 
-      }
+      } 
       animateObject();
       console.log("successful action: volume update");
     },

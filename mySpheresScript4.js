@@ -100,6 +100,25 @@ function saveChanges() {
 }
 }
 
+// FETCHING THE SPHERE'S CONFIGURATION CHANGES FROM THE DATABASE
+
+function fetchSpheresConfig(callback) {
+  $.ajax({
+      type: "GET",
+      url: "fetch-spheres-configuration-form.php?sphere_name=" + encodeURIComponent(openedSphereName),
+      dataType: 'json',
+      success: function (sphereConfiguration) {
+          console.log("successful action: fetched sphere configuration");
+          callback(sphereConfiguration);
+      },
+      error: function (error) {
+          console.error("Error fetching data:", error);
+          // Handle the error or pass null to the callback
+          callback(null);
+      }
+  });
+}
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 const dialog = document.querySelector("dialog");
@@ -169,14 +188,20 @@ function addElement(sphereName){
         config_button.addEventListener("click", () => {
           var htmlStringContent = config_button.parentElement.parentElement.textContent;
           var resultName = htmlStringContent.substr(0, htmlStringContent.length - 2);
-
-          // ADD CODE TO INVOKE FETCHING DATA FROM DB TO SEND IT TO THE MODAL
-          // ...
-          
           openedSphereName = resultName;
+          
+          fetchSpheresConfig(function (values) {
+            modal.showModal();
+            title.blur();
 
-          modal.showModal();
-          title.blur();
+            document.getElementById("sphere_name").value = openedSphereName;
+            document.getElementById("colorPicker").value = values[0];
+            document.getElementById("cfg_droplet").value = values[1];
+            document.getElementById("cfg_pour").value = values[2];
+            document.getElementById("cfg_waterfall").value = values[3];
+            document.getElementById("cfg_rain").value = values[4];
+            document.getElementById("description").value = values[5];
+          });      
         });
 
         const delete_button = document.createElement("span");

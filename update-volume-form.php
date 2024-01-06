@@ -2,8 +2,8 @@
 session_start();
 $cookie_name = "user";
 
-$volumeToAdd = $_POST['volumeToAdd'];
-$sphereName = $_POST['sphereName'];
+$volumeToAdd = $_REQUEST['volumeToAdd'];
+$sphereName = $_REQUEST['sphereName'];
 
 $host = "localhost";
 $dbname = "kb_info_db";

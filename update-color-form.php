@@ -31,5 +31,5 @@ if ( ! mysqli_stmt_prepare($stmt, $sql)) {
 
 mysqli_stmt_execute($stmt);
 
-// $result=mysqli_query($conn, $sql); 
-// $row = mysqli_fetch_array($result);
+$result=mysqli_query($conn, $sql); 
+$row = mysqli_fetch_array($result);

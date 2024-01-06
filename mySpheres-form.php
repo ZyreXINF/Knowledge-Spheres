@@ -18,7 +18,7 @@ $name = $_REQUEST["sphereName"];
 $color = "#0621f8";     
 $volume = 0;
 $tier = "Common";
-
+    
 $droplet = "droplet";
 $pour = "pour";
 $waterfall = "waterfall";

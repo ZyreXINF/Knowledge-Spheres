@@ -90,10 +90,57 @@
     <!-- ============= -->
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <footer>
-      <p>Copyright © 2023 Knowledge Spheres</p>
+      <p>© Knowledge Spheres 2024. All rights reserved.</p>
       <a class="fa fa-twitter"></a><a href="https://twitter.com/K_Spheres" target="_blank">Twitter</a>
       <a class="fa fa-youtube"></a><a href="https://www.youtube.com/channel/UC_5ziKNCC2xGHFLhRVIjxtg" target="_blank">Youtube</a>
       <a>☕</a><a href="https://www.buymeacoffee.com/knowledgespheres" target="_blank">Buy us a coffee</a>
     </footer>
+    <!-- ===== QUOTE POPUP ======  -->
+    <style>
+      #popup-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: rgbargba(255, 255, 255, 0); /* makes the box bg transparent for you */
+        color: #000;
+        padding: 10px;
+        border-radius: 5px;
+        display: none;
+        animation: pulse 1s infinite;
+        max-width: 300px; 
+        border: 2px solid #ffc0cb;
+      }
+
+      @keyframes pulse {
+          0% {
+              transform: scale(1);
+          }
+          50% {
+              transform: scale(1.1);
+          }
+          100% {
+              transform: scale(1);
+          }
+      }
+  </style>
+</head>
+<body>
+
+<div id="popup-container"> "Everything flows, and nothing abides, everything gives way, and nothing stays fixed."- Heraclitus </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      var popupContainer = document.getElementById('popup-container');
+
+      // Shows popup
+      popupContainer.style.display = 'block';
+
+      // Sets timeout to hide the popup for however long u want it.
+      setTimeout(function () {
+          popupContainer.style.display = 'none';
+      }, 35000); // 10000 milliseconds is 10 seconds btw
+  });
+</script>
+<!-- ================== -->
 </body>
 </html>
