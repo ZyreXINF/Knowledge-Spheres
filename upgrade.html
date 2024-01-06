@@ -192,6 +192,21 @@
     .logo:hover {
       cursor: pointer;
     }
+
+    .inline_class {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .inline_class h2 {
+      text-align: center;
+      margin: 0;
+    }
+
+    .inline_class img {
+      width: 32px;
+    }
   </style>
 </head>
 
@@ -214,7 +229,10 @@
     <div class="section2">
       <div class="subscription-plan" id="gold">
         <div class="outline"></div>
-        <h2>Gold</h2>
+        <div class="inline_class">
+          <h2>Gold</h2>
+          <img src="gold.png">
+        </div>
         <ul>
           <li>The sphere limit of <b>10</b></li>
           <li>The Gold subscriber badge</li>
@@ -228,7 +246,10 @@
 
       <div class="subscription-plan" id="diamond">
         <div class="outline"></div>
-        <h2>Diamond</h2>
+        <div class="inline_class">
+          <h2>Diamond</h2>
+          <img src="diamond.png">
+        </div>
         <ul>
           <li><b>All</b> Gold perks</li>
           <li><b>All</b> Ruby perks</li>
@@ -244,7 +265,10 @@
 
       <div class="subscription-plan" id="ruby">
         <div class="outline"></div>
-        <h2>Ruby</h2>
+        <div class="inline_class">
+          <h2>Ruby</h2>
+          <img src="ruby.png">
+        </div>
         <ul>
           <li><b>All</b> Gold perks</li>
           <li>The sphere limit of <b>20</b></li>
@@ -260,7 +284,8 @@
     <div class="section3">
       <p>Copyright © 2023 Knowledge Spheres</p>
       <a class="fa fa-twitter"></a><a href="https://twitter.com/K_Spheres" target="_blank">Twitter</a>
-      <a class="fa fa-youtube"></a><a href="https://youtu.be/uHgt8giw1LY?si=utR2TiP94lhEoFxW" target="_blank">Youtube</a>
+      <a class="fa fa-youtube"></a><a href="https://youtu.be/uHgt8giw1LY?si=utR2TiP94lhEoFxW"
+        target="_blank">Youtube</a>
       <a>☕</a><a href="https://www.buymeacoffee.com/knowledgespheres" target="_blank">Buy us a coffee</a>
     </div>
   </div>
@@ -270,5 +295,5 @@
     }
   </script>
 </body>
-  
+
 </html>
