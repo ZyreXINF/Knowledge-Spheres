@@ -7,6 +7,27 @@ $(window).on('load', function() {
   loadBadges();
 });
 
+// BADGE MODAL
+
+const dialog = document.querySelector("dialog");
+const close_button = document.querySelector("[badge-close-modal]");
+
+close_button.addEventListener("click", () => {
+  dialog.close();
+})
+
+dialog.addEventListener("click", e => {
+  const dialogDimensions = dialog.getBoundingClientRect()
+  if (
+    e.clientX < dialogDimensions.left ||
+    e.clientX > dialogDimensions.right ||
+    e.clientY < dialogDimensions.top ||
+    e.clientY > dialogDimensions.bottom
+  ) {
+    dialog.close()
+  }
+})
+
 // LOGGING OUT
 
 $(document).ready(function () {
@@ -32,6 +53,11 @@ function loadBadges(){
         const new_list_element = document.createElement("a");
         new_list_element.innerHTML = '<img src="' + data[i].name + '.png" width="80" height="80">' + '</img>';
         const element = document.getElementById("badges_list");
+
+        new_list_element.addEventListener("click", e => {
+          dialog.showModal();
+        })
+
         element.appendChild(new_list_element);
       }
     },

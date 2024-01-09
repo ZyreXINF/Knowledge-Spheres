@@ -238,3 +238,73 @@ a span:hover {
 .badges_list {
   display: inline-flex;
 }
+
+dialog {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  width: 50vw;
+  height: fit-content;
+  border: none;
+  outline: none;
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(5px);
+  background-color: rgba(1, 1, 1, 0.6);
+}
+
+dialog p {
+  font-size: 1.4rem;
+  color: #313131;
+  font-style: italic;
+  font-weight: 600;
+}
+
+dialog h3 {
+  font-size: 2rem;
+}
+
+dialog img {
+  width: 400px;
+}
+
+dialog h4 {
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background: purple;
+  border-radius: 12px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+dialog h5 {
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: #313131;
+}
+
+dialog button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1.2rem;
+  background: rgba(0, 255, 102, 0.352);
+  border-radius: 1rem;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+}
+
+dialog button:hover {
+  background: rgba(6, 209, 87, 0.352);
+}
+
+.badges_list img:hover {
+  cursor: pointer;
+}

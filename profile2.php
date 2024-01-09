@@ -22,6 +22,16 @@ $user_email = $_SESSION['user_email'];
   <a href="home.html">
     <img class="logo" src="logo_transparent.png">
   </a>
+  <!-- ====== MODAL ====== -->
+  <dialog badge-modal>
+    <img src="wisdom_badge.png">
+    <h3>The Wisdom Badge</h3>
+    <h4>Exceptional</h4>
+    <h5>Date obtained: 09/01/24</h5>
+    <p class="badge_description">Can be obtained by reaching the abyssal tier of any of one's spheres.</p>
+    <button badge-close-modal>OK</button>
+  </dialog>
+  <!-- =================== -->
   <div class='container'>
     <nav id="nav-bar">
       <a class="nav-link" href="home.html">Home</a>
@@ -41,9 +51,9 @@ $user_email = $_SESSION['user_email'];
       <a>Email</a>
       <p id="email" ><?php echo $user_email; ?></p>
       <a id="logoutButton" class="red"><span>log out</span></a> 
-    </div>  
+    </div>
   </div>
-</body>               
+</body>
 
 <br><br><br><br>
 

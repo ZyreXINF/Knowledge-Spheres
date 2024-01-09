@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Subscription Perks</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <script type="module" src="upgradeScript.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -223,7 +225,7 @@
         </ul>
         <p class="prev_price">1.99$</p>
         <p>1.49$</p>
-        <button onclick="subscribe('Gold')">Upgrade to Gold</button>
+        <button id="gold-button">Upgrade to Gold</button>
       </div>
 
       <div class="subscription-plan" id="diamond">
@@ -239,7 +241,7 @@
         </ul>
         <p class="prev_price">6.99$</p>
         <p>4.99$</p>
-        <button onclick="subscribe('Diamond')">Upgrade to Diamond</button>
+        <button id="diamond-button">Upgrade to Diamond</button>
       </div>
 
       <div class="subscription-plan" id="ruby">
@@ -254,7 +256,7 @@
         </ul>
         <p class="prev_price">3.99$</p>
         <p>2.99$</p>
-        <button onclick="subscribe('Ruby')">Upgrade to Ruby</button>
+        <button id="ruby-button">Upgrade to Ruby</button>
       </div>
     </div>
     <div class="section3">
@@ -264,11 +266,6 @@
       <a>☕</a><a href="https://www.buymeacoffee.com/knowledgespheres" target="_blank">Buy us a coffee</a>
     </div>
   </div>
-  <script>
-    function subscribe(plan) {
-      alert(`You have subscribed to the ${plan} plan! 🎉`);
-    }
-  </script>
 </body>
   
 </html>
