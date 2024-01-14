@@ -1,0 +1,162 @@
+XAMPP [icon: command] {
+  Apache Module
+  MySQL  Module
+}
+
+Localhost [icon: command] {
+  Knowledge_Spheres Website
+}
+
+home [icon: code ] {
+home,html page
+indexstyle,css design
+script,js script
+logotransparent,png logo
+indexbg,jpg background 
+}
+PHP_Files [icon: code ] {
+coockieform,php
+cookie-mySpheres,php
+registerform,php
+loginform,php
+fetchbadges,php
+badgesform,php
+fetchspheres,php
+mySpheresform,php
+fetchspheresconfiguration,php
+updateconfigurationform,php
+deletesphere,php
+spherechange,php
+updatetierform,php
+updatevolumeform,php
+
+
+}
+Profile [icon: code ] {
+profile,php page
+profilestyle,css design
+profile,js script
+logotransparent,png logo
+}
+MySpheres[icon: code ] {
+myspheres,html page
+myspheresstyle,css design
+mySpheresScript script
+myspheresbg,jpg background
+logotransparent,png logo
+}
+
+Sphere [icon: code ] {
+mySphere,php page  
+spherestyle,css design
+sphere,js script
+droplet,png icon
+pour,png icon
+waterfall,png icon
+rain,png icon
+indexbg,jpg background
+logotransparent,png logo
+}
+
+About [icon: code ] {
+about,html page
+aboutstyle,css design
+indexbg,jpg background
+logotransparent,png logo
+}
+
+Upgrade [icon: code ] {
+upgrade,html page
+upgradeScript,js script
+upgradebg,jpg background
+logotransparent,png logo
+}
+
+Contact [icon: code ] {
+contact,html page
+contactstyle,css design
+contactbg,jpg background
+logotransparent,png logo
+}
+
+Registration [icon: code ] {
+register,html page
+registrationstyle,css design
+registerScript,js script
+}
+
+Login [icon: code ] {
+login,html page
+registrationstyle,css design
+}
+
+Transitional_HTML_Files[icon: code ] {
+termandconditions,html page
+thankyou,html page
+alert_register,html page
+alert_login,html page
+}
+
+Additions [icon: code ] {
+LogoutOption function
+}
+//Hosting
+XAMPP.MySQL - Localhost.Knowledge_Spheres
+Localhost.Knowledge_Spheres - home.home,html
+//------
+//Navigation bar
+home.home,html - PHP_Files.coockieform,php
+home.home,html - PHP_Files.cookiemySpheres,php
+home.home,html - About.about,html
+home.home,html - Upgrade.upgrade,html
+home.home,html - Contact.contact,html
+//------
+//Registration
+PHP_Files.coockieform,php - Registration.register,html
+Registration.register,html - Transitional_HTML_Files.alert_register,html
+Transitional_HTML_Files.alert_register,html - Registration.register,html
+Registration.register,html - PHP_Files.registerform,php
+PHP_Files.registerform,php - Login.login,html
+Login.login,html - Login.loginform,php
+Login.loginform,php - Transitional_HTML_Files.alert_login,html
+Transitional_HTML_Files.alert_login,html - Login.loginform,php
+
+//------
+Login.loginform,php - Profile.profile,php
+//Profile
+Profile.profile,php - Profile.profile,js
+Profile.profile,js - PHP_Files.fetchbadges,php
+Profile.profile,js - Additions.LogoutOption
+//------
+//MySpheres
+PHP_Files.cookiemySpheres,php - MySpheres.myspheres,html
+
+MySpheres.mySpheresScript,js  - PHP_Files.mySpheresform,php
+MySpheres.mySpheresScript,js  - PHP_Files.deletesphere,php
+
+MySpheres.mySpheresScript,js - PHP_Files.fetchspheresconfiguration,php
+
+MySpheres.mySpheresScript,js - PHP_Files.updateconfigurationform,php
+MySpheres.mySpheresScript,js - PHP_Files.spherechange,php
+
+//------
+MySpheres.mySpheresScript,js - Sphere.mySphere,php
+//Sphere
+Sphere.mySphere,php - Sphere.sphere,js
+
+Sphere.sphere,js - PHP_Files.updatetierform,php
+Sphere.sphere,js - PHP_Files.updatevolumeform,php  
+//------
+//Upgrade
+Upgrade.upgrade,html - Upgrade.upgradeScript,js
+Upgrade.upgradeScript,js - PHP_Files.badgesform,php
+
+//-----
+
+//About
+//Empty
+//-----
+
+//Contact
+Contact.contact,html - Additions.thankyou,html
+//------

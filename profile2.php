@@ -24,11 +24,11 @@ $user_email = $_SESSION['user_email'];
   </a>
   <!-- ====== MODAL ====== -->
   <dialog badge-modal>
-    <img src="wisdom_badge.png">
-    <h3>The Wisdom Badge</h3>
-    <h4>Exceptional</h4>
-    <h5>Date obtained: 09/01/24</h5>
-    <p class="badge_description">Can be obtained by reaching the abyssal tier of any of one's spheres.</p>
+    <img id="imageElement" src="wisdom_badge.png">
+    <h3 id="nameElement">You don't need to see it</h3>
+    <h4 id="rarityElement">You don't need to see it</h4>
+    <h5 id="obtainmentDate" >You don't need to see it</h5>
+    <p id ="badgeDescriptionElement"class="badge_description">You don't need to see it.</p>
     <button badge-close-modal>OK</button>
   </dialog>
   <!-- =================== -->

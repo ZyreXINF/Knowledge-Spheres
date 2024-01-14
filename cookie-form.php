@@ -24,7 +24,7 @@ if(!isset($_COOKIE[$cookie_name])) {
   $query_name=" SELECT * FROM registration WHERE email = '$_COOKIE[$cookie_name]' ";
   
   $result=mysqli_query($conn, $query_name); 
-  $row = mysqli_fetch_array($result);
+  $row = mysqli_fetch_array($result); 
   $user_name = $row[1];
   $user_email = $row[2];
   $_SESSION['user_name'] = $user_name;
