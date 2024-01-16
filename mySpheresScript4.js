@@ -7,9 +7,19 @@ var page_limit = 5;
 
 var openedSphereName;
 
+var button_idx = 1;
+
+var buttons = {
+  1: "cfg_pour",
+  2: "cfg_waterfall",
+  3: "cfg_rain"
+}
+
 // LOADING THE SPHERES BACK TO THE PAGE ON_LOAD - - - - - - - - - -
 
 $(window).on('load', function() {
+  disableButtonsOnLoad();
+  document.getElementById("add-button0").style.opacity=0;
   console.log('Page has completely loaded');
   $.ajax({
     type: "GET",
@@ -26,15 +36,44 @@ $(window).on('load', function() {
   });
 });
 
+function disableButtonsOnLoad(){
+  for(var i = 1; i < 4; i++){
+    var button = document.getElementById("add-button" + i);
+    if (i > button_idx){
+      button.disabled = true;
+      button.innerHTML = '-';
+    }
+    var buttonElements = document.getElementsByClassName("button_element" + i); 
+    for(var j = 0; j < buttonElements.length; j++){
+      buttonElements[j].style.opacity = 0;
+    }
+  }
+}
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 $(document).ready(function () {
   $("#submitBtn").on("click", function () {
-    saveToDB();
+    saveSphereToDB();
     return false;
   });
   $("#save-changes").on("click", function() {
-    saveChanges(); //not ready, php needed
+    saveSphereConfiguration(); 
+    return false;
+  });
+  $("#add-button1").on("click", function() {
+    document.getElementById(buttons[button_idx]).value= buttons[button_idx].substr(4, buttons[button_idx].length);
+    addButton();
+    return false;
+  });
+  $("#add-button2").on("click", function() {
+    document.getElementById(buttons[button_idx]).value= buttons[button_idx].substr(4, buttons[button_idx].length);
+    addButton();
+    return false;
+  });
+  $("#add-button3").on("click", function() {
+    document.getElementById(buttons[button_idx]).value= buttons[button_idx].substr(4, buttons[button_idx].length);
+    addButton();
     return false;
   });
 });
@@ -57,14 +96,14 @@ function deleteFromDB(sphereName){
 
 // SAVING THE NEWLY CREATED SPHERE TO THE DATABASE
 
-function saveToDB() {
+function saveSphereToDB() {
   const sphereName = document.querySelector("#txt").value; 
   $.ajax({
     type: "POST",
     url: 'mySpheres-form.php?sphereName='+sphereName,
     success: function () {
       addElement(sphereName);
-      console.log("data successfully saved");
+      console.log("sphere successfully saved");
     },
     error: function (error) {
       console.error("Error saving data:", error);
@@ -74,7 +113,7 @@ function saveToDB() {
 
 // SAVING THE SPHERE'S CONFIGURATION CHANGES TO THE DATABASE
 
-function saveChanges() {
+function saveSphereConfiguration() {
   var color = document.getElementById("colorPicker").value;
   var newName = document.getElementById("sphere_name").value;
   var meanings = [];
@@ -83,21 +122,21 @@ function saveChanges() {
   meanings.push(document.getElementById("cfg_waterfall").value);
   meanings.push(document.getElementById("cfg_rain").value);
   var description = document.getElementById("description").value;
-{
-  $.ajax({
-      type: "POST",
-      url: "update-configuration-form.php?color=" + encodeURIComponent(color) + "&new_sphere_name=" + encodeURIComponent(newName) +
-       "&old_sphere_name="+ encodeURIComponent(openedSphereName) +"&droplet=" + encodeURIComponent(meanings[0]) + "&pour=" + encodeURIComponent(meanings[1]) +
-        "&waterfall=" + encodeURIComponent(meanings[2]) +
-        "&rain=" + encodeURIComponent(meanings[3]) + "&description=" + encodeURIComponent(description),
-      success: function (response){
-        console.log("action result: " + response);
-      },  
-      error: function (error) {
-        console.error("Error saving data:", error);
-      }
-  });
-}
+  {
+    $.ajax({
+        type: "POST",
+        url: "update-configuration-form.php?color=" + encodeURIComponent(color) + "&new_sphere_name=" + encodeURIComponent(newName) +
+        "&old_sphere_name="+ encodeURIComponent(openedSphereName) +"&droplet=" + encodeURIComponent(meanings[0]) + "&pour=" + encodeURIComponent(meanings[1]) +
+          "&waterfall=" + encodeURIComponent(meanings[2]) +
+          "&rain=" + encodeURIComponent(meanings[3]) + "&description=" + encodeURIComponent(description),
+        success: function (response){
+          console.log("action result: " + response);
+        },  
+        error: function (error) {
+          console.error("Error saving data:", error);
+        }
+    });
+  }
 }
 
 // FETCHING THE SPHERE'S CONFIGURATION CHANGES FROM THE DATABASE
@@ -143,6 +182,34 @@ dialog.addEventListener("click", e => {
     dialog.close()
   }
 })
+
+// BUTTON CONFIG VISIBILITY
+
+// algo: Set all the buttons' opacity to 0 if their indeces are greater than or equal to button_idx.
+// Create a minus html element.
+// Create a plus html element.
+
+function addButton(){
+  var button = document.getElementById("add-button" + button_idx);
+  button.innerHTML = "-";
+  button.setAttribute("id", "delete-button"+button_idx);
+  var buttonElements = document.getElementsByClassName("button_element" + button_idx); 
+  for(var i = 0; i < buttonElements.length; i++){
+    buttonElements[i].style.opacity = 1;
+  }
+  if(button_idx == 2 || button_idx == 3){
+    var temp = button_idx;
+    button = document.getElementById("delete-button"+(--temp));
+    button.style.opacity = 0;
+    button.disabled = true;
+  }
+  if(button_idx<3){
+    button = document.getElementById("add-button" + (++button_idx));
+    button.innerHTML = "+"
+    button.disabled = false;
+  }
+}
+
 
 // CREATING A NEW SPHERE
 
@@ -191,6 +258,8 @@ function addElement(sphereName){
           openedSphereName = resultName;
           
           fetchSpheresConfig(function (values) {
+            button_idx = 1;
+            
             modal.showModal();
             title.blur();
 
@@ -201,6 +270,15 @@ function addElement(sphereName){
             document.getElementById("cfg_waterfall").value = values[3];
             document.getElementById("cfg_rain").value = values[4];
             document.getElementById("description").value = values[5];
+
+            for(var i = 2; i < 5; i++){
+              if(values[i]!='none'){
+                addButton();
+              }
+              else {
+                break;
+              }
+            }
           });      
         });
 

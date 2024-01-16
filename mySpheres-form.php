@@ -38,14 +38,15 @@ $result_user_id = mysqli_stmt_get_result($stmt_user_id);
 $row_user_id = mysqli_fetch_row($result_user_id);
 $user_id = $row_user_id[0];
 
-$query_save = "INSERT INTO spheres (name, color, droplet, pour, waterfall, rain, description, volume, tier, user_id) VALUES (?, ?, ?, ?,?, ?, ?, ?, ?, ?)";
+$query_save = "INSERT INTO spheres (name, color, droplet, pour, waterfall, rain, description, volume, tier, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = mysqli_stmt_init($conn);
 
 if (!mysqli_stmt_prepare($stmt, $query_save)) {
     die(mysqli_error($conn));
 }
 
-mysqli_stmt_bind_param($stmt, "ssssssdsi", $name, $color, $droplet, $pour, $waterfall, $rain, $description, $volume, $tier, $user_id);
+$none = "none";
+mysqli_stmt_bind_param($stmt, "sssssssdsi", $name, $color, $droplet, $none, $none, $none, $description, $volume, $tier, $user_id);
 mysqli_stmt_execute($stmt);
 
 ?>

@@ -46,7 +46,7 @@
     <!-- === MODAL === -->
     <div class="modal">
       <!-- <button data-open-modal>Open</button> -->
-      <dialog data-modal>
+      <dialog data-modal id="modal">
         <div class="container1">
           <button data-close-modal>X</button>
           </button>
@@ -60,23 +60,27 @@
         <hr>
         <div class="config">
           <div class="row1">
-            <img src="droplet1.png"></img>
-            <p>=</p>
-            <input type='text' id="cfg_droplet" value='droplet'>
+            <img class="button_element0" src="droplet1.png"></img>
+            <p class="button_element0">=</p>
+            <button id="add-button0">+</button>
+            <input class="button_element0" type='text' id="cfg_droplet" value='droplet'>
 
-            <img class="margin-right" src="pour1.png"></img>
-            <p>=</p>
-            <input type='text' id="cfg_pour" value='pour'>
+            <img class="margin-right button_element1" src="pour1.png"></img>
+            <p class="button_element1">=</p>
+            <button id="add-button1">+</button>
+            <input class="button_element1" type='text' id="cfg_pour" value='pour'>
           </div>
           <br><br>
           <div class="row2">
-            <img src="pour_wide1.png"></img>
-            <p>=</p>
-            <input type='text' id="cfg_waterfall" value='waterfall'>
+            <img class="button_element2" src="pour_wide1.png"></img>
+            <p class="button_element2">=</p>
+            <button id="add-button2">+</button>
+            <input class="button_element2" type='text' id="cfg_waterfall" value='waterfall'>
 
-            <img class="margin-right" src="rain1.png"></img>
-            <p>=</p>
-            <input type='text' id="cfg_rain" value='rain'>
+            <img class="margin-right button_element3" src="rain1.png"></img>
+            <p class="button_element3">=</p>
+            <button id="add-button3">+</button>
+            <input class="button_element3" type='text' id="cfg_rain" value='rain'>
           </div>
         </div>
         <hr>
@@ -98,17 +102,6 @@
 </head>
 <body>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-      var popupContainer = document.getElementById('popup-container');
-
-      // Shows popup
-      popupContainer.style.display = 'block';
-
-      // Sets timeout to hide the popup for however long u want it.
-      setTimeout(function () {
-          popupContainer.style.display = 'none';
-      }, 35000); // 10000 milliseconds is 10 seconds btw
-  });
 </script>
 <!-- ================== -->
 </body>

@@ -440,3 +440,16 @@ ul li span {
   border-top-right-radius: 18px;
   border-bottom-right-radius: 18px;
 }
+
+#add-button0,
+#add-button1,
+#add-button2,
+#add-button3,
+#delete-button0,
+#delete-button1,
+#delete-button2,
+#delete-button3 {
+  border-radius: 8px;
+  background: none;
+  font-size: 1rem;
+}
