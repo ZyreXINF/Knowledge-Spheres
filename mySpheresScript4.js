@@ -8,8 +8,7 @@ var page_limit = 5;
 var openedSphereName;
 
 var button_idx = 1;
-
-var buttons = {
+var inputFieldIds = {
   1: "cfg_pour",
   2: "cfg_waterfall",
   3: "cfg_rain"
@@ -19,8 +18,11 @@ var buttons = {
 
 $(window).on('load', function() {
   disableButtonsOnLoad();
+  addButtonListeners();
+  addDeleteButtonListeners();
+
   document.getElementById("add-button0").style.opacity=0;
-  console.log('Page has completely loaded');
+
   $.ajax({
     type: "GET",
     url: "fetch-spheres.php",
@@ -34,19 +36,53 @@ $(window).on('load', function() {
       console.error('Error:', error);
     }
   });
+
+  console.log('Page has completely loaded');
 });
 
 function disableButtonsOnLoad(){
   for(var i = 1; i < 4; i++){
-    var button = document.getElementById("add-button" + i);
+    var add_button = document.getElementById("add-button" + i);
     if (i > button_idx){
-      button.disabled = true;
-      button.innerHTML = '-';
+      add_button.disabled = true;
+      add_button.style.opacity = 0.4;
+    }else if (i == button_idx){
+      add_button.disabled = false;
+      add_button.style.opacity = 1;
     }
     var buttonElements = document.getElementsByClassName("button_element" + i); 
     for(var j = 0; j < buttonElements.length; j++){
       buttonElements[j].style.opacity = 0;
     }
+  }
+}
+
+function clearDeleteButtons(){
+  var delete_button;
+  for(var i = 0; i < 4; i++){
+    delete_button = document.getElementById("delete_element_button" + i);
+    delete_button.style.opacity = 0;
+    delete_button.disabled = true;
+  }
+}
+
+function addButtonListeners(){
+  for(var i = 1; i < 4; i++){
+    var addBttn = document.getElementById("add-button" + i);
+    addBttn.addEventListener("click", e => {
+      addButton();
+    })
+  }
+}
+function addDeleteButtonListeners() {
+  for (var i = 0; i < 4; i++) {
+    var deleteBttn = document.getElementById("delete_element_button" + i);
+
+    (function (index) {
+      deleteBttn.addEventListener("click", function (e) {
+        deleteButton(index);
+      });
+    })(i);
   }
 }
 
@@ -59,21 +95,6 @@ $(document).ready(function () {
   });
   $("#save-changes").on("click", function() {
     saveSphereConfiguration(); 
-    return false;
-  });
-  $("#add-button1").on("click", function() {
-    document.getElementById(buttons[button_idx]).value= buttons[button_idx].substr(4, buttons[button_idx].length);
-    addButton();
-    return false;
-  });
-  $("#add-button2").on("click", function() {
-    document.getElementById(buttons[button_idx]).value= buttons[button_idx].substr(4, buttons[button_idx].length);
-    addButton();
-    return false;
-  });
-  $("#add-button3").on("click", function() {
-    document.getElementById(buttons[button_idx]).value= buttons[button_idx].substr(4, buttons[button_idx].length);
-    addButton();
     return false;
   });
 });
@@ -191,25 +212,72 @@ dialog.addEventListener("click", e => {
 
 function addButton(){
   var button = document.getElementById("add-button" + button_idx);
-  button.innerHTML = "-";
-  button.setAttribute("id", "delete-button"+button_idx);
-  var buttonElements = document.getElementsByClassName("button_element" + button_idx); 
+  var buttonElements = document.getElementsByClassName("button_element" + button_idx);
+
   for(var i = 0; i < buttonElements.length; i++){
     buttonElements[i].style.opacity = 1;
   }
-  if(button_idx == 2 || button_idx == 3){
-    var temp = button_idx;
-    button = document.getElementById("delete-button"+(--temp));
-    button.style.opacity = 0;
-    button.disabled = true;
+  
+  var currentId = inputFieldIds[button_idx];
+  var inputField = document.getElementById(currentId);
+  inputField.value = currentId.substr(4, currentId.length);
+
+  button.style.opacity = 0;
+  button.disabled = true;
+
+  var deleteButton = document.getElementById("delete_element_button" + (button_idx));
+  deleteButton.style.opacity = 1;
+  deleteButton.disabled = false;
+
+  if(button_idx>1){
+    deleteButton = document.getElementById("delete_element_button" + (button_idx-1));
+    deleteButton.style.opacity = 0;
+    deleteButton.disabled = true;
   }
-  if(button_idx<3){
+
+  if(button_idx < 3){
     button = document.getElementById("add-button" + (++button_idx));
     button.innerHTML = "+"
     button.disabled = false;
+    button.style.opacity = 1;
   }
 }
 
+function deleteButton(index){
+  var deleteButton = document.getElementById("delete_element_button" + index);
+  deleteButton.style.opacity = 0;
+  deleteButton.disabled = true;
+
+  if(index > 1){
+    deleteButton = document.getElementById("delete_element_button" + (index-1));
+    deleteButton.style.opacity = 1;
+    deleteButton.disabled = false;
+  }
+
+  var currentId = inputFieldIds[button_idx];
+  var inputField = document.getElementById(currentId);
+  inputField.value = "none";
+
+  var buttonElements = document.getElementsByClassName("button_element" + index);
+
+  for(var i = 0; i < buttonElements.length; i++){
+    buttonElements[i].style.opacity = 0;
+  }
+
+  var addButton = document.getElementById("add-button" + index);
+  addButton.style.opacity = 1;
+  addButton.disabled = false;
+
+  if(index < 3){
+    addButton = document.getElementById("add-button" + (index+1));
+    addButton.style.opacity = 0.4;
+    addButton.disabled = false;
+  }
+
+  if(button_idx>1){
+    button_idx = button_idx - 1;
+  }
+}
 
 // CREATING A NEW SPHERE
 
@@ -259,7 +327,10 @@ function addElement(sphereName){
           
           fetchSpheresConfig(function (values) {
             button_idx = 1;
-            
+
+            clearDeleteButtons();
+            disableButtonsOnLoad();
+
             modal.showModal();
             title.blur();
 

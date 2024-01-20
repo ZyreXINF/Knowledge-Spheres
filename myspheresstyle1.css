@@ -320,14 +320,17 @@ dialog p {
 
 .config input {
   font-size: 1rem;
-  background: none;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 32px 0px;
   font-family: 'Poppins', sans-serif;
   width: 6rem;
   height: 1.4rem;
-  border-radius: 6px;
+  border-radius: 12px;
   text-align: center;
   height: 2rem;
   width: 10rem;
+  outline: none;
+  border: none;
 }
 
 .config {
@@ -373,12 +376,15 @@ dialog p {
 
 .description textarea {
   font-size: 1rem;
-  background: none;
   font-family: 'Poppins', sans-serif;
   height: auto;
   width: auto;
   border-radius: 6px;
   resize: none;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 32px 0px;
+  border: none;
+  outline: none;
 }
 
 .description {
@@ -402,13 +408,16 @@ dialog p {
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: 1.2rem;
-  background: rgba(0, 255, 102, 0.352);
+  color: white;
+  background: #0621f8;
   border-radius: 1rem;
   font-family: 'Poppins', sans-serif;
+  border: none;
+  outline: none;
 }
 
 .save-changes:hover {
-  background: rgba(6, 209, 87, 0.352);
+  background: rgb(8, 30, 193);
 }
 
 .configuration {
@@ -450,6 +459,28 @@ ul li span {
 #delete-button2,
 #delete-button3 {
   border-radius: 8px;
-  background: none;
+  background: #0621f8;
+  font-size: 1.4rem;
+  color: white;
+  border: none;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 10px 32px 0px;
+}
+
+#delete_element_button1,
+#delete_element_button2,
+#delete_element_button3 {
+  border-radius: 8px;
+  background: rgb(225, 61, 61);
+  color: white;
+  border: none;
+  outline: none;
+  padding-top: 3px;
+  padding-bottom: 3px;
   font-size: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 10px 32px 0px;
+}
+
+#delete_element_button0 {
+  opacity: 0;
 }

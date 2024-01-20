@@ -50,7 +50,9 @@ $user_email = $_SESSION['user_email'];
       </div>
       <a>Email</a>
       <p id="email" ><?php echo $user_email; ?></p>
-      <a id="logoutButton" class="red"><span>log out</span></a> 
+      <br>
+      <br>
+      <button id="logoutButton">log out</button> 
     </div>
   </div>
 </body>

@@ -227,7 +227,7 @@ footer p {
 a span {
   color: red;
   text-decoration: underline;
-  font-size: 20px;
+  font-size: 23px;
   text-decoration: none;
 }
 
@@ -307,4 +307,23 @@ dialog button:hover {
 
 .badges_list img:hover {
   cursor: pointer;
+}
+
+#logoutButton {
+  display: inline-block;
+  padding: 10px 20px; 
+  background-color: #eb1212; 
+  color: #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+#username,
+#email {
+  color: #273ef0;
+  font-size: 1.5rem;
 }
