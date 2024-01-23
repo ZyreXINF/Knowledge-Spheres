@@ -136,13 +136,13 @@ function saveSphereToDB() {
 
 function saveSphereConfiguration() {
   var color = document.getElementById("colorPicker").value;
-  var newName = document.getElementById("sphere_name").value;
+  var newName = document.getElementById("sphere_name").value.replace(/(<([^>]+)>)/ig, "");
   var meanings = [];
-  meanings.push(document.getElementById("cfg_droplet").value);
-  meanings.push(document.getElementById("cfg_pour").value);
-  meanings.push(document.getElementById("cfg_waterfall").value);
-  meanings.push(document.getElementById("cfg_rain").value);
-  var description = document.getElementById("description").value;
+  meanings.push(document.getElementById("cfg_droplet").value.replace(/(<([^>]+)>)/ig, ""));
+  meanings.push(document.getElementById("cfg_pour").value.replace(/(<([^>]+)>)/ig, ""));
+  meanings.push(document.getElementById("cfg_waterfall").value.replace(/(<([^>]+)>)/ig, ""));
+  meanings.push(document.getElementById("cfg_rain").value.replace(/(<([^>]+)>)/ig, ""));
+  var description = document.getElementById("description").value.replace(/(<([^>]+)>)/ig, "");
   {
     $.ajax({
         type: "POST",
@@ -254,7 +254,7 @@ function deleteButton(index){
     deleteButton.disabled = false;
   }
 
-  var currentId = inputFieldIds[button_idx];
+  var currentId = inputFieldIds[index];
   var inputField = document.getElementById(currentId);
   inputField.value = "none";
 
@@ -284,7 +284,7 @@ function deleteButton(index){
 function addElement(sphereName){
   var existingElements = document.getElementsByClassName('sphereName');
   existingElements = Array.from(existingElements);
-
+  
   var alreadyCreated = false;
   if(existingElements.length != null){
     for(let i = 0; i<existingElements.length; i++){
@@ -336,10 +336,6 @@ function addElement(sphereName){
 
             document.getElementById("sphere_name").value = openedSphereName;
             document.getElementById("colorPicker").value = values[0];
-            document.getElementById("cfg_droplet").value = values[1];
-            document.getElementById("cfg_pour").value = values[2];
-            document.getElementById("cfg_waterfall").value = values[3];
-            document.getElementById("cfg_rain").value = values[4];
             document.getElementById("description").value = values[5];
 
             for(var i = 2; i < 5; i++){
@@ -350,6 +346,10 @@ function addElement(sphereName){
                 break;
               }
             }
+            document.getElementById("cfg_droplet").value = values[1];
+            document.getElementById("cfg_pour").value = values[2];
+            document.getElementById("cfg_waterfall").value = values[3];
+            document.getElementById("cfg_rain").value = values[4];
           });      
         });
 

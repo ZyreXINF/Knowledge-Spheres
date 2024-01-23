@@ -7,4 +7,4 @@ if (isset($_GET['spherename'])) {
     echo 'Error: not working: sphere_change.php';
 }
 
-header("location:mySphere2.php?sphere_name=" . urlencode($sphere_name));
+header("location:mySphere2.html?sphere_name=" . urlencode($sphere_name));

@@ -35,11 +35,12 @@ var color = document.getElementById("color").value;
 var sphere = document.querySelector(".wave");
 sphere.style.backgroundColor = color;
 
-
 $(window).on('load', function() {
   console.log('Page has completely loaded');
-  update_tier();
-  //update_volume(0);
+
+  fetchDataOnLoad();
+
+  // document.getElementById("sbmtBtn2").style.opacity = 0.3;
 });
 
 $(document).ready(function () {
@@ -61,6 +62,54 @@ $(document).ready(function () {
   });
 });
 
+function fetchDataOnLoad(){
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  let sphere_name = urlParams.get('sphere_name');
+
+  $.ajax({
+    type: "GET",
+    url: "fetch-sphere-onload.php?sphere_name="+encodeURIComponent(sphere_name),
+    success: function (responseArray) {
+      console.log("successful action: volume update");
+
+      let parsedArray = JSON.parse(responseArray);
+
+      let nameElement = document.getElementById("name");
+      nameElement.innerHTML = sphere_name;
+
+      let colorElement = document.getElementById("color");
+      colorElement.value = parsedArray[0];
+      color = colorElement.value;
+      sphere.style.backgroundColor = parsedArray[0];
+
+      let volumeElemnt = document.getElementById("incrementable");
+      volumeElemnt.innerHTML = parsedArray[5];
+
+      //SENDING A PART OF AN ARRAY THAT CONTAINS ONLY THE BUTTONS
+      setButtons(Array.from([parsedArray[2],parsedArray[3],parsedArray[4]]));
+
+      update_volume(0);
+    },
+    error: function (error) {
+      console.error("Error occured:", error);
+    }
+  });
+}
+
+function setButtons(buttonsArray){
+  console.log(buttonsArray);
+  for(let i = 0; i < buttonsArray.length; i++){
+    if(buttonsArray[i] == 'none'){
+      let buttonElement = document.getElementById("sbmtBtn"+(i+2));
+      buttonElement.style.opacity = 0.3;
+      buttonElement.disabled = true;
+    }
+  }
+}
+
+
+//UPDATE VOLUME IN THE DATABASE
 function updateVolume(volumeToAdd) {
   var nameContent = document.getElementById("name").innerHTML;
   console.log("innerHTML of the element: ", nameContent);
