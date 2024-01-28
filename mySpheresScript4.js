@@ -118,18 +118,22 @@ function deleteFromDB(sphereName){
 // SAVING THE NEWLY CREATED SPHERE TO THE DATABASE
 
 function saveSphereToDB() {
-  const sphereName = document.querySelector("#txt").value; 
-  $.ajax({
-    type: "POST",
-    url: 'mySpheres-form.php?sphereName='+sphereName,
-    success: function () {
-      addElement(sphereName);
-      console.log("sphere successfully saved");
-    },
-    error: function (error) {
-      console.error("Error saving data:", error);
-    }
-  });
+  if (page_amount < page_limit) {
+    const sphereName = document.querySelector("#txt").value; 
+    $.ajax({
+      type: "POST",
+      url: 'mySpheres-form.php?sphereName='+sphereName,
+      success: function () {
+        addElement(sphereName);
+        console.log("sphere successfully saved");
+      },
+      error: function (error) {
+        console.error("Error saving data:", error);
+      }
+    });
+  }else{
+    document.querySelector("#txt").value = "";
+  }
 }
 
 // SAVING THE SPHERE'S CONFIGURATION CHANGES TO THE DATABASE
@@ -229,7 +233,7 @@ function addButton(){
   deleteButton.style.opacity = 1;
   deleteButton.disabled = false;
 
-  if(button_idx>1){
+  if(button_idx > 1){
     deleteButton = document.getElementById("delete_element_button" + (button_idx-1));
     deleteButton.style.opacity = 0;
     deleteButton.disabled = true;

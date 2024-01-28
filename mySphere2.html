@@ -13,6 +13,41 @@
 
   <script type="module" src="sphere4.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  
+  <style>
+    .button-block {
+      margin-top: 7rem;
+      z-index: 1;
+    }
+
+    .button-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px; /* Add margin to separate each button-container */
+    }
+
+    .button-container button {
+      margin-right: 10px; /* Add margin to separate button and h2 */
+    }
+
+    .button-container h2 {
+      transition: opacity 0.5s ease-in-out; /* Add a transition for smooth fading */
+      opacity: 0; /* Set text to be invisible by default */
+    }
+
+    /* Define animation keyframes */
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -30,10 +65,25 @@
     </div>
 
     <div class="button-block">
-      <button class="button-block-button-0" id="sbmtBtn1"></button>
-      <button class="button-block-button-1" id="sbmtBtn2"></button>
-      <button class="button-block-button-2" id="sbmtBtn3"></button>
-      <button class="button-block-button-3" id="sbmtBtn4"></button>
+      <div class="button-container">
+        <button class="button-block-button-0" id="sbmtBtn1"></button>
+        <h2 id="meaning1">+1 Variable</h2>
+      </div>
+      
+      <div class="button-container">
+        <button class="button-block-button-1" id="sbmtBtn2"></button>
+        <h2 id="meaning2">+1 Variable</h2>
+      </div>
+    
+      <div class="button-container">
+        <button class="button-block-button-2" id="sbmtBtn3"></button>
+        <h2 id="meaning3">+1 Variable</h2>
+      </div>
+    
+      <div class="button-container">
+        <button class="button-block-button-3" id="sbmtBtn4"></button>
+        <h2 id="meaning4">+1 Variable</h2>
+      </div>
     </div>
   </div>
   <div class="tier">

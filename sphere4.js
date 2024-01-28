@@ -46,18 +46,22 @@ $(window).on('load', function() {
 $(document).ready(function () {
   $("#sbmtBtn1").on("click", function () {
     updateVolume(0.1);
+    triggerAnimation(1);
     return false;
   });
   $("#sbmtBtn2").on("click", function () {
     updateVolume(1);
+    triggerAnimation(2);
     return false;
   });
   $("#sbmtBtn3").on("click", function () {
     updateVolume(3);
+    triggerAnimation(3);
     return false;
   });
   $("#sbmtBtn4").on("click", function () {
     updateVolume(5);
+    triggerAnimation(4);
     return false;
   });
 });
@@ -87,7 +91,7 @@ function fetchDataOnLoad(){
       volumeElemnt.innerHTML = parsedArray[5];
 
       //SENDING A PART OF AN ARRAY THAT CONTAINS ONLY THE BUTTONS
-      setButtons(Array.from([parsedArray[2],parsedArray[3],parsedArray[4]]));
+      setButtons(Array.from([parsedArray[1],parsedArray[2],parsedArray[3],parsedArray[4]]));
 
       update_volume(0);
     },
@@ -99,9 +103,12 @@ function fetchDataOnLoad(){
 
 function setButtons(buttonsArray){
   console.log(buttonsArray);
+  let buttonElement, buttonMeaning;
   for(let i = 0; i < buttonsArray.length; i++){
-    if(buttonsArray[i] == 'none'){
-      let buttonElement = document.getElementById("sbmtBtn"+(i+2));
+    buttonMeaning = document.getElementById("meaning"+(i+1));
+    buttonMeaning.innerHTML = "+1 " + buttonsArray[i];
+    if(buttonsArray[i+1] == 'none'){
+      buttonElement = document.getElementById("sbmtBtn"+(i+2));
       buttonElement.style.opacity = 0.3;
       buttonElement.disabled = true;
     }
@@ -281,4 +288,14 @@ function animateObject() {
   setTimeout(function() {
     element.style.width = initialWidth + 'px';
   }, 1000);
+}
+
+// TEXT ANIMATION
+
+function triggerAnimation(buttonIndex) {
+  let element = document.getElementById("meaning" + buttonIndex);
+  element.style.opacity = 1;
+  setTimeout(() => {
+    element.style.opacity = 0;
+  }, 500);
 }

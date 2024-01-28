@@ -193,10 +193,10 @@ nav a:hover {
   cursor: pointer;
 }
 
-.button-block {
+/* .button-block {
   margin-top: 7rem;
   z-index: 1;
-}
+} */
 
 .button-block-button-0 {
   width: 6rem;
