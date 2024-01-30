@@ -22,7 +22,7 @@ $user_email = $_SESSION['user_email'];
   <a href="home.html">
     <img class="logo" src="logo_transparent.png">
   </a>
-  <!-- ====== MODAL ====== -->
+  <!-- ====== BADGE INSPECTION MODAL ====== -->
   <dialog badge-modal>
     <img id="imageElement" src="wisdom_badge.png">
     <h3 id="nameElement">You don't need to see it</h3>
@@ -30,6 +30,12 @@ $user_email = $_SESSION['user_email'];
     <h5 id="obtainmentDate" >You don't need to see it</h5>
     <p id ="badgeDescriptionElement"class="badge_description">You don't need to see it.</p>
     <button badge-close-modal>OK</button>
+  </dialog>
+  <!-- ====== EDIT PROFILE MODAL ====== -->
+  <dialog settings-modal>
+    <p>Change Username</p>
+    <p>Change Password</p>
+    <button settings-close-modal>OK</button>
   </dialog>
   <!-- =================== -->
   <div class='container'>
@@ -41,10 +47,22 @@ $user_email = $_SESSION['user_email'];
       <a class="nav-link" href="upgrade.html">Upgrade</a>
       <a class="nav-link" href="contact1.html">Contact</a>
     </nav>
-    <h1>Profile</h1>
     <div class="profile">
-      <a>Name</a>
-      <p id="username"><?php echo $user_name; ?></p>
+      <div class="row1">
+        <img class="pfp" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+        <p id="username"><?php echo $user_name; ?></p>
+      </div>
+      <hr>
+      <div class="row2">
+        <img class="graph_img" src="https://cdn-icons-png.freepik.com/512/1270/1270360.png">
+        <div class="graph_info">
+          <p>📅 Date joined: <span class="blue">01/01/2024</span></p>
+          <p>📖 Spheres created: <span class="blue">0</span></p>
+          <p>🔥 Current streak: <span class="blue">0 days</span></p>
+          <button class="graph_button">See more ></button>
+        </div>
+      </div>
+      <hr>
       <a>Badges</a>
       <div class="badges_list" id="badges_list">
       </div>
@@ -52,7 +70,8 @@ $user_email = $_SESSION['user_email'];
       <p id="email" ><?php echo $user_email; ?></p>
       <br>
       <br>
-      <button id="logoutButton">log out</button> 
+      <button class="settings_button">⚙️ Settings</button>
+      <!-- <button id="logoutButton">log out</button>  -->
     </div>
   </div>
 </body>

@@ -133,7 +133,7 @@ p {
 }
 
 .profile {
-  margin-top: auto;
+  margin-top: 2rem;
   margin-left: auto;
   width: auto;
   height: auto;
@@ -326,4 +326,82 @@ dialog button:hover {
 #email {
   color: #273ef0;
   font-size: 1.5rem;
+}
+
+.row1 {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.pfp {
+  width: 8rem;
+  height: 8rem;
+  display: inline-block;
+  vertical-align: middle; 
+  margin-right: 2rem;
+  border-radius: 12px;
+}
+
+#username {
+  display: inline-block; 
+  vertical-align: middle; 
+  color: black;
+  font-size: 2.2rem;
+}
+
+.row2 {
+  text-align: center;
+}
+
+.graph_img {
+  width: 16rem;
+  height: 12rem;
+  display: inline-block;
+  margin-right: 6rem;
+  filter: blur(0.6rem);
+}
+
+.graph_button {
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  background-color: #0621f8;
+  text-decoration: none;
+  border: none;
+  color: white;
+  padding: 17px;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.graph_info {
+  display: inline-block;
+}
+
+.graph_info p {
+  color: black;
+}
+
+.settings_button {
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  background-color: #0621f8;
+  text-decoration: none;
+  border: none;
+  color: white;
+  padding: 17px;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 2rem;
 }
