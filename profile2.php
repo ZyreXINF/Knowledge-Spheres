@@ -37,7 +37,12 @@ $user_email = $_SESSION['user_email'];
     <p>Change Password</p>
     <button settings-close-modal>OK</button>
   </dialog>
-  <!-- =================== -->
+  <!--  ====== PFP CHANGE MODAL====== -->
+  <dialog pfp-modal>
+    <p></p>
+    <button pfp-close-modal>OK</button>
+  </dialog>
+
   <div class='container'>
     <nav id="nav-bar">
       <a class="nav-link" href="home.html">Home</a>
@@ -49,7 +54,7 @@ $user_email = $_SESSION['user_email'];
     </nav>
     <div class="profile">
       <div class="row1">
-        <img class="pfp" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+        <img id="pfp" class="pfp" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
         <p id="username"><?php echo $user_name; ?></p>
       </div>
       <hr>

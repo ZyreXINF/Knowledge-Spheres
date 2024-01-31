@@ -35,31 +35,57 @@ var nameRarityMapping = {
   "beta_user_badge": "Common"
 }
 
-$(window).on('load', function() {
-  console.log('Page has completely loaded');
-  loadBadges();
-});
-
 // BADGE MODAL
 
-const dialog = document.querySelector("dialog");
-const close_button = document.querySelector("[badge-close-modal]");
+const badge_dialog = document.querySelector("[badge-modal]");
+const badgeD_close_button = document.querySelector("[badge-close-modal]");
 
-close_button.addEventListener("click", () => {
-  dialog.close();
+badgeD_close_button.addEventListener("click", () => {
+  badge_dialog.close();
 })
 
-dialog.addEventListener("click", e => {
-  const dialogDimensions = dialog.getBoundingClientRect()
+badge_dialog.addEventListener("click", e => {
+  const dialogDimensions = badge_dialog.getBoundingClientRect()
   if (
     e.clientX < dialogDimensions.left ||
     e.clientX > dialogDimensions.right ||
     e.clientY < dialogDimensions.top ||
     e.clientY > dialogDimensions.bottom
   ) {
-    dialog.close()
+    badge_dialog.close()
   }
 })
+
+// PFP CHANGE MODAL
+
+const pfp_dialog = document.querySelector("[pfp-modal]");
+const pfpD_close_button = document.querySelector("[pfp-close-modal]");
+
+pfpD_close_button.addEventListener("click", () => {
+  pfp_dialog.close();
+})
+
+pfp_dialog.addEventListener("click", e => {
+  const dialogDimensions = pfp_dialog.getBoundingClientRect()
+  if (
+    e.clientX < dialogDimensions.left ||
+    e.clientX > dialogDimensions.right ||
+    e.clientY < dialogDimensions.top ||
+    e.clientY > dialogDimensions.bottom
+  ) {
+    pfp_dialog.close()
+  }
+})
+
+const pfp_element = document.getElementById("pfp");
+pfp_element.addEventListener("click", e => {
+  pfp_dialog.showModal();
+})
+
+$(window).on('load', function() {
+  console.log('Page has completely loaded');
+  loadBadges();
+});
 
 $(document).ready(function () {
   // LOGGING OUT
@@ -131,5 +157,5 @@ function setModalData(obtainmentDate, badge_name){
 
   document.getElementById("badgeDescriptionElement").innerHTML = descriptions[badge_name];
 
-  dialog.showModal();
+  badge_dialog.showModal();
 }
