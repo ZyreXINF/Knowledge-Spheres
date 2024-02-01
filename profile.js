@@ -80,15 +80,80 @@ pfp_dialog.addEventListener("click", e => {
 const pfp_element = document.getElementById("pfp");
 pfp_element.addEventListener("click", e => {
   pfp_dialog.showModal();
+  pfp_dialog.scrollTop = 0;
 })
+
+// FRAME CHANGE MODAL
+
+const frame_dialog = document.querySelector("[frame-modal]");
+const frame_close_button = document.querySelector("[frame-close-modal]");
+
+frame_close_button.addEventListener("click", () => {
+  frame_dialog.close();
+})
+
+frame_dialog.addEventListener("click", e => {
+  const dialogDimensions = frame_dialog.getBoundingClientRect()
+  if (
+    e.clientX < dialogDimensions.left ||
+    e.clientX > dialogDimensions.right ||
+    e.clientY < dialogDimensions.top ||
+    e.clientY > dialogDimensions.bottom
+  ) {
+    frame_dialog.close()
+  }
+})
+
+const frame_element = document.getElementById("frame");
+frame_element.addEventListener("click", e => {
+  frame_dialog.showModal();
+  frame_dialog.scrollTop = 0;
+})
+
+// ON LOAD
+
+let current_pfp = 1;
+let current_frame = 0;
 
 $(window).on('load', function() {
   console.log('Page has completely loaded');
   loadBadges();
+
+  // loading pfps
+  for (let i = 1; i < 16; i++) {
+    let new_list_element = document.createElement("a");
+    new_list_element.innerHTML = '<img class="pfp_list_element" src="pfp' + i + '.png">' + '</img>';
+    let element = document.getElementById("pfp_list");
+    
+    new_list_element.addEventListener("click", e => {
+      // save the pfp idx to the db
+      current_pfp = i;
+      pfp_dialog.close();
+      update_pfp(i);
+    })
+
+    element.appendChild(new_list_element);
+  }
+
+  //loading frames
+  for (let j = 0; j < 9; j++) {
+    let new_list_element = document.createElement("a");
+    new_list_element.innerHTML = '<img class="frame_list_element" src="frame' + j + '.png">' + '</img>';
+    let element = document.getElementById("frame_list");
+    
+    new_list_element.addEventListener("click", e => {
+      // save the pfp idx to the db
+      current_frame = j;
+      frame_dialog.close();
+      update_frame(j);
+    })
+
+    element.appendChild(new_list_element);
+  }
 });
 
 $(document).ready(function () {
-  // LOGGING OUT
+  // logging out
   $("#logoutButton").on("click", function () {
     var confirmLogout = confirm("Are you sure you want to logout? 😢");
     if(confirmLogout){
@@ -98,6 +163,53 @@ $(document).ready(function () {
     return false;
   });
 });
+
+// PFP UPDATE
+
+function update_pfp(idx) {
+  pfp_element.src='pfp' + idx + '.png';
+  return;
+}
+
+// FRAME UPDATE
+
+function update_frame(idx) {
+  let frame_image = document.getElementById('pfp_frame');
+  if (idx == 0){
+    frame_image.style.opacity = 0;
+  }
+  else {
+    frame_image.style.opacity = 1;
+    frame_image.src='frame' + idx + '.png';
+  }
+  return;
+}
+
+// SETTINGS MODAL
+
+const settings_dialog = document.querySelector("[settings-modal]");
+const settings_close_button = document.querySelector("[settings-close-modal]");
+
+settings_close_button.addEventListener("click", () => {
+    settings_dialog.close();
+})
+
+settings_dialog.addEventListener("click", e => {
+  const dialogDimensions = settings_dialog.getBoundingClientRect()
+  if (
+    e.clientX < dialogDimensions.left ||
+    e.clientX > dialogDimensions.right ||
+    e.clientY < dialogDimensions.top ||
+    e.clientY > dialogDimensions.bottom
+  ) {
+    settings_dialog.close()
+  }
+})
+
+const settings_button = document.getElementById("settings_button");
+settings_button.addEventListener("click", e => {
+  settings_dialog.showModal();
+})
 
 // LOADING BADGES
 
@@ -141,7 +253,7 @@ function fetchBadgeDescription(badge_name){
   });
 }
 
-//SETTING THE BADGE DATA AND OPENING IT
+// SETTING THE BADGE DATA AND OPENING IT
 
 function setModalData(obtainmentDate, badge_name){
 
