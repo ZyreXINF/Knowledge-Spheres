@@ -405,3 +405,147 @@ hr {
   cursor: pointer;
   margin-bottom: 2rem;
 }
+
+[settings-modal] p {
+  font-style: normal;
+}
+
+[settings-modal] button {
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  background-color: #0621f8;
+  text-decoration: none;
+  border: none;
+  color: white;
+  padding: 17px;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+[settings-modal] button:hover {
+  background-color: #0a1eb5;
+}
+
+[settings-modal] a {
+  font-family: 'Poppins', sans-serif;
+  color: black;
+  text-align: right;
+  margin-top: -1rem;
+  font-size: 2.9rem;
+  margin-bottom: -3.6rem;
+  background: none;
+  border: none;
+  float: right;
+  cursor: pointer;
+}
+
+[settings-modal] a:hover {
+  font-size: 3rem;
+}
+
+.pfp_list_element {
+  width: 180px;
+  height: 180px;
+  padding: 1.2rem;
+  border-radius: 5rem;
+}
+
+[pfp-modal] button {
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  background-color: #0621f8;
+  text-decoration: none;
+  border: none;
+  color: white;
+  padding: 17px;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 4rem;
+}
+
+[pfp-modal] button:hover {
+  background-color: #04169e;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.pfp_frame {
+  width: 8rem;
+  height: 8rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.row1 {
+  text-align: center;
+  display: inline-block;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.row1 button {
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  outline: none;
+  background: #0621f8;
+  color: white;
+  padding: 0.2rem;
+  font-size: 1rem;
+  position: relative; /* Change to relative */
+  top: 3.14rem; /* Adjust the top value as needed */
+  border-radius: 8px;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.row1 button:hover {
+  background: #04169e;
+}
+
+.frame_list_element {
+  width: 180px;
+  height: 180px;
+  padding: 1.2rem;
+  border-radius: 3rem;
+}
+
+.pfp {
+  cursor: pointer;
+}
+
+[frame-modal] button {
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  background-color: #0621f8;
+  text-decoration: none;
+  border: none;
+  color: white;
+  padding: 17px;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 4rem;
+}
+
+[frame-modal] button:hover {
+  background-color: #04169e;
+}
+
+#pfp_frame {
+  opacity: 0;
+}
