@@ -3,6 +3,7 @@ $user_name = $_SESSION['user_name'];
 $user_email = $_SESSION['user_email'];
 ?>
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -31,16 +32,24 @@ $user_email = $_SESSION['user_email'];
     <p id ="badgeDescriptionElement"class="badge_description">You don't need to see it.</p>
     <button badge-close-modal>OK</button>
   </dialog>
-  <!-- ====== EDIT PROFILE MODAL ====== -->
+  <!-- ====== SETTINGS MODAL ====== -->
   <dialog settings-modal>
+    <a settings-close-modal>X</a>
     <p>Change Username</p>
     <p>Change Password</p>
-    <button settings-close-modal>OK</button>
+    <button>Save</button>
   </dialog>
   <!--  ====== PFP CHANGE MODAL====== -->
   <dialog pfp-modal>
-    <p></p>
+    <div id="pfp_list">
+    </div>
     <button pfp-close-modal>OK</button>
+  </dialog>
+  <!-- ====== FRAME CHANGE MODAL ====== -->
+  <dialog frame-modal>
+    <div id="frame_list">
+    </div>
+    <button frame-close-modal>OK</button>
   </dialog>
 
   <div class='container'>
@@ -54,7 +63,11 @@ $user_email = $_SESSION['user_email'];
     </nav>
     <div class="profile">
       <div class="row1">
-        <img id="pfp" class="pfp" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+        <button frame-open-modal id="frame">⚙️ Frame</button>
+        <div class="image-container">
+          <img id="pfp" class="pfp" src="pfp1.png">
+          <img id="pfp_frame" class="pfp_frame" src="frame0.png">
+        </div>
         <p id="username"><?php echo $user_name; ?></p>
       </div>
       <hr>
@@ -75,7 +88,7 @@ $user_email = $_SESSION['user_email'];
       <p id="email" ><?php echo $user_email; ?></p>
       <br>
       <br>
-      <button class="settings_button">⚙️ Settings</button>
+      <button class="settings_button" id="settings_button">⚙️ Settings</button>
       <!-- <button id="logoutButton">log out</button>  -->
     </div>
   </div>
