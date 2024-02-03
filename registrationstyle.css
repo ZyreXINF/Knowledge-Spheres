@@ -5,7 +5,7 @@
   font-family: 'Poppins', sans-serif;
 }
 body{
-  background: url('indexbg.jpg');
+  background: url('loginbg.jpg');
   background-size: cover;
   overflow: hidden;
 }
@@ -235,3 +235,11 @@ form .signup-link a:hover{
   text-decoration: underline;
 }
 /* == */
+
+.signup-link span {
+  color: rgb(164, 6, 6);
+}
+
+.pass span {
+  color: rgb(164, 6, 6);
+}

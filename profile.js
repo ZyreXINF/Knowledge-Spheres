@@ -35,6 +35,8 @@ var nameRarityMapping = {
   "beta_user_badge": "Common"
 }
 
+var firstload = true;
+
 // BADGE MODAL
 
 const badge_dialog = document.querySelector("[badge-modal]");
@@ -79,6 +81,11 @@ pfp_dialog.addEventListener("click", e => {
 
 const pfp_element = document.getElementById("pfp");
 pfp_element.addEventListener("click", e => {
+  if(firstload){
+    loadPfps();
+    loadFrames();
+    firstload = false;
+  }
   pfp_dialog.showModal();
   pfp_dialog.scrollTop = 0;
 })
@@ -118,38 +125,8 @@ let current_frame = 0;
 $(window).on('load', function() {
   console.log('Page has completely loaded');
   loadBadges();
-
-  // loading pfps
-  for (let i = 1; i < 16; i++) {
-    let new_list_element = document.createElement("a");
-    new_list_element.innerHTML = '<img class="pfp_list_element" src="pfp' + i + '.png">' + '</img>';
-    let element = document.getElementById("pfp_list");
-    
-    new_list_element.addEventListener("click", e => {
-      // save the pfp idx to the db
-      current_pfp = i;
-      pfp_dialog.close();
-      update_pfp(i);
-    })
-
-    element.appendChild(new_list_element);
-  }
-
-  //loading frames
-  for (let j = 0; j < 9; j++) {
-    let new_list_element = document.createElement("a");
-    new_list_element.innerHTML = '<img class="frame_list_element" src="frame' + j + '.png">' + '</img>';
-    let element = document.getElementById("frame_list");
-    
-    new_list_element.addEventListener("click", e => {
-      // save the pfp idx to the db
-      current_frame = j;
-      frame_dialog.close();
-      update_frame(j);
-    })
-
-    element.appendChild(new_list_element);
-  }
+  let frame_picture = document.getElementById('pfp_frame');
+  frame_picture.style.opacity = 0;
 });
 
 $(document).ready(function () {
@@ -221,7 +198,7 @@ function loadBadges(){
     success: function(data) {
       for(let i = 0; i < data.length; i++){
         const new_list_element = document.createElement("a");
-        new_list_element.innerHTML = '<img id="badgeElement'+i+'" src="' + data[i].name + '.png" width="60" height="60">' + '</img>';
+        new_list_element.innerHTML = '<img id="badgeElement'+i+'" src="' + data[i].name + '.png" width="80" height="80">' + '</img>';
         const element = document.getElementById("badges_list");
         
         new_list_element.addEventListener("click", e => {
@@ -235,6 +212,41 @@ function loadBadges(){
       console.error('Error:', error);
     }
   });
+}
+
+function loadPfps(){
+  for (let i = 1; i < 19; i++) {
+    let new_list_element = document.createElement("a");
+    new_list_element.innerHTML = '<img class="pfp_list_element" src="pfp' + i + '.png">' + '</img>';
+    let element = document.getElementById("pfp_list");
+    
+    new_list_element.addEventListener("click", e => {
+      // save the pfp idx to the db
+      current_pfp = i;
+      pfp_dialog.close();
+      update_pfp(i);
+    })
+
+    element.appendChild(new_list_element);
+  }
+  
+}
+
+function loadFrames(){
+  for (let j = 0; j < 9; j++) {
+    let new_list_element = document.createElement("a");
+    new_list_element.innerHTML = '<img class="frame_list_element" src="frame' + j + '.png">' + '</img>';
+    let element = document.getElementById("frame_list");
+    
+    new_list_element.addEventListener("click", e => {
+      // save the pfp idx to the db
+      current_frame = j;
+      frame_dialog.close();
+      update_frame(j);
+    })
+
+    element.appendChild(new_list_element);
+  }
 }
 
 //FETCHING THE BADGE DESCRIPTION 

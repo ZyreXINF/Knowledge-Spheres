@@ -1,9 +1,11 @@
 <?php
 session_start();
 
-$email = $_POST["userEmail"];
-$name = $_POST["userName"];
-$userPassword = $_POST["userPassword"];
+$email = $_REQUEST["userEmail"];
+$name = $_REQUEST["userName"];
+$userPassword = md5($_REQUEST["userPassword"]);
+$pfp = "pfp0";
+$frame = "none";
 
 $host = "localhost";
 $dbname = "kb_info_db";
@@ -25,25 +27,25 @@ if (!mysqli_stmt_prepare($stmt, $sql)) {
 }
 
 mysqli_stmt_bind_param($stmt, "s", $email); 
-mysqli_stmt_execute($stmt);
+mysqli_stmt_execute($stmt);  
 
 $result = mysqli_stmt_get_result($stmt);
 $row = mysqli_fetch_assoc($result);
 
-if ($row && $_SESSION['email'] == $row['email']) { 
+if ($row && $_SESSION['email'] == $row['email']) {
     echo json_encode("false");
 } else {
-    $sql2 = "INSERT INTO registration (name, email, userPassword) VALUES (?, ?, ?)";
-
+    $sql2 = "INSERT INTO registration (name, email, userPassword, pfp, frame) VALUES (?, ?, ?, ?, ?)";
+    
     $stmt2 = mysqli_stmt_init($conn);
-
+    
     if (!mysqli_stmt_prepare($stmt2, $sql2)) {
-        die(mysqli_error($conn)); 
+        die(mysqli_error($conn));
     }
-
-    mysqli_stmt_bind_param($stmt2, "sss", $name, $email, $userPassword);
+    
+    mysqli_stmt_bind_param($stmt2, "sssss", $name, $email, $userPassword, $pfp, $frame);
     mysqli_stmt_execute($stmt2);
-
+    
     echo json_encode("true");
 }
 

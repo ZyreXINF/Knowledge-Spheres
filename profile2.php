@@ -37,7 +37,9 @@ $user_email = $_SESSION['user_email'];
     <a settings-close-modal>X</a>
     <p>Change Username</p>
     <p>Change Password</p>
-    <button>Save</button>
+    <button id="logoutButton">log out</button>
+    <br>
+    <button id="save_button">Save</button>
   </dialog>
   <!--  ====== PFP CHANGE MODAL====== -->
   <dialog pfp-modal>
@@ -51,7 +53,7 @@ $user_email = $_SESSION['user_email'];
     </div>
     <button frame-close-modal>OK</button>
   </dialog>
-
+<!--  ===== USERNAME CHANGE ===== --> 
   <div class='container'>
     <nav id="nav-bar">
       <a class="nav-link" href="home.html">Home</a>
@@ -89,7 +91,6 @@ $user_email = $_SESSION['user_email'];
       <br>
       <br>
       <button class="settings_button" id="settings_button">⚙️ Settings</button>
-      <!-- <button id="logoutButton">log out</button>  -->
     </div>
   </div>
 </body>

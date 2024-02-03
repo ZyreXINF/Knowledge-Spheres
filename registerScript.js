@@ -4,17 +4,11 @@ document.getElementsByTagName('head')[0].appendChild(script);
 
 $(document).ready(function () {
     $("#submitBtn").on("click", function () {
-        // var emailElement = document.getElementById("userEmail");
-        // var email = emailElement.value;
-        // var nameElement = document.getElementById("userName");
-        // var name = nameElement.value;
-        // var userPasswordElement = document.getElementById("userPassword");
-        // var userPassword = userPasswordElement.value;
-        
         var email = document.getElementById("userEmail").value;
         var name = document.getElementById("userName").value;
         var userPassword = document.getElementById("userPassword").value;
         saveData(email, name, userPassword);
+
         return false;
     });
 });
@@ -26,14 +20,13 @@ function saveData(email, name, password){
     );
     $.ajax({
         type: "POST",
-        url: "register-form.php",
+        url: "register-form.php?userEmail="+email+"&userName="+name+"&userPassword="+password,
         dataType: "json",
-        data: {userEmail: email, userName: name, userPassword: password},
         success: function (jsonData) {
             if(jsonData == "true"){
-                window.location.replace(window.location.href + "/login.html");
+                window.location.href = "login.html";
             }else if(jsonData == "false"){
-                window.location.replace(window.location.href + "/alert_register.html");
+                window.location.href = "alert_register.html";
             } 
         },
         error: function (error) {
