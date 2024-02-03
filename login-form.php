@@ -12,7 +12,7 @@ $conn = mysqli_connect($host, $username, $password, $dbname);
 
 
 $email = mysqli_real_escape_string($conn, $_GET['email']);
-$userPassword = $_GET["userPassword"];
+$userPassword = md5($_GET["userPassword"]);
 
 $sql = " SELECT * FROM registration WHERE email = '$email' AND userPassword = '$userPassword' ";
 
