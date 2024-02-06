@@ -3,10 +3,6 @@ session_start();
 
 $cookie_name = "user";
 
-$pfp = $_REQUEST["pfp"];
-$frame = $_REQUEST["frame"];
-$user_id = $_REQUEST["pfp"];
-
 $host = "localhost";
 $dbname = "kb_info_db";
 $username = "root";
@@ -31,15 +27,18 @@ $result_user_id = mysqli_stmt_get_result($stmt_user_id);
 $row_user_id = mysqli_fetch_row($result_user_id);
 $user_id = $row_user_id[0];
 
-$query_save = "SELECT * FROM profiles WHERE user_id = $user_id";
-$stmt = mysqli_stmt_init($conn);
+$select_query = "SELECT pfp, frame FROM registration WHERE id = ?" ;
+$stmt_select = mysqli_stmt_init($conn);
 
-if (!mysqli_stmt_prepare($stmt, $query_save)) {
+if (!mysqli_stmt_prepare($stmt_select, $select_query)) {
     die(mysqli_error($conn));
 }
 
-$none = "none";
-mysqli_stmt_bind_param($stmt, "ss", $pfp, $frame);
-mysqli_stmt_execute($stmt);
+mysqli_stmt_bind_param($stmt_select, "i", $user_id);
+mysqli_stmt_execute($stmt_select);
+$result_customization = mysqli_stmt_get_result($stmt_select);
+$arr_customization = mysqli_fetch_assoc($result_customization);
+
+echo json_encode($arr_customization);
 
 ?>
