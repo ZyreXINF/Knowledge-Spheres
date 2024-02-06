@@ -13,7 +13,7 @@ var descriptions = {
   "diamond_badge": "Can be obtained by purchasing the diamond subscription.",
   "wisdom_badge": "Awarded for reaching the abyssal tier of any of one's spheres.",
   "early_supporter_badge": "Can be obtained by purchasing any subscription during the site's early development stage.",
-  "creativity_badge": "6+ Spheres on your account and it's all yours!",
+  "creativity_badge": "5+ Spheres on your account and it's all yours!",
   "beta_user_badge": "Awarded to everyone who used Knowledge Spheres during its early development stage."
 }
 var badgeNames = {
@@ -36,6 +36,31 @@ var nameRarityMapping = {
 }
 
 var firstload = true;
+
+// ON LOAD
+
+let current_pfp = 1;
+let current_frame = 0;
+
+$(window).on('load', function() {
+  console.log('Page has completely loaded');
+  loadBadges();
+  fetchCustomization();
+  let frame_picture = document.getElementById('pfp_frame');
+  frame_picture.style.opacity = 0;
+});
+
+$(document).ready(function () {
+  // logging out
+  $("#logoutButton").on("click", function () {
+    var confirmLogout = confirm("Are you sure you want to logout? 😢");
+    if(confirmLogout){
+      document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      window.location.href = "home.html";
+    }
+    return false;
+  });
+});
 
 // BADGE MODAL
 
@@ -83,7 +108,6 @@ const pfp_element = document.getElementById("pfp");
 pfp_element.addEventListener("click", e => {
   if(firstload){
     loadPfps();
-    loadFrames();
     firstload = false;
   }
   pfp_dialog.showModal();
@@ -113,44 +137,39 @@ frame_dialog.addEventListener("click", e => {
 
 const frame_element = document.getElementById("frame");
 frame_element.addEventListener("click", e => {
+  loadFrames();
   frame_dialog.showModal();
   frame_dialog.scrollTop = 0;
 })
 
-// ON LOAD
-
-let current_pfp = 1;
-let current_frame = 0;
-
-$(window).on('load', function() {
-  console.log('Page has completely loaded');
-  loadBadges();
-  let frame_picture = document.getElementById('pfp_frame');
-  frame_picture.style.opacity = 0;
-});
-
-$(document).ready(function () {
-  // logging out
-  $("#logoutButton").on("click", function () {
-    var confirmLogout = confirm("Are you sure you want to logout? 😢");
-    if(confirmLogout){
-      document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      window.location.href = "home.html";
-    }
-    return false;
-  });
-});
-
 // PFP UPDATE
 
-function update_pfp(idx) {
+function update_pfp(idx, saveNeeded) {
   pfp_element.src='pfp' + idx + '.png';
+  if(saveNeeded){
+    savePFPToDB(idx);
+  }
   return;
+}
+
+function savePFPToDB(index){
+  let pfpName = 'pfp' + index;
+  console.log(pfpName);
+  $.ajax({
+    type: "POST",
+    url: "save-pfp.php?pfp="+pfpName,
+    success: function() {
+      console.log("successfully updated pfp in the db");
+    },
+    error: function(error) {
+      console.error('Error:', error);
+    }
+  });
 }
 
 // FRAME UPDATE
 
-function update_frame(idx) {
+function update_frame(idx, saveNeeded) {
   let frame_image = document.getElementById('pfp_frame');
   if (idx == 0){
     frame_image.style.opacity = 0;
@@ -159,7 +178,25 @@ function update_frame(idx) {
     frame_image.style.opacity = 1;
     frame_image.src='frame' + idx + '.png';
   }
+  if(saveNeeded){
+    saveFrameToDB(idx);
+  }
   return;
+}
+
+function saveFrameToDB(index){
+  let frameName = 'frame' + index;
+  console.log(frameName);
+  $.ajax({
+    type: "POST",
+    url: "save-frame.php?frame="+frameName,
+    success: function() {
+      console.log("successfully updated frame in the db");
+    },
+    error: function(error) {
+      console.error('Error:', error);
+    }
+  });
 }
 
 // SETTINGS MODAL
@@ -186,6 +223,20 @@ settings_dialog.addEventListener("click", e => {
 const settings_button = document.getElementById("settings_button");
 settings_button.addEventListener("click", e => {
   settings_dialog.showModal();
+})
+
+const edit_username_button = document.getElementById("edit_username_button");
+const edit_email_button = document.getElementById("edit_email_button");
+
+const username_input = document.getElementById("username_input");
+const email_input = document.getElementById("email_input");
+
+edit_username_button.addEventListener("click", e => {
+  username_input.disabled = false;
+})
+
+edit_email_button.addEventListener("click", e => {
+  email_input.disabled = false;
 })
 
 // LOADING BADGES
@@ -224,12 +275,11 @@ function loadPfps(){
       // save the pfp idx to the db
       current_pfp = i;
       pfp_dialog.close();
-      update_pfp(i);
+      update_pfp(i, true);
     })
 
     element.appendChild(new_list_element);
   }
-  
 }
 
 function loadFrames(){
@@ -242,7 +292,7 @@ function loadFrames(){
       // save the pfp idx to the db
       current_frame = j;
       frame_dialog.close();
-      update_frame(j);
+      update_frame(j, true);
     })
 
     element.appendChild(new_list_element);
@@ -258,6 +308,28 @@ function fetchBadgeDescription(badge_name){
     dataType: "json",
     success: function(obtainmentDate) {
       setModalData(obtainmentDate, badge_name);
+    },
+    error: function(error) {
+      console.error('Error:', error);
+    }
+  });
+}
+
+//FETCHING THE CUSTOMIZATION 
+
+function fetchCustomization(){
+  $.ajax({
+    type: "GET",
+    url: "fetch-profile-customisation.php",
+    dataType: "json",
+    success: function(customization) {
+      let pfpIndex = customization["pfp"];
+      pfpIndex = pfpIndex.match(/\d+$/)[0];
+      update_pfp(pfpIndex, false);
+
+      let frameIndex = customization["frame"];
+      frameIndex = frameIndex.match(/\d+$/)[0];
+      update_frame(frameIndex, false);
     },
     error: function(error) {
       console.error('Error:', error);

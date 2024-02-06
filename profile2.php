@@ -35,12 +35,33 @@ $user_email = $_SESSION['user_email'];
   <!-- ====== SETTINGS MODAL ====== -->
   <dialog settings-modal>
     <a settings-close-modal>X</a>
-    <p>Change Username</p>
+    <h2>Username</h2>
+    <button class="edit_username_button" id="edit_username_button">edit</button>
+    <br>
+    <input class="username_input" id="username_input" disabled value=<?php echo $user_name; ?>></input>
+
+    <hr>
+
+    <h2>Email</h2>
+    <button class="edit_email_button" id="edit_email_button">edit</button>
+    <br>
+    <input class="email_input" id="email_input" disabled value=<?php echo $user_email; ?>></input>
+
+    <hr>
+
     <p>Change Password</p>
-    <button id="logoutButton">log out</button>
+
+    <div class="red_buttons">
+      <button id="logoutButton">Log out</button>
+      <button id="deleteAccountButton">Delete account</button>
+    </div>
+
+    <br>
+    <br>
     <br>
     <button id="save_button">Save</button>
   </dialog>
+
   <!--  ====== PFP CHANGE MODAL====== -->
   <dialog pfp-modal>
     <div id="pfp_list">
@@ -51,7 +72,7 @@ $user_email = $_SESSION['user_email'];
   <dialog frame-modal>
     <div id="frame_list">
     </div>
-    <button frame-close-modal>OK</button>
+    <button frame-close-modal id="frame_save_button">OK</button>
   </dialog>
 <!--  ===== USERNAME CHANGE ===== --> 
   <div class='container'>

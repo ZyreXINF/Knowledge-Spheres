@@ -309,19 +309,6 @@ dialog button:hover {
   cursor: pointer;
 }
 
-#logoutButton {
-  display: inline-block;
-  padding: 10px 20px; 
-  background-color: #eb1212; 
-  color: #ffffff;
-  border-radius: 12px;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  font-size: 1.4rem;
-  margin-bottom: 2rem;
-}
-
 #username,
 #email {
   color: #273ef0;
@@ -542,6 +529,62 @@ hr {
   margin-top: 4rem;
 }
 
+.red_buttons {
+  text-align: center;
+  display: inline;
+}
+
+.red_buttons > :first-child {
+  margin-right: 1rem;
+}
+
+.red_buttons button {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background: rgb(206, 0, 0);
+  color: #f5f5f5;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.red_buttons button:hover {
+  background: rgb(159, 0, 0);
+}
+
 [frame-modal] button:hover {
   background-color: #04169e;
+}
+
+[settings-modal] h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+}
+
+[settings-modal] button {
+  margin-top: -2rem;
+  margin-bottom: 3rem;
+  font-size: 1rem;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+[settings-modal] input {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  font-size: 1.4rem;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+#save_button {
+  font-size: 1.2rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 1rem;
 }
