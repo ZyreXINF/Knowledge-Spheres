@@ -222,14 +222,26 @@ settings_dialog.addEventListener("click", e => {
 
 const settings_button = document.getElementById("settings_button");
 settings_button.addEventListener("click", e => {
+  username_input.disabled = true;
+  email_input.disabled = true;
+  old_password_input.style.opacity = .5;
+  new_password_input.style.opacity = .5;
+  old_password_input.disabled = true;
+  new_password_input.disabled = true;
+  old_password_input.value = "";
+  new_password_input.value = "";
+
   settings_dialog.showModal();
 })
 
 const edit_username_button = document.getElementById("edit_username_button");
 const edit_email_button = document.getElementById("edit_email_button");
+const edit_password_button = document.getElementById("edit_password_button");
 
 const username_input = document.getElementById("username_input");
 const email_input = document.getElementById("email_input");
+const old_password_input = document.getElementById("old_password");
+const new_password_input = document.getElementById("new_password");
 
 edit_username_button.addEventListener("click", e => {
   username_input.disabled = false;
@@ -237,6 +249,13 @@ edit_username_button.addEventListener("click", e => {
 
 edit_email_button.addEventListener("click", e => {
   email_input.disabled = false;
+})
+
+edit_password_button.addEventListener("click", e => {
+  old_password_input.style.opacity = 1;
+  new_password_input.style.opacity = 1;
+  old_password_input.disabled = false;
+  new_password_input.disabled = false;
 })
 
 // LOADING BADGES
