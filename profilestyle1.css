@@ -582,9 +582,32 @@ hr {
   outline: none;
 }
 
-#save_button {
+#save_settings_button {
   font-size: 1.2rem;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 1rem;
+}
+
+.one_line input {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  font-size: 1.4rem;
+  text-decoration: none;
+  background: none;
+  margin-bottom: 2rem;
+  outline: solid;
+  border-radius: 10px;
+  padding: 0 6px 0 6px;
+  width: 12rem;
+  opacity: 0.5;
+}
+
+.one_line {
+  text-align: center;
+  display: inline;
+}
+
+.old_password {
+  margin-right: 2rem;
 }

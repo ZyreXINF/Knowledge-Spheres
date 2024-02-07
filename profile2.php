@@ -49,7 +49,15 @@ $user_email = $_SESSION['user_email'];
 
     <hr>
 
-    <p>Change Password</p>
+    <h2>Password</h2>
+    <button class="edit_password_button" id="edit_password_button">edit</button><br>
+    <div class="one_line">
+      <input disabled type="password" class="old_password" id="old_password" placeholder="Old password"></input>
+      <input disabled type="password" class="new_password" id="new_password" placeholder="New password"></input>
+    </div>
+
+    <hr>
+    <br>
 
     <div class="red_buttons">
       <button id="logoutButton">Log out</button>
@@ -59,7 +67,7 @@ $user_email = $_SESSION['user_email'];
     <br>
     <br>
     <br>
-    <button id="save_button">Save</button>
+    <button id="save_settings_button">Save</button>
   </dialog>
 
   <!--  ====== PFP CHANGE MODAL====== -->
