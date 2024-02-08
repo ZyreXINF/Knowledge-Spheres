@@ -5,7 +5,7 @@ $cookie_name = "user";
 $badge_name = $_REQUEST['badge_name'];
 
 $host = "localhost";
-$dbname = "kb_info_db";
+$dbname = "ks_db";
 $username = "root";
 $password = "";
 

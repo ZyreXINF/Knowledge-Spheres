@@ -11,7 +11,7 @@ if(!isset($_COOKIE[$cookie_name])) {
   // echo "Value is: " . $_COOKIE[$cookie_name];
 
   $host = "localhost";
-  $dbname = "kb_info_db";
+  $dbname = "ks_db";
   $username = "root";
   $password = "";
   

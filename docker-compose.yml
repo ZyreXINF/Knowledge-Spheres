@@ -10,7 +10,7 @@ services:
     environment:
       DB_HOST: "db"
       DB_PORT: 3306
-      DB_DATABASE: "kb_info_db"
+      DB_DATABASE: "ks_db"
       DB_USERNAME: "root"
       DB_PASSWORD: ""
 
@@ -19,5 +19,5 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: "kb_info_db"
+      MYSQL_DATABASE: "ks_db"
       MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
