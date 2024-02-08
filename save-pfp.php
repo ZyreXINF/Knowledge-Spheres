@@ -6,7 +6,7 @@ $cookie_name = "user";
 $pfp = $_REQUEST["pfp"];
 
 $host = "localhost";
-$dbname = "kb_info_db";
+$dbname = "ks_db";
 $username = "root";
 $password = "";
 

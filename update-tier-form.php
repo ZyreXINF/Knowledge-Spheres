@@ -6,7 +6,7 @@ $tier = $_POST['updatedTier'];
 $sphereName = $_POST['sphereName'];
 
 $host = "localhost";
-$dbname = "kb_info_db";
+$dbname = "ks_db";
 $username = "root";
 $password = "";
 

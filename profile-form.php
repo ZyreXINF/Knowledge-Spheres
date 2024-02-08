@@ -8,7 +8,7 @@ $frame = $_REQUEST["frame"];
 $user_id = $_REQUEST["pfp"];
 
 $host = "localhost";
-$dbname = "kb_info_db";
+$dbname = "ks_db";
 $username = "root";
 $password = "";
 

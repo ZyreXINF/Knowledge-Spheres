@@ -35,7 +35,8 @@ var nameRarityMapping = {
   "beta_user_badge": "Common"
 }
 
-var firstload = true;
+var firstloadPFP = true;
+var firstloadFrame = true;
 
 // ON LOAD
 
@@ -106,9 +107,9 @@ pfp_dialog.addEventListener("click", e => {
 
 const pfp_element = document.getElementById("pfp");
 pfp_element.addEventListener("click", e => {
-  if(firstload){
+  if(firstloadPFP){
     loadPfps();
-    firstload = false;
+    firstloadPFP = false;
   }
   pfp_dialog.showModal();
   pfp_dialog.scrollTop = 0;
@@ -137,7 +138,10 @@ frame_dialog.addEventListener("click", e => {
 
 const frame_element = document.getElementById("frame");
 frame_element.addEventListener("click", e => {
-  loadFrames();
+  if(firstloadFrame){
+    loadFrames();
+    firstloadFrame = false;
+  }
   frame_dialog.showModal();
   frame_dialog.scrollTop = 0;
 })

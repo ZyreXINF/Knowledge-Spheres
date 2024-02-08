@@ -6,7 +6,7 @@ $email = $_POST["email"];
 $userPassword = $_POST["userPassword"];
 
 $host = "localhost";
-$dbname = "kb_info_db";
+$dbname = "ks_db";
 $username = "root";
 $password = "";
 

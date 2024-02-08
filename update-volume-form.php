@@ -6,7 +6,7 @@ $volumeToAdd = $_REQUEST['volumeToAdd'];
 $sphereName = $_REQUEST['sphereName'];
 
 $host = "localhost";
-$dbname = "kb_info_db";
+$dbname = "ks_db";
 $username = "root";
 $password = "";
 

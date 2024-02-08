@@ -3,7 +3,7 @@ session_start();
 $cookie_name = "user";
 
 $host = "localhost";
-$dbname = "kb_info_db";
+$dbname = "ks_db";
 $username = "root";
 $password = "";
 

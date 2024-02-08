@@ -5,7 +5,7 @@ $cookie_name = "user";
 $sphereName = $_POST['sphereName'];
 
 $host = "localhost";
-$dbname = "kb_info_db";
+$dbname = "ks_db";
 $username = "root";
 $password = "";
 
