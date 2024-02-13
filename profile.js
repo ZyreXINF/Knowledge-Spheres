@@ -61,6 +61,10 @@ $(document).ready(function () {
     }
     return false;
   });
+  $("#save_settings_button").on("click", function () {
+    saveUserSecuritySettings();
+    return false;
+  });
 });
 
 // BADGE MODAL
@@ -205,6 +209,8 @@ function saveFrameToDB(index){
 
 // SETTINGS MODAL
 
+var password_changed = false, email_changed = false, username_changed = false;
+
 const settings_dialog = document.querySelector("[settings-modal]");
 const settings_close_button = document.querySelector("[settings-close-modal]");
 
@@ -249,10 +255,12 @@ const new_password_input = document.getElementById("new_password");
 
 edit_username_button.addEventListener("click", e => {
   username_input.disabled = false;
+  username_changed = true;
 })
 
 edit_email_button.addEventListener("click", e => {
   email_input.disabled = false;
+  email_changed = true;
 })
 
 edit_password_button.addEventListener("click", e => {
@@ -260,7 +268,104 @@ edit_password_button.addEventListener("click", e => {
   new_password_input.style.opacity = 1;
   old_password_input.disabled = false;
   new_password_input.disabled = false;
+  password_changed = true;
 })
+
+function saveUserSecuritySettings(){
+  if (username_changed || email_changed || password_changed) {
+    let file_url = "user-security-settings-save.php?";
+    let variables = {
+      "username": document.getElementById("username_input").value,
+      "email": document.getElementById("email_input").value,
+      "old_password": document.getElementById("old_password").value,
+      "new_password": document.getElementById("new_password").value
+    };
+
+    let changed_values_map = { username_changed: "username", email_changed: "email", password_changed: "password" };
+
+    // Iterate over keys in the object using Object.keys()
+    Object.keys(changed_values_map).forEach(key => {
+      if (changed_values_map[key] !== "password" && window[key]) { // Check if the corresponding boolean value is true
+        let value = variables[changed_values_map[key]];
+        // Remove '_changed' suffix from the key
+        key = key.replace("_changed", "");
+        file_url += `${key}=${value}&`;
+      } else if (key === "password_changed" && window[key]) { // Check if the corresponding boolean value is true
+        file_url += `old_password=${variables["old_password"]}&new_password=${variables["new_password"]}&`;
+      }
+    });
+
+    // Remove the trailing '&'
+    file_url = file_url.slice(0, -1);
+
+    console.log(file_url);
+  }
+
+  // if(username_changed || email_changed || password_changed){
+  //   let file_url = "user-security-settings-save.php?";
+
+  //   let variables = {
+  //     "username" : document.getElementById("username_input"), 
+  //     "email" : document.getElementById("email_input"),
+  //     "old_password" : document.getElementById("old_password"), 
+  //     "new_password" : document.getElementById("new_password")
+  //   }
+    
+  //   let changed_values_map = {username_changed : "username", email_changed : "email", password_changed : "password"};
+  //   let firstAdd = true;
+  //   for(let key of changed_values_map.keys()){
+  //     //insert into the file direction the parameters except the passwords
+  //     if(key && changed_values_map[key] != "password"){
+  //       let value = changed_values_map[key];
+  //       if(firstAdd){
+  //         file_url = file_url.concat(value, "=", variables[value]);
+  //         firstAdd = false;
+  //       }else{
+  //         file_url = file_url.concat("&", value, "=", variables[value]);
+  //       }
+
+  //     //
+  //     }else if (key && changed_values_map[key] == "password"){
+  //       if(firstAdd){
+  //         file_url = file_url.concat("old_password=", variables["old_password"]);
+  //         file_url = file_url.concat("&new_password=", variables["new_password"]);
+  //         firstAdd = false;
+  //       }else{
+  //         file_url = file_url.concat("&old_password=", variables["old_password"]);
+  //         file_url = file_url.concat("&new_password=", variables["new_password"]);
+  //       }
+  //     }
+  //   }
+  //   console.log(file_url);
+  
+    // if(password_changed){
+    //   let password;
+    //   $.ajax({
+    //     type: "GET",
+    //     url: "valid-password-handler.php?",
+    //     dataType: "json",
+    //     success: function(password) {
+          
+    //     },
+    //     error: function(error) {
+    //       console.error('Error:', error);
+    //     }
+    //   });
+    // }
+    // $.ajax({
+    //   type: "POST",
+    //   url: "",
+    //   dataType: "json",
+    //   success: function(data) {
+        
+    //   },
+    //   error: function(error) {
+    //     console.error('Error:', error);
+    //   }
+    // });
+  // }
+  
+}
 
 // LOADING BADGES
 

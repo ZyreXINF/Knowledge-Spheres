@@ -82,7 +82,6 @@ $user_email = $_SESSION['user_email'];
     </div>
     <button frame-close-modal id="frame_save_button">OK</button>
   </dialog>
-<!--  ===== USERNAME CHANGE ===== --> 
   <div class='container'>
     <nav id="nav-bar">
       <a class="nav-link" href="home.html">Home</a>
@@ -108,7 +107,7 @@ $user_email = $_SESSION['user_email'];
           <p>📅 Date joined: <span class="blue">01/01/2024</span></p>
           <p>📖 Spheres created: <span class="blue">0</span></p>
           <p>🔥 Current streak: <span class="blue">0 days</span></p>
-          <button class="graph_button">See more ></button>
+          <button class="graph_button" onclick="window.location.href='statistics.html'">See more ></button>
         </div>
       </div>
       <hr>
