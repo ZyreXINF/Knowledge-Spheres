@@ -1,0 +1,70 @@
+body {
+    text-align: center;
+    overflow-x: hidden;
+    background: url('contactbg.jpg');
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+.orange {
+    color: rgb(255, 115, 0);
+}
+
+.blue {
+    color: rgb(0, 68, 255);
+}
+
+nav {
+    text-align: center;
+    margin-top: 2.9rem;
+    text-transform: uppercase;
+}
+
+nav a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 100;
+    text-decoration: none;
+    margin: 0 30px;
+    padding: 10px 5px 15px 5px;
+    color: #313131;
+    font-size: 1rem;
+}
+
+nav a:hover {
+    color: #0621f8;
+    border-bottom: 2px solid #0621f8;
+}
+
+.container {
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+
+.logo {
+    width: 120px;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+  
+.logo:hover {
+    cursor: pointer;
+}
+
+a {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+  }

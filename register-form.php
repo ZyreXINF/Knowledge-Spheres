@@ -35,7 +35,7 @@ $row = mysqli_fetch_assoc($result);
 if ($row && $_SESSION['email'] == $row['email']) {
     echo json_encode("false");
 } else {
-    $sql2 = "INSERT INTO registration (name, email, userPassword, pfp, frame) VALUES (?, ?, ?, ?, ?)";
+    $sql2 = "INSERT INTO registration (name, email, userPassword, pfp, frame, info, did_do) VALUES (?, ?, ?, ?, ?, ?, ?)";
     
     $stmt2 = mysqli_stmt_init($conn);
     
@@ -43,7 +43,7 @@ if ($row && $_SESSION['email'] == $row['email']) {
         die(mysqli_error($conn));
     }
     
-    mysqli_stmt_bind_param($stmt2, "sssss", $name, $email, $userPassword, $pfp, $frame);
+    mysqli_stmt_bind_param($stmt2, "sssssss", $name, $email, $userPassword, $pfp, $frame);
     mysqli_stmt_execute($stmt2);
     
     echo json_encode("true");
