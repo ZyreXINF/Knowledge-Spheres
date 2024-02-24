@@ -62,7 +62,7 @@ $(document).ready(function () {
     return false;
   });
   $("#save_settings_button").on("click", function () {
-    saveUserSecuritySettings();
+    validateUserSecuritySettings();
     return false;
   });
 });
@@ -271,100 +271,68 @@ edit_password_button.addEventListener("click", e => {
   password_changed = true;
 })
 
-function saveUserSecuritySettings(){
-  if (username_changed || email_changed || password_changed) {
-    let file_url = "user-security-settings-save.php?";
-    let variables = {
-      "username": document.getElementById("username_input").value,
-      "email": document.getElementById("email_input").value,
-      "old_password": document.getElementById("old_password").value,
-      "new_password": document.getElementById("new_password").value
-    };
-
-    let changed_values_map = { username_changed: "username", email_changed: "email", password_changed: "password" };
-
-    // Iterate over keys in the object using Object.keys()
-    Object.keys(changed_values_map).forEach(key => {
-      if (changed_values_map[key] !== "password" && window[key]) { // Check if the corresponding boolean value is true
-        let value = variables[changed_values_map[key]];
-        // Remove '_changed' suffix from the key
-        key = key.replace("_changed", "");
-        file_url += `${key}=${value}&`;
-      } else if (key === "password_changed" && window[key]) { // Check if the corresponding boolean value is true
-        file_url += `old_password=${variables["old_password"]}&new_password=${variables["new_password"]}&`;
+function validateUserSecuritySettings(){
+  console.log("username: " + username_changed + " | email: " + email_changed + " | password: " + password_changed);
+  if(username_changed || email_changed || password_changed){
+    let file_url = "user-security-settings-save.php?";  
+    let firstAppend = true;
+    if(username_changed){
+      file_url = file_url + "userName=" + document.getElementById("username_input").value;
+      firstAppend = false;
+    }if(email_changed){
+      if(firstAppend){
+        file_url = file_url + "userEmail=" + document.getElementById("email_input").value;
+        firstAppend = false;
+      }else{
+        file_url = file_url + "&userEmail=" + document.getElementById("email_input").value;
       }
-    });
-
-    // Remove the trailing '&'
-    file_url = file_url.slice(0, -1);
-
-    console.log(file_url);
+    }if(password_changed){
+      //PASSWORD VALIDATION
+      validatePassword(function (password_validate_result){
+        console.log(password_validate_result);
+        if(password_validate_result){
+          console.log("valid password");
+          if(firstAppend){
+            file_url = file_url + "userPassword=" + document.getElementById("new_password").value;
+            firstAppend = false;
+          }else{
+            file_url = file_url + "&userPassword=" + document.getElementById("new_password").value;
+          }
+          saveSecurityData(file_url);
+        }
+      });
+    }else if(!password_changed){
+      saveSecurityData(file_url);
+    }
   }
+}
 
-  // if(username_changed || email_changed || password_changed){
-  //   let file_url = "user-security-settings-save.php?";
+function saveSecurityData(file_url){
+  console.log(file_url);
+  $.ajax({
+    type: "POST",
+    url: file_url,
+    success: function() {
+      console.log();
+    },
+    error: function(error) {
+      console.error('Error:', error);
+    }
+  });
+}
 
-  //   let variables = {
-  //     "username" : document.getElementById("username_input"), 
-  //     "email" : document.getElementById("email_input"),
-  //     "old_password" : document.getElementById("old_password"), 
-  //     "new_password" : document.getElementById("new_password")
-  //   }
-    
-  //   let changed_values_map = {username_changed : "username", email_changed : "email", password_changed : "password"};
-  //   let firstAdd = true;
-  //   for(let key of changed_values_map.keys()){
-  //     //insert into the file direction the parameters except the passwords
-  //     if(key && changed_values_map[key] != "password"){
-  //       let value = changed_values_map[key];
-  //       if(firstAdd){
-  //         file_url = file_url.concat(value, "=", variables[value]);
-  //         firstAdd = false;
-  //       }else{
-  //         file_url = file_url.concat("&", value, "=", variables[value]);
-  //       }
-
-  //     //
-  //     }else if (key && changed_values_map[key] == "password"){
-  //       if(firstAdd){
-  //         file_url = file_url.concat("old_password=", variables["old_password"]);
-  //         file_url = file_url.concat("&new_password=", variables["new_password"]);
-  //         firstAdd = false;
-  //       }else{
-  //         file_url = file_url.concat("&old_password=", variables["old_password"]);
-  //         file_url = file_url.concat("&new_password=", variables["new_password"]);
-  //       }
-  //     }
-  //   }
-  //   console.log(file_url);
-  
-    // if(password_changed){
-    //   let password;
-    //   $.ajax({
-    //     type: "GET",
-    //     url: "valid-password-handler.php?",
-    //     dataType: "json",
-    //     success: function(password) {
-          
-    //     },
-    //     error: function(error) {
-    //       console.error('Error:', error);
-    //     }
-    //   });
-    // }
-    // $.ajax({
-    //   type: "POST",
-    //   url: "",
-    //   dataType: "json",
-    //   success: function(data) {
-        
-    //   },
-    //   error: function(error) {
-    //     console.error('Error:', error);
-    //   }
-    // });
-  // }
-  
+function validatePassword(callback){
+  $.ajax({
+    type: "GET",
+    url: "password-validate.php?old_password="+document.getElementById("old_password").value,
+    dataType: "json",
+    success: function(bruh_is_ok) {
+      callback(bruh_is_ok);
+    },
+    error: function(error) {
+      console.error('Error:', error);
+    }
+  });
 }
 
 // LOADING BADGES

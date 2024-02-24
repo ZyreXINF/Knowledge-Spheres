@@ -1,8 +1,10 @@
 body {
     text-align: center;
     overflow-x: hidden;
-    background: url('contactbg.jpg');
     font-family: 'Poppins', sans-serif;
+    background-repeat: no-repeat;
+    background: url('contactbg.jpg');
+    background-size: cover;
 }
 
 h1 {
@@ -68,3 +70,20 @@ a {
     font-weight: 700;
     color: white;
   }
+
+.before_graph {
+    margin-bottom: 6rem;
+}
+
+.chart-container {
+    width: 80%; /* Adjust width as needed */
+    max-width: 600px; /* Optional: Set a maximum width */
+    margin: 0 auto;
+    padding-right: 1rem; /* Add this line to move the graph 2rem to the left */
+}
+
+
+#myChart {
+    width: 100%;
+    height: auto;
+}
