@@ -8,6 +8,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
   <script src="Analyse_Script.js"></script>
   <link href="statisticsstyle.css" rel="stylesheet" type="text/css" />
+  <script type="module" src="statistics.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
   <a href="home.html">
@@ -31,58 +33,6 @@
   <div class="chart-container">
     <canvas id="myChart" width="700" height="300"></canvas>
   </div>
-
-  <script>
-    // Data representing whether someone was active on days of the week (0 for inactive, 1 for active)
-    var activityData = [0, 1, 0, 1, 1, 0, 1]; // Assuming Monday is the first day of the week
-
-    // Labels for days of the week
-    var daysOfWeekLabels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-    // Create a new line chart
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: daysOfWeekLabels,
-        datasets: [{
-          label: 'Activity',
-          data: activityData,
-          borderColor: '#0621f8', // Blue color for the line
-          borderWidth: 2,
-          pointBackgroundColor: '#0214a3', // Blue color for the points
-          pointRadius: 5,
-          pointHoverRadius: 7,
-          fill: false, // Do not fill the area under the line
-          lineTension: 0 // Set line tension to 0 to make it straight
-        }]
-      },
-      options: {
-        legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [{
-            ticks: {
-              fontColor: '#333', // Dark grey color for x-axis labels
-            },
-            display: true,
-          }],
-          yAxes: [{
-            ticks: {
-              fontColor: '#333', // Dark grey color for y-axis labels
-              beginAtZero: true,
-              stepSize: 1,
-              suggestedMax: 1,
-              callback: function (value) {
-                return value === 1 ? 'Active' : 'Inactive';
-              }
-            },
-          }]
-        }
-      }
-    });
-  </script>
   <!-- HERE GOES THE DAYS GRAPH -->
   <br><br><br><br>
   <p>current day streak: <span class="orange" id="streak">0</span></p>

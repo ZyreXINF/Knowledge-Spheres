@@ -277,14 +277,14 @@ function validateUserSecuritySettings(){
     let file_url = "user-security-settings-save.php?";  
     let firstAppend = true;
     if(username_changed){
-      file_url = file_url + "userName=" + document.getElementById("username_input").value;
+      file_url = file_url + "userName=" + encodeURIComponent(document.getElementById("username_input").value);
       firstAppend = false;
     }if(email_changed){
       if(firstAppend){
-        file_url = file_url + "userEmail=" + document.getElementById("email_input").value;
+        file_url = file_url + "userEmail=" + encodeURIComponent(document.getElementById("email_input").value);
         firstAppend = false;
       }else{
-        file_url = file_url + "&userEmail=" + document.getElementById("email_input").value;
+        file_url = file_url + "&userEmail=" + encodeURIComponent(document.getElementById("email_input").value);
       }
     }if(password_changed){
       //PASSWORD VALIDATION
@@ -293,10 +293,10 @@ function validateUserSecuritySettings(){
         if(password_validate_result){
           console.log("valid password");
           if(firstAppend){
-            file_url = file_url + "userPassword=" + document.getElementById("new_password").value;
+            file_url = file_url + "userPassword=" + encodeURIComponent(document.getElementById("new_password").value);
             firstAppend = false;
           }else{
-            file_url = file_url + "&userPassword=" + document.getElementById("new_password").value;
+            file_url = file_url + "&userPassword=" + encodeURIComponent(document.getElementById("new_password").value);
           }
           saveSecurityData(file_url);
         }
@@ -312,8 +312,8 @@ function saveSecurityData(file_url){
   $.ajax({
     type: "POST",
     url: file_url,
-    success: function() {
-      console.log();
+    success: function(response) {
+      console.log(response + "\n"); 
     },
     error: function(error) {
       console.error('Error:', error);
