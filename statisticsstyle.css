@@ -76,14 +76,35 @@ a {
 }
 
 .chart-container {
-    width: 80%; /* Adjust width as needed */
-    max-width: 600px; /* Optional: Set a maximum width */
+    width: 100%; /* Adjust width as needed */
+    max-width: 800px; /* Optional: Set a maximum width */
     margin: 0 auto;
     padding-right: 1rem; /* Add this line to move the graph 2rem to the left */
 }
 
-
 #myChart {
     width: 100%;
     height: auto;
+}
+
+.p-container {
+    width: 700px; /* Sets the width of the container */
+    display: block;
+    margin: 0 auto; /* Centers the container horizontally */
+}
+
+p {
+    box-shadow: rgba(1, 1, 1, 0.1) 0px 10px 32px 0px;
+    background: rgba(255, 255, 255, 0.4);
+    font-size: 36px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: capitalize;
+    height: 80px;
+    line-height: 80px;
+    padding: 0 30px 0 20px; /* Adjusted padding */
+    position: relative;
+    display: block;
+    margin: 20px 0;
+    border-radius: 18px;
+    text-align: center;
 }

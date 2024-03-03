@@ -4,7 +4,9 @@ session_start();
 $cookie_name = "user";
 
 $info = $_REQUEST["info"];
-$did_do = $_REQUEST["DidDo"];
+$did_do = $_REQUEST["DidDo"]; 
+
+// REMOVE THE DILDO SHIT PLS
 
 $host = "localhost";
 $dbname = "ks_db";
@@ -30,12 +32,16 @@ $result_user_id = mysqli_stmt_get_result($stmt_user_id);
 $row_user_id = mysqli_fetch_row($result_user_id);
 $user_id = $row_user_id[0];
 
+// REMOVE THE DILDO SHIT PLS
+
 $query_save = "UPDATE registration SET info = ? WHERE did_do = ?";
 $stmt = mysqli_stmt_init($conn);
 
 if (!mysqli_stmt_prepare($stmt, $query_save)) {
     die(mysqli_error($conn));
 }
+
+// REMOVE THE DILDO SHIT PLS
 
 mysqli_stmt_bind_param($stmt, "si", $info, $did_do, $user_id);
 mysqli_stmt_execute($stmt);

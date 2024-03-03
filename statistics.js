@@ -6,7 +6,22 @@ document.getElementsByTagName('head')[0].appendChild(script);
 var activityData = [0, 1, 0, 1, 1, 0, 1, 0, 0 , 1]; // Assuming Monday is the first day of the week
 var daysOfWeekLabels = [];
 
-function setDates(){
+function setDates(callback){
+    $.ajax({
+        type: "GET",
+        url: "fetch-streak-sequence.php",
+        dataType: 'json',
+        success: function (data) {
+            for(let i = 0; i<10; i++){
+                let str = data[0];
+                activityData[i] = Number(str[i]);
+            }
+            callback();
+        },
+        error: function (error) {
+          console.error("Error occured:", error);
+        }
+      });
     // Labels for days of the week
     let today = new Date();
     for (let i = 9; i >= 0; i--){
@@ -16,6 +31,7 @@ function setDates(){
         daysOfWeekLabels.push(`${previousDate.getDate()}-${previousDate.getMonth()}`,);
     }
 }
+
 
 function createChart(){
     // Create a new line chart
@@ -66,9 +82,7 @@ function createChart(){
 
 $(window).on('load', function() {
   console.log('Page has completely loaded');
-  setDates();
-  createChart();
+  setDates(function (){
+    createChart();
+  });
 });
-
-
-

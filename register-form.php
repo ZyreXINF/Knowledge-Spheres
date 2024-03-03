@@ -4,7 +4,7 @@ session_start();
 $email = $_REQUEST["userEmail"];
 $name = $_REQUEST["userName"];
 $userPassword = md5($_REQUEST["userPassword"]);
-$pfp = "pfp0";
+$pfp = "pfp1";
 $frame = "none";
 
 $host = "localhost";
@@ -35,7 +35,7 @@ $row = mysqli_fetch_assoc($result);
 if ($row && $_SESSION['email'] == $row['email']) {
     echo json_encode("false");
 } else {
-    $sql2 = "INSERT INTO registration (name, email, userPassword, pfp, frame, info, did_do) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql2 = "INSERT INTO registration (name, email, userPassword, pfp, frame) VALUES (?, ?, ?, ?, ?)";
     
     $stmt2 = mysqli_stmt_init($conn);
     
@@ -43,8 +43,23 @@ if ($row && $_SESSION['email'] == $row['email']) {
         die(mysqli_error($conn));
     }
     
-    mysqli_stmt_bind_param($stmt2, "sssssss", $name, $email, $userPassword, $pfp, $frame);
+    mysqli_stmt_bind_param($stmt2, "sssss", $name, $email, $userPassword, $pfp, $frame);
     mysqli_stmt_execute($stmt2);
+
+    $day_streak_sequence = "0000000001";
+    $last_day_online = date("Y-m-d");
+    $best_streak = 1;
+    $current_streak = 1;
+    $sql3 = "INSERT INTO streak (day_streak_sequence, last_day_online, best_streak,	current_streak, email) VALUES (?,?,?,?,?)";
+    
+    $stmt3 = mysqli_stmt_init($conn);
+    
+    if (!mysqli_stmt_prepare($stmt3, $sql3)) {
+        die(mysqli_error($conn));
+    }
+    
+    mysqli_stmt_bind_param($stmt3, "ssiis", $day_streak_sequence, $last_day_online, $best_streak, $current_streak, $email);
+    mysqli_stmt_execute($stmt3);
     
     echo json_encode("true");
 }
