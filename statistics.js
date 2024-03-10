@@ -81,8 +81,57 @@ function createChart(){
 
 
 $(window).on('load', function() {
-  console.log('Page has completely loaded');
-  setDates(function (){
+    console.log('Page has completely loaded in statistics.js');
+    setDates(function (){   
     createChart();
-  });
+    });
+    // checkVisit();
 });
+
+// function checkVisit(){
+//     $.ajax({
+//         type: "GET",
+//         url: "fetch-streak-data.php",
+//         dataType: 'json',
+//         success: function (data) {
+//             // 0 - last visit date
+//             // 1 - best streak
+//             // 2 - current streak
+
+//             // Check the visits <------
+
+//             console.log(data[0]);
+//             let todaysDate = new Date();
+//             let lastVisitDate = new Date(new Date(data[0]).toJSON().slice(0,10));
+//             if(todaysDate.getFullYear() == lastVisitDate.getFullYear()){
+//                 if(todaysDate.getMonth() == lastVisitDate.getMonth()){
+//                     if(todaysDate.getDate() - lastVisitDate.getDate() > 1){
+//                         console.log(" You not are fucking molodec1");
+//                     }else if(todaysDate.getDate() - lastVisitDate.getDate() == 1){
+//                         console.log(" You is fucking brötchen");
+//                     }else {
+//                         console.log("POHUI+POHUI BRUH");
+//                     }
+//                 }
+//             }
+            
+//             //saveVisit(data);
+//         },
+//         error: function (error) {
+//           console.error("Error occured:", error);
+//         }       
+//     });
+// }
+
+// function saveVisit(data){
+//     $.ajax({
+//         type: "GET",
+//         url: "save-streak-data.php",
+//         success: function () {
+                
+//         },
+//         error: function (error) {
+//           console.error("Error occured:", error);
+//         }
+//     });
+// }

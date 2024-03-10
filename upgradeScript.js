@@ -19,8 +19,9 @@ $(document).ready(function () {
         if(badgelvl < 1){
             accepted = confirm("Are you sure you want to subscribe to this plan? 👀");
             if(accepted){
-                addBadge("gold_badge", 1);
-                return false;
+                open("https://buy.stripe.com/test_aEU9CbeFO5l2fYY3cc");
+                // addBadge("gold_badge", 1);
+                // return false;
             }
         }else{
             alert("You already have this or better subscription activated");
@@ -30,8 +31,9 @@ $(document).ready(function () {
         if(badgelvl < 2){
             accepted = confirm("Are you sure you want to subscribe to this plan? 👀");
             if(accepted){
-                addBadge("ruby_badge", 2);
-                return false;
+                open("");
+                // addBadge("ruby_badge", 2);
+                // return false;
             }
         }else{
             alert("You already have this or better subscription activated");
@@ -41,8 +43,9 @@ $(document).ready(function () {
         if(badgelvl < 3){
             accepted = confirm("Are you sure you want to subscribe to this plan? 👀");
             if(accepted){
-                addBadge("diamond_badge", 3);
-                return false;
+                open("");
+                // addBadge("diamond_badge", 3);
+                // return false;
             }
         }else{
             alert("You already have this subscription activated");
