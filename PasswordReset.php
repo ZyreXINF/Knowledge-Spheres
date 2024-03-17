@@ -1,0 +1,1 @@
+Valera pls do thgis, i dont ahev acess to the backend sql chart!!

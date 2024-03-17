@@ -32,23 +32,26 @@ if ( ! mysqli_stmt_prepare($stmt, $sql)) {
 mysqli_stmt_execute($stmt);
 
 $date = date("Y-m-d");
-// $sql2 = "INSERT INTO volume_daily (volume_added, date, user_id) VALUES ('$volumeToAdd', '$date', '$user_id')
-//     ON DUPLICATE KEY UPDATE
-//     $volumeToAdd = VALUES('$date'),
-//         column2 = VALUES(column2),"
-// $sql2 = "IF EXISTS (
-//     SELECT 1 
-//     FROM your_table_name 
-//     WHERE date = 'your_date_value' AND user_id = 'your_user_id_value'
-// ) THEN
-//     UPDATE your_table_name 
-//     SET other_columns = 'new_values'
-//     WHERE date = 'your_date_value' AND user_id = 'your_user_id_value';
-// ELSE
-//     INSERT INTO your_table_name (date, user_id, other_columns)
-//     VALUES ('your_date_value', 'your_user_id_value', 'other_column_values');
-// END IF;"
 
-// $result=mysqli_query($conn, $sql); 
-// $row = mysqli_fetch_array($result);
+$sql_check = "SELECT COUNT(*) AS count FROM volume_daily WHERE add_date = '$date' AND user_id = '$user_id'";
+$result_check = mysqli_query($conn, $sql_check);
+$row_check = mysqli_fetch_assoc($result_check);
+$count = $row_check['count'];
+
+echo json_encode($count);
+
+if ($count != 0) {
+    // Record exists, so update it
+    $sql2 = "UPDATE volume_daily SET volume_added = volume_added + '$volumeToAdd' WHERE add_date = '$date' AND user_id = '$user_id'";
+} else {
+    // Record does not exist, so insert a new record
+    $sql2 = "INSERT INTO volume_daily (volume_added, add_date, user_id) VALUES ('$volumeToAdd', '$date', '$user_id')";
+}
+
+$stmt2 = mysqli_stmt_init($conn);
+if (!mysqli_stmt_prepare($stmt2, $sql2)) {
+    die(mysqli_error($conn));
+}
+mysqli_stmt_execute($stmt2);
+
 ?>

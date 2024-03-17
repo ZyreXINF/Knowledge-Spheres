@@ -123,7 +123,9 @@ function updateVolume(volumeToAdd) {
   $.ajax({
     type: "POST",
     url: "update-volume-form.php?volumeToAdd="+encodeURIComponent(volumeToAdd)+"&sphereName="+encodeURIComponent(nameContent),
-    success: function () {
+    dataType: "json",
+    success: function (response) {
+      console.log(response);
       if(volumeToAdd == 0.1){
         droplet();
       }else if(volumeToAdd == 1){
