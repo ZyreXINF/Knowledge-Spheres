@@ -21,7 +21,10 @@ $result = mysqli_query($conn, $query_user_id);
 $row = mysqli_fetch_row($result);
 $user_id = $row[0];
 
-$sql_query = "SELECT volume_added FROM volume_daily WHERE user_id = '$user_id' ORDER BY add_date ASC LIMIT 10";
+$sql_query = "SELECT add_date, volume_added FROM volume_daily 
+        WHERE user_id = '$user_id' AND add_date >= DATE_SUB(CURDATE(), INTERVAL 9 DAY) 
+        ORDER BY add_date ASC LIMIT 10";
+// $sql_query = "SELECT volume_added FROM volume_daily WHERE user_id = '$user_id' ORDER BY add_date ASC LIMIT 10";
 $result = mysqli_query($conn, $sql_query);
 // $row = mysqli_fetch_assoc($result);
 
