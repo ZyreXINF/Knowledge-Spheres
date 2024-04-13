@@ -126,16 +126,14 @@ function setLitersValues(callback){
             let dateAndLitersMapping = {};
             for (let i = 0; i < 10; i++){
                 dateAndLitersMapping[daysOfWeekLabels[i]] = 0;
-                // data[i].add_date = data[i].add_date.slice(5);
-                // let p1 = data[i].add_date.substring(0,2);
-                // let p2 = data[i].add_date.substring(4,5);
-                // data[i].add_date = p2 + "-" + p1; 1234-12-12
-                let date = data[i].add_date;
-                let p1 = date.substr(4, 4); // 2024-03-17
-                let p2 = date.substr(8,10);
-                data[i].add_date = p1 + "-" + p2;  
-                console.log(date.substr(4, 4));
-                console.log("PLS BRO DISPLAY THIS FUCKING SHIT OR I WILL SUICIDE!!!!!!");        // Format as "MM-DD"
+                let formatedDate = new Date();
+                formatedDate.setMonth(2);
+                formatedDate.setDate(data[i].add_date.substring(8,10));
+                formatedDate.setMonth(data[i].add_date.substring(5,7)-1);
+                formatedDate.setFullYear(data[i].add_date.substring(0,4));
+                console.log(data[i].add_date.substring(5,7));
+                console.log(formatedDate);
+                
             }
             
             for (let i = 0; i < data.length; i++) { 

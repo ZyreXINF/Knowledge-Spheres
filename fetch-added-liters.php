@@ -34,7 +34,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     $rows[] = $row; // Append each row to the array
 }
 
-// проблема в том что в массив записываеться только одно значение, точнее первое что выходит из квери. я кушать 
 // $data = array($row['volume_added']);
 
 //$data = $result;
