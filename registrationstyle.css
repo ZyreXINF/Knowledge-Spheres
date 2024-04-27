@@ -243,3 +243,9 @@ form .signup-link a:hover{
 .pass span {
   color: rgb(164, 6, 6);
 }
+
+.p_strong {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 900;
+}

@@ -7,7 +7,11 @@ $(document).ready(function () {
         var email = document.getElementById("userEmail").value;
         var name = document.getElementById("userName").value;
         var userPassword = document.getElementById("userPassword").value;
-        saveData(email, name, userPassword);
+        if(name.length >= 4){
+            saveData(email, name, userPassword);
+        }else{
+            alert("Username must contain at least 4 charachters!!!");
+        }
 
         return false;
     });

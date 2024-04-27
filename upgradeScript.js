@@ -20,8 +20,21 @@ $(document).ready(function () {
             accepted = confirm("Are you sure you want to subscribe to this plan? 👀");
             if(accepted){
                 open("https://buy.stripe.com/test_aEU9CbeFO5l2fYY3cc");
-                // addBadge("gold_badge", 1);
-                // return false;
+                addBadge("gold_badge", 1);
+                return false;
+
+                // establishWebhook(function (success){
+                //     if(success){
+                //         open("https://buy.stripe.com/test_aEU9CbeFO5l2fYY3cc");
+                //         // addBadge("gold_badge", 1);
+                //         // alert("Successful operation🤍");
+                //         // return false;
+                //     }else{
+                //         console.log("failed to establish webhook");
+                //         alert("Something went wrong 😰");
+                //     }
+                // });
+            
             }
         }else{
             alert("You already have this or better subscription activated");
@@ -52,6 +65,20 @@ $(document).ready(function () {
         }
     });
 });
+
+// function establishWebhook(callback){
+//     $.ajax({
+//         type: "POST",
+//         url: "webhook-establish.php",
+//         success: function() {
+//             callback(true);
+//         },
+//         error: function(error) {
+//           console.error('Error:', error);
+//             callback(false);
+//         }
+//     });
+// }
 
 function checkForSubBadges(){
     $.ajax({

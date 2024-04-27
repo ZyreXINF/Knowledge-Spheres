@@ -25,7 +25,7 @@ try {
 }
 
 function fulfill_order($line_items) {
-  // TODO: fill me in
+  // todo fill me in
   error_log("Fulfilling order...");
   error_log($line_items);
 }
@@ -36,6 +36,7 @@ if ($event->type == 'checkout.session.completed') {
   $session = \Stripe\Checkout\Session::retrieve([
     'id' => $event->data->object->id,
     'expand' => ['line_items'],
+    'success_url' => "https://knowledgespheres.org",
   ]);
     
   $line_items = $session->line_items;
