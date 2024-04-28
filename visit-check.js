@@ -35,7 +35,6 @@ function checkVisit(){
                         //current streak
                         newData.push(0);
                         console.log(newData);
-                        console.log("Ty kurwa e ne molodec");
                         saveVisit(newData);
                     }else if(todaysDate.getDate() - lastVisitDate.getDate() == 1){
                         //sequence
@@ -49,10 +48,7 @@ function checkVisit(){
                         //current streak
                         newData.push(parseInt(data[3])+1);
                         console.log(newData);
-                        console.log("You is fucking brötchen");
                         saveVisit(newData);
-                    }else {
-                        console.log("POHUI+POHUI BRUH");
                     }
                 }else{
                     //sequence
@@ -62,7 +58,6 @@ function checkVisit(){
                     //current streak
                     newData.push(0);
                     console.log(newData);
-                    console.log("Ty kurwa e ne molodec");
                     saveVisit(newData);
                 }
             }else{
@@ -73,7 +68,6 @@ function checkVisit(){
                 //current streak
                 newData.push(0);
                 console.log(newData);
-                console.log("Ty kurwa e ne molodec");
                 saveVisit(newData);
             }
             
