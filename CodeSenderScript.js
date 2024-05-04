@@ -3,24 +3,69 @@ script.src = 'https://code.jquery.com/jquery-3.6.3.min.js';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 const actions = ["send code","confirm code","new password"];
+var currentAction = actions[0];
+var code, email;
 
 $(document).ready(function () {
     $("#sendButton").on("click", function () {
-        const email = document.getElementById("inputField").value;
-        checkExistingEmail(email, function (success){
-            if(success){
-                const code = generateCode();
-                // console.log("email: "+email + "\ncode: "+code)
-                sendCode(email,code, function (){
-                    alterPage(actions[1]);
-                });
-            }else{
-                alert("Such email doesn't exist")
-            }
-        });
+        switch(currentAction){
+            case actions[0]:
+                sendCode();
+                break;
+            case actions[1]:
+                confirmCode();
+                break;
+            case actions[2]:
+                resetPassword();
+                break;
+        }
         return false;
     });
 });
+
+function sendCode(){
+    email = document.getElementById("inputField").value;
+    checkExistingEmail(email, function (success){
+        if(success){
+            let button = document.getElementById("sendButton");
+            button.value = "Wait please..."
+            button.disabled = true;
+            code = generateCode();
+            // console.log("email: "+email + "\ncode: "+code) DO NOT TOUCH
+            sendEmail(email,code, function (){
+                alterPage(actions[1]);
+                currentAction = actions[1];
+                button.disabled = false;
+            });
+        }else{
+            alert("Such an email doesn't exist")
+        }
+    });
+}
+
+function confirmCode(){
+    let userCode = document.getElementById("inputField").value;
+    if(userCode === code){
+        alterPage(actions[2]);
+        currentAction = actions[2];
+    }else{
+        alert("Invalid code");
+    }
+}
+
+function resetPassword(){
+    let newPassword = document.getElementById("inputField").value;
+    $.ajax({
+        type: "POST",
+        url: "password-reset?newPassword="+newPassword+"&email="+email,
+        success: function () {
+            window.location.href = "login.html";
+        },
+        error: function (error) {
+            console.error("Error occured:", error);
+        }
+    });
+}
 
 function checkExistingEmail(email, callback){
     $.ajax({
@@ -37,7 +82,7 @@ function checkExistingEmail(email, callback){
     });
 }
 
-function sendCode(email, code, callback){
+function sendEmail(email, code, callback){
     $.ajax({
         type: "POST",
         url: "sendCode.php?email="+email+"&code="+code,
@@ -47,7 +92,8 @@ function sendCode(email, code, callback){
             callback();
         },
         error: function (error) {
-            console.error("Error occured:", error);
+            // console.error("Error occured:", error);
+            callback();
         }
     });
 }
@@ -62,29 +108,40 @@ function generateCode(){
 }
 
 function alterPage(action){ 
+    let input = document.getElementById("inputField");
+    let title = document.getElementById("title");
+    let subtitle = document.getElementById("subtitle");
+    let icon = document.querySelector("#icon");
+    let button = document.getElementById("sendButton");
     switch(action){
         case "confirm code":
             //input field
-            let input = document.getElementById("inputField");
+            
             input.value = "";
             input.placeholder = "Code";
+            input.type="name";
 
             //title
-            let title = document.getElementById("title");
+            
             title.innerHTML = "Enter the Code";
             
             //subtitle
-            let subtitle = document.getElementById("subtitle");
+            
             subtitle.innerHTML = "Enter the code we've just sent you.";
 
             //icon
-            let icon = document.querySelector("#icon");
+            
             icon.className = "far fa-clipboard";
+
+            //button text
+            button.value = "Enter";
+
             break;
         case "new password":
             // input field
             input.value = "";
             input.placeholder = "New password";
+            input.type="password";
 
             // title
             title.innerHTML = "Enter New Password";
@@ -94,6 +151,9 @@ function alterPage(action){
 
             // icon
             icon.className = "fa fa-key";
+
+            //button text
+            button.value = "Enter";
             break;
         default: 
             console.log("unknown action :(");

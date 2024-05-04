@@ -1,41 +1,4 @@
 <?php
-// session_start();
-
-// // $token = bin2hex(random_bytes(50));
-// // $_SESSION['token'] = $token;
-
-// $email = $_REQUEST['email'];
-// $code = $_REQUEST['code'];
-
-
-// require "Mail/phpmailer/PHPMailerAutoload.php";
-// $mail = new PHPMailer;
-
-// $mail->isSMTP();
-// $mail->Host='smtp.gmail.com';
-// $mail->Port=587;
-// $mail->SMTPAuth=true;
-// $mail->SMTPSecure='tls';
-
-// // h-hotel account
-// $mail->Username='knowledgespheres@gmail.com';
-// $mail->Password='aknow20b23sphere29c10d';
-
-// // send by h-hotel email
-// $mail->setFrom('email', 'Password Reset');
-// // get email from input
-// $mail->addAddress($_POST["email"]);
-
-
-// $mail->isHTML(true);
-// $mail->Subject="Recover your password";
-// $mail->Body="<b>Dear User</b>
-// <h3>We received a request to reset your password.</h3>
-// <p>Here is your code</p>
-// <br>$code<br>
-// <p>With regrads,</p>
-// <b>Knowledge Spheres</b>";
-
 session_start();
 
 // Check if email and code are set in the request
@@ -103,6 +66,7 @@ if(isset($_REQUEST['email']) && isset($_REQUEST['code'])) {
     } else {
         // Email sent successfully
         echo json_encode("success");
+        
     }
 } else {
     // Email and/or code not set in the request
