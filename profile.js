@@ -254,8 +254,18 @@ const old_password_input = document.getElementById("old_password");
 const new_password_input = document.getElementById("new_password");
 
 edit_username_button.addEventListener("click", e => {
-  username_input.disabled = false;
-  username_changed = true;
+  getLimit(function (limit){
+    if(limit > 0){
+      username_input.disabled = false;
+      username_changed = true;
+    }else{
+      if(window.confirm("You are out of ability to change nickname.🙀 \nYou might want to try out subscription to get more!💎")){
+        window.location.href = "upgrade.html";
+      }else{
+        console.log("пошел нахуй жадина");
+      }
+    }
+  });
 })
 
 edit_email_button.addEventListener("click", e => {
@@ -276,44 +286,79 @@ function validateUserSecuritySettings(){
   if(username_changed || email_changed || password_changed){
     let file_url = "user-security-settings-save.php?";  
     let firstAppend = true;
-    if(username_changed){
-      file_url = file_url + "userName=" + encodeURIComponent(document.getElementById("username_input").value);
-      firstAppend = false;
-    }if(email_changed){
-      if(firstAppend){
-        file_url = file_url + "userEmail=" + encodeURIComponent(document.getElementById("email_input").value);
-        firstAppend = false;
-      }else{
-        file_url = file_url + "&userEmail=" + encodeURIComponent(document.getElementById("email_input").value);
-      }
-    }if(password_changed){
-      //PASSWORD VALIDATION
-      validatePassword(function (password_validate_result){
-        console.log(password_validate_result);
-        if(password_validate_result){
-          console.log("valid password");
-          if(firstAppend){
-            file_url = file_url + "userPassword=" + encodeURIComponent(document.getElementById("new_password").value);
+    getLimit(function (limit){
+      if(username_changed){ 
+        if(limit > 0){
+          if(document.getElementById("username_input").value.length >= 4){
+            file_url = file_url + "userName=" + encodeURIComponent(document.getElementById("username_input").value);
             firstAppend = false;
           }else{
-            file_url = file_url + "&userPassword=" + encodeURIComponent(document.getElementById("new_password").value);
+            file_url = "";  
+            alert("Username must contain at least 4 charachters!!!");
           }
-          saveSecurityData(file_url);
+        } 
+        else{
+          if(window.confirm("You are out of ability to change nickname.🙀 \nYou might want to try out subscription to get more!💎")){
+            window.location.href = "upgrade.html";
+          }else{
+            console.log("пошел нахуй жадина");
+          }
+          // alert("You are out of ability to change nickname.🙀 \nIf you want to change nickname you can try out subscription!💎");
+        }                                                
+      }if(email_changed){
+        if(firstAppend){
+          file_url = file_url + "userEmail=" + encodeURIComponent(document.getElementById("email_input").value);
+          firstAppend = false;
+        }else{
+          file_url = file_url + "&userEmail=" + encodeURIComponent(document.getElementById("email_input").value);
+          // username_input = username_input.getElementById("username_input").textContent = "Must be at least 4 characters!";
         }
-      });
-    }else if(!password_changed){
-      saveSecurityData(file_url);
-    }
+      }if(password_changed){
+        //PASSWORD VALIDATION
+        validatePassword(function (password_validate_result){
+          console.log(password_validate_result);
+          if(password_validate_result){
+            console.log("valid password");
+            if(firstAppend){
+              file_url = file_url + "userPassword=" + encodeURIComponent(document.getElementById("new_password").value);
+              firstAppend = false;
+            }else{
+              file_url = file_url + "&userPassword=" + encodeURIComponent(document.getElementById("new_password").value);
+            }
+            saveSecurityData(file_url);
+          }
+        });
+      }else if(!password_changed){
+        saveSecurityData(file_url);
+      }
+    });     
+    settings_dialog.close();
+    
   }
 }
 
+function getLimit(callback){
+  $.ajax({
+    type: "GET",
+    url: "password-limit-change.php",
+    dataType: "json",
+    success: function(response) {
+      console.log(response);
+      callback(response);
+    },
+    error: function(error) {
+      console.error('Error:', error);
+    }
+  });
+}
+
 function saveSecurityData(file_url){
-  console.log(file_url);
+  // console.log(file_url);
   $.ajax({
     type: "POST",
     url: file_url,
     success: function(response) {
-      console.log(response + "\n"); 
+      // console.log(response + "\n"); 
     },
     error: function(error) {
       console.error('Error:', error);
@@ -411,7 +456,7 @@ function fetchBadgeDescription(badge_name){
   });
 }
 
-//FETCHING THE CUSTOMIZATION 
+//FETCHING THE CUSTOMI(S/Z)ATION 
 
 function fetchCustomization(){
   $.ajax({

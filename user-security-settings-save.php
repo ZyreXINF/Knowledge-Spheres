@@ -32,6 +32,18 @@ $sql_query = "UPDATE registration SET";
 if(!is_null($name)){
     $sql_query .= " name = '$name'";
     $firstappend = false;
+
+    $decreaseLimit = "UPDATE gay SET name_change = name_change-1 WHERE email = '$_COOKIE[$cookie_name]'";
+
+    $DecreaseStmt = mysqli_stmt_init($conn);
+
+    if ( ! mysqli_stmt_prepare($DecreaseStmt, $decreaseLimit)) {
+        die(mysqli_error($conn));
+    }
+
+    mysqli_stmt_execute($DecreaseStmt);
+
+
 }if(!is_null($email)){
     if(!$firstappend){
         $sql_query .= ",";

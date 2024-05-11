@@ -60,6 +60,20 @@ if ($row && $_SESSION['email'] == $row['email']) {
     
     mysqli_stmt_bind_param($stmt3, "ssiis", $day_streak_sequence, $last_day_online, $best_streak, $current_streak, $email);
     mysqli_stmt_execute($stmt3);
+
+
+    $limit = 3;
+
+    $sql4 = "INSERT INTO gay (name_change, email) VALUES (?, ?)";
+    
+    $stmt4 = mysqli_stmt_init($conn);
+    
+    if (!mysqli_stmt_prepare($stmt4, $sql4)) {
+        die(mysqli_error($conn));
+    }
+    
+    mysqli_stmt_bind_param($stmt4, "is", $limit, $email);
+    mysqli_stmt_execute($stmt4);
     
     echo json_encode("true");
 }
