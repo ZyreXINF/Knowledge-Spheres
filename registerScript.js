@@ -18,23 +18,42 @@ $(document).ready(function () {
 });
     
 function saveData(email, name, password){
-    console.log("email: "+ email + "\n" + 
-                "name: "+ name + "\n" +
-                "password: "+ password
-    );
+    // console.log("email: "+ email + "\n" + 
+    //             "name: "+ name + "\n" +
+    //             "password: "+ password
+    // );
     $.ajax({
         type: "POST",
         url: "register-form.php?userEmail="+email+"&userName="+name+"&userPassword="+password,
         dataType: "json",
         success: function (jsonData) {
             if(jsonData == "true"){
-                window.location.href = "login.html";
+                addBetaUserBadge(email, function (){
+                    window.location.href = "login.html";
+                }); 
             }else if(jsonData == "false"){
                 window.location.href = "alert_register.html";
             } 
         },
         error: function (error) {
             console.error("Error occured:", error);
+        }
+    });
+}
+function addBetaUserBadge(email, callback){
+    $.ajax({
+        type: "POST",
+        url: "badges-form.php?badge_name=beta_user_badge&email="+email,
+        success: function(response) {
+            // if(window.confirm(response)){
+            //     callback();
+            // }else{
+            //     callback(); 
+            // }
+            callback();
+        },
+        error: function(error) {
+            console.error('Error:', error);
         }
     });
 }

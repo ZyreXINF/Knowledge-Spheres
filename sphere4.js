@@ -180,6 +180,12 @@ function update_tier() {
   var updatedTier = tier_element.innerHTML;
   updatedTier = updatedTier.replace('Tier: ', '');
 
+  if(updatedTier === "Abyssal"){
+    checkBadge(function (){
+      addWisdomBadge();
+    });
+  }
+
   var nameContent = document.getElementById("name").innerHTML;
   $.ajax({
     type: "POST",
@@ -193,6 +199,37 @@ function update_tier() {
     }
   });
   return;
+}
+
+function checkBadge(callback){
+  $.ajax({
+    type: "GET",
+    url: "fetch-badge.php&badge_name=wisdom_badge",
+    success: function (exists) {
+      if(!exists){
+        callback();
+        
+      }else{
+        callback();
+      }
+    },
+    error: function (error) {
+      console.error("Error occured:", error);
+    }
+  });
+}
+
+function addWisdomBadge(){
+  $.ajax({
+    type: "POST",
+    url: "badges-form.php?badge_name=wisdom_badge",
+    success: function() {
+      console.log("added");
+    },
+    error: function(error) {
+        console.error('Error:', error);
+    }
+  });
 }
 
 // LIQUID ANIMATIONS

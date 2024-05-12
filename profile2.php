@@ -1,6 +1,7 @@
 <?php session_start();
 $user_name = $_SESSION['user_name'];
 $user_email = $_SESSION['user_email'];
+$name_change = $_SESSION['name_change'];
 ?>
 <!DOCTYPE html>
 
@@ -28,7 +29,7 @@ $user_email = $_SESSION['user_email'];
     <img id="imageElement" src="wisdom_badge.png">
     <h3 id="nameElement">You don't need to see it</h3>
     <h4 id="rarityElement">You don't need to see it</h4>
-    <h5 id="obtainmentDate" >You don't need to see it</h5>
+    <h5 id="obtainmentDate" >You don't need to see it</h5>  
     <p id ="badgeDescriptionElement"class="badge_description">You don't need to see it.</p>
     <button badge-close-modal>OK</button>
   </dialog>
@@ -37,6 +38,7 @@ $user_email = $_SESSION['user_email'];
     <a settings-close-modal>X</a>
     <h2>Username</h2>
     <button class="edit_username_button" id="edit_username_button">edit</button>
+    <p class="item1">🔢Number of your nickname chages:<span class="blue" id="name_change"><?php echo $name_change ?></span><p/>
     <br>
     <input class="username_input" id="username_input" disabled value=<?php echo $user_name; ?>></input>
 
@@ -88,7 +90,7 @@ $user_email = $_SESSION['user_email'];
       <a class="nav-link" href="cookie-form.php">Profile</a>
       <a class="nav-link" href="cookie-mySpheres.php">My Spheres</a>
       <a class="nav-link" href="about2.html">About Us</a>
-      <a class="nav-link" href="upgrade.html">Upgrade</a>
+      <a class="nav-link" href="cookie-upgrade.php">Upgrade</a>
       <a class="nav-link" href="contact1.html">Contact</a>
     </nav>
     <div class="profile">

@@ -3,7 +3,7 @@ script.src = 'https://code.jquery.com/jquery-3.6.3.min.js';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 var page_amount = 0;
-var page_limit = 5;
+var page_limit = 10;
 
 var openedSphereName;
 
@@ -307,6 +307,12 @@ function addElement(sphereName){
       if (page_amount < page_limit) {
         page_amount++;
 
+        if(page_amount>5){
+          checkBadge(function (){
+            addCretivityBadge();
+          });
+        }
+
         const new_li = document.createElement("li");
         sphereName = sphereName.replace(/(<([^>]+)>)/ig, "");
 
@@ -384,6 +390,38 @@ function addElement(sphereName){
     }
     document.querySelector("#txt").value = "";
   }
+}
+
+
+function checkBadge(callback){
+  $.ajax({
+    type: "GET",
+    url: "fetch-badge.php&badge_name=creativity_badge",
+    success: function (exists) {
+      if(!exists){
+        callback();
+        
+      }else{
+        callback();
+      }
+    },
+    error: function (error) {
+      console.error("Error occured:", error);
+    }
+  });
+}
+
+function addCretivityBadge(){
+  $.ajax({
+    type: "POST",
+    url: "badges-form.php?badge_name=creativity_badge",
+    success: function() {
+      console.log("added");
+    },
+    error: function(error) {
+        console.error('Error:', error);
+    }
+  });
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

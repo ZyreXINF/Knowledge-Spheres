@@ -14,9 +14,13 @@ if (mysqli_connect_errno()) {
 }
 
 $name = $_REQUEST["badge_name"];
+$email = $_REQUEST["email"];
+if(is_null($email)){
+    $email = $_COOKIE[$cookie_name];
+}
 $obtainment_date = date("Y-m-d");
 
-$query_user_id = " SELECT id FROM registration WHERE email = '$_COOKIE[$cookie_name]' ";
+$query_user_id = " SELECT id FROM registration WHERE email = '$email' ";
 $result = mysqli_query($conn, $query_user_id);
 $row = mysqli_fetch_row($result);
 $user_id = $row[0];
@@ -32,4 +36,6 @@ mysqli_stmt_bind_param($stmt, "ssi", $name, $obtainment_date, $user_id);
 mysqli_stmt_execute($stmt);
 
 mysqli_close($conn);
+
+echo json_encode($query_save);
 ?>

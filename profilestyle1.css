@@ -395,6 +395,7 @@ hr {
 
 [settings-modal] p {
   font-style: normal;
+  grid-column: 1/3;
 }
 
 [settings-modal] button {
@@ -410,6 +411,7 @@ hr {
   padding-bottom: 10px;
   border-radius: 8px;
   cursor: pointer;
+  grid-column: 4/6;
 }
 
 [settings-modal] button:hover {
@@ -582,7 +584,7 @@ hr {
   outline: none;
 }
 
-#save_settings_button {
+.save_settings_button {
   font-size: 1.2rem;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -610,4 +612,9 @@ hr {
 
 .old_password {
   margin-right: 2rem;
+}
+
+.grid-container-modal-customisation{
+  display: grid; 
+  justify-content: space-between;
 }
