@@ -401,8 +401,6 @@ function checkBadge(callback){
       if(!exists){
         callback();
         
-      }else{
-        callback();
       }
     },
     error: function (error) {

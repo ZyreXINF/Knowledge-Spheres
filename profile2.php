@@ -1,7 +1,7 @@
 <?php session_start();
 $user_name = $_SESSION['user_name'];
 $user_email = $_SESSION['user_email'];
-$name_change = $_SESSION['name_change'];
+
 ?>
 <!DOCTYPE html>
 

@@ -166,6 +166,16 @@ function addSubscriptionBadge(badgeName){
         type: "POST",
         url: "badges-form.php?badge_name=early_supporter_badge",
         success: function() {
+            $.ajax({
+                type: "POST",
+                url: "increase-name-change-limit.php",
+                success: function() {
+                    alert(`You have subscribed to the ${plan} plan! 🎉`);
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
             alert(`You have subscribed to the ${plan} plan! 🎉`);
         },
         error: function(error) {

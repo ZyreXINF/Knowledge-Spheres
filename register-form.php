@@ -62,7 +62,7 @@ if ($row && $_SESSION['email'] == $row['email']) {
     mysqli_stmt_execute($stmt3);
 
 
-    $limit = 3;
+    $limit = 1;
 
     $sql4 = "INSERT INTO gay (name_change, email) VALUES (?, ?)";
     
