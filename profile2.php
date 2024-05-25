@@ -34,20 +34,19 @@ $name_change = $_SESSION['name_change'];
     <button badge-close-modal>OK</button>
   </dialog>
   <!-- ====== SETTINGS MODAL ====== -->
-  <dialog settings-modal>
-    <a settings-close-modal>X</a>
+  <dialog class="s_m" settings-modal>
+    <a class="f_e" settings-close-modal>X</a>
     <h2>Username</h2>
     <button class="edit_username_button" id="edit_username_button">edit</button>
-    <p class="item1">🔢Number of your nickname chages:<span class="blue" id="name_change"><?php echo $name_change ?></span><p/>
     <br>
-    <input class="username_input" id="username_input" disabled value=<?php echo $user_name; ?>></input>
+    <input class="username_input" id="username_input" disabled value="<?php echo $user_name; ?>"></input>
 
     <hr>
 
     <h2>Email</h2>
     <button class="edit_email_button" id="edit_email_button">edit</button>
     <br>
-    <input class="email_input" id="email_input" disabled value=<?php echo $user_email; ?>></input>
+    <input class="email_input" id="email_input" disabled value="<?php echo $user_email; ?>"></input>
 
     <hr>
 
@@ -70,7 +69,7 @@ $name_change = $_SESSION['name_change'];
     <br>
     <br>
     <button id="save_settings_button">Save</button>
-  </dialog>
+</dialog>
 
   <!--  ====== PFP CHANGE MODAL====== -->
   <dialog pfp-modal>

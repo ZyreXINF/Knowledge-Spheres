@@ -259,10 +259,10 @@ edit_username_button.addEventListener("click", e => {
       username_input.disabled = false;
       username_changed = true;
     }else{
-      if(window.confirm("You are out of ability to change nickname.🙀 \nYou might want to try out subscription to get more!💎")){
+      if(window.confirm("You are out of nickname changes! 🙀 \nYou might want to try out subscription to get more! 💎")){
         window.location.href = "upgrade.html";
       }else{
-        console.log("пошел нахуй жадина");
+        console.log("жадина говядина, вонючка");
       }
     }
   });

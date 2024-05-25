@@ -265,7 +265,6 @@ dialog {
   text-align: center;
   border: none;
   width: 50vw;
-  height: 42vw;
 }
 
 dialog::backdrop {

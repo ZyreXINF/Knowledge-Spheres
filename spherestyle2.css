@@ -2,8 +2,13 @@ body {
   text-align: center;
   /* background: url("indexbg.jpg"); */
   overflow-x: hidden;
-  background-image: url("pattern7.png");
-  background-color: #dfd6ff;
+
+
+  /* CAN IMPLEMENT LATER (pattern, color)*/
+  background: url("myspheresbg.jpg");
+
+  /* background-image: url("pattern7.png");
+  background-color: #dfd6ff; */
   /* 2-fat,  */
   /* #dfd6ff, #f8e0ff, #e5ffec, #dbedff, #fefff0 */
 }
