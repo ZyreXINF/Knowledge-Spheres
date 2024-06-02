@@ -2,10 +2,10 @@
 session_start();
 $cookie_name = "user";
 
-$host = "localhost";
-$dbname = "ks_db";
-$username = "root";
-$password = "";
+$host = "localhost:3306";
+$dbname = "pjbelamy_ks_db";
+$username = "pjbelamy_ks_admin";
+$password = "-}3l3fg0t^ZCai!wT]";
 
 $conn = mysqli_connect(hostname: $host,
                        username: $username,
@@ -24,7 +24,7 @@ $user_id = $row[0];
 $sql_query = "SELECT add_date, volume_added FROM volume_daily 
         WHERE user_id = '$user_id' AND add_date >= DATE_SUB(CURDATE(), INTERVAL 9 DAY) 
         ORDER BY add_date ASC LIMIT 10";
-// $sql_query = "SELECT volume_added FROM volume_daily WHERE user_id = '$user_id' ORDER BY add_date ASC LIMIT 10";
+
 $result = mysqli_query($conn, $sql_query);
 // $row = mysqli_fetch_assoc($result);
 

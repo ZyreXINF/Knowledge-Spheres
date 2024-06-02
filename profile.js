@@ -61,6 +61,17 @@ $(document).ready(function () {
     }
     return false;
   });
+  $("#deleteAccountButton").on("click", function () {
+    //deleting kid's account 
+    var confirmDelete = confirm("You are going to make texas massacre with your account\n Are you sure? 😢");
+    if(confirmDelete){
+      deleteUserAccount(function () {
+        document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location.href = "home.html";
+      });
+    }
+    return false;
+  });
   $("#save_settings_button").on("click", function () {
     validateUserSecuritySettings();
     return false;
@@ -280,6 +291,19 @@ edit_password_button.addEventListener("click", e => {
   new_password_input.disabled = false;
   password_changed = true;
 })
+
+function deleteUserAccount(callback){
+  $.ajax({
+    type: "POST",
+    url: "account-delete.php",
+    success: function() {
+      callback();
+    },
+    error: function(error) {
+      console.error('Error:', error);
+    }
+  });
+}
 
 function validateUserSecuritySettings(){
   console.log("username: " + username_changed + " | email: " + email_changed + " | password: " + password_changed);

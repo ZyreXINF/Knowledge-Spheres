@@ -105,9 +105,9 @@ $user_email = $_SESSION['user_email'];
       <div class="row2">
         <img class="graph_img" src="https://cdn-icons-png.freepik.com/512/1270/1270360.png">
         <div class="graph_info">
-          <p>📅 Date joined: <span class="blue">01/01/2024</span></p>
-          <p>📖 Spheres created: <span class="blue">0</span></p>
-          <p>🔥 Current streak: <span class="blue">0 days</span></p>
+          <p>📅 Date joined: <span class="">🔒/🔒/🔒</span></p>
+          <p>📖 Spheres created: <span class="">🔒</span></p>
+          <p>🔥 Current streak: <span class="">🔒</span></p>
           <button class="graph_button" onclick="window.location.href='statistics.html'">See more ></button>
         </div>
       </div>

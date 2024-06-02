@@ -30,6 +30,11 @@ nav a:hover {
   border-bottom: 2px solid #0621f8;
 }
 
+.blue_s {
+  color: #0621f8;
+  filter: blur(0.4rem);
+}
+
 form {
   box-shadow: #dedede 0px 3px 20px 0px;
   border-radius: 1.5rem;
@@ -78,7 +83,7 @@ a {
 p {
   font-size: 20px;
   font-family: 'Poppins', sans-serif;
-  color: #0621f8;
+  color: black;
 }
 
 .wrapper li {
@@ -92,7 +97,7 @@ p {
 }
 
 .blue {
-  color: #0621f8;
+  color: red;
 }
 
 .list {

@@ -4,10 +4,10 @@ $cookie_name = "user";
 
 $badge_name = $_REQUEST['badge_name'];
 
-$host = "localhost";
-$dbname = "ks_db";
-$username = "root";
-$password = "";
+$host = "localhost:3306";
+$dbname = "pjbelamy_ks_db";
+$username = "pjbelamy_ks_admin";
+$password = "-}3l3fg0t^ZCai!wT]";
 
 $conn = mysqli_connect(hostname: $host,
                        username: $username,

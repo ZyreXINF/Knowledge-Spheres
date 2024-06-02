@@ -3,7 +3,7 @@ script.src = 'https://code.jquery.com/jquery-3.6.3.min.js';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 var page_amount = 0;
-var page_limit = 10;
+var page_limit = 5;
 
 var openedSphereName;
 

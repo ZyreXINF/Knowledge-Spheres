@@ -10,10 +10,10 @@ if(!isset($_COOKIE[$cookie_name])) {
   // echo "Cookie '" . $cookie_name . "' is set!<br>";
   // echo "Value is: " . $_COOKIE[$cookie_name];
 
-  $host = "localhost";
-  $dbname = "ks_db";
-  $username = "root";
-  $password = "";
+  $host = "localhost:3306";
+  $dbname = "pjbelamy_ks_db";
+  $username = "pjbelamy_ks_admin";
+  $password = "-}3l3fg0t^ZCai!wT]";
   
   $conn = mysqli_connect($host, $username, $password, $dbname);
 
@@ -32,6 +32,6 @@ if(!isset($_COOKIE[$cookie_name])) {
   $_SESSION['user_email'] = $user_email;
   
   
-  header("location:mySpheres1.html");
+  header("location:myspheres1.html");
 }
 ?>

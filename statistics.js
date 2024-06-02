@@ -128,20 +128,19 @@ function setLitersValues(callback){
                 dateAndLitersMapping[daysOfWeekLabels[i]] = 0;
                 let formatedDate = new Date();
                 formatedDate.setMonth(2);
-                formatedDate.setDate(data[i].add_date.substring(8,10));
-                formatedDate.setMonth(data[i].add_date.substring(5,7)-1);
-                formatedDate.setFullYear(data[i].add_date.substring(0,4));
-                console.log(data[i].add_date.substring(5,7));
-                console.log(formatedDate);
-                
+                let add_date = data[i].add_date;
+                formatedDate.setDate(add_date.substring(8,10));
+                formatedDate.setMonth(add_date.substring(5,7)-1);
+                formatedDate.setFullYear(add_date.substring(0,4));
+                console.log(add_date.substring(5,7));
+                console.log(formatedDate);  
             }
             
-            for (let i = 0; i < data.length; i++) { 
+            for (let i = 0; i < data.length; i++) {  
                 litersData.push(data[i].volume_added); 
             }   
             console.log(litersData);
             callback();
-    
         },
         error: function(xhr, status, error) {
             console.error("Error occurred:", xhr, status, error);

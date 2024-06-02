@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-$host = "localhost";
-$dbname = "ks_db";
-$username = "root";
-$password = "";
+$host = "localhost:3306";
+$dbname = "pjbelamy_ks_db";
+$username = "pjbelamy_ks_admin";
+$password = "-}3l3fg0t^ZCai!wT]";
 $conn = mysqli_connect($host, $username, $password, $dbname);
 
 if (mysqli_connect_errno()) {
@@ -42,7 +42,7 @@ $sphere_tier = $row[9];
 </head>
 
 <body>
-  <a href="mySpheres1.html">
+  <a href="myspheres1.html">
     <img class="back-button" src="double-arrow-left.png">
   </a>
   <div class="container">
