@@ -127,7 +127,7 @@ function setLitersValues(callback){
             for (let i = 0; i < 10; i++){
                 dateAndLitersMapping[daysOfWeekLabels[i]] = 0;
                 let formatedDate = new Date();
-                formatedDate.setMonth(2);
+                formatedDate.setMonth(2); 
                 let add_date = data[i].add_date;
                 formatedDate.setDate(add_date.substring(8,10));
                 formatedDate.setMonth(add_date.substring(5,7)-1);
@@ -147,6 +147,8 @@ function setLitersValues(callback){
         }
       });
 }
+
+
 
 function createLitersChart(){
     // Create a new line chart
